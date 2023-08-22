@@ -12,8 +12,8 @@ Em inspiração com o [listography](https://listography.com), foi pensado num pr
 * Perfil
 
 ### Product Backlog
-[Tela de Login](/doc/login.MD)
-[Tela de Registro](/doc/registro.MD)
+* [Tela de Login](/doc/login.MD)
+* [Tela de Registro](/doc/registro.MD)
 
 ### Dependências Front
 `react-router-dom`
