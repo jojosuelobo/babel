@@ -7,7 +7,7 @@ Em inspiração com o [listography](https://listography.com), foi pensado num pr
 
 ### Telas
 * Home
-* [Registro]((/doc/registro.MD))
+* [Registro](/doc/registro.MD)
 * [Login](/doc/login.MD)
 * Perfil
 
