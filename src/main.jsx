@@ -8,6 +8,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 
 // Pages
+import Register from './pages/Register'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />
+        element: <Register />
       }
     ]
   }
