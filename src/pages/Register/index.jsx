@@ -1,12 +1,15 @@
 import logo from '../../../public/logoUVV.png'
+import './Register.sass'
 
 export default function Register() {
     return (
-        <section>
-            <div className="register_page">
-                <img src={logo} alt="logo" />
-                <h1>Join to Company Name</h1>
-                <p>Company details here</p>
+        <section className='main-content'>
+            <div className="register-page">
+                <img className='logo' src={logo} alt="logo" />
+                <div className="register-text">
+                    <h1>Join to Company Name </h1>
+                    <p>Company details here</p>
+                </div>
                 <form className="register_form">
                     <p>Nome</p>
                     <input
@@ -26,7 +29,7 @@ export default function Register() {
                     />
                 </form>
                 <button>Criar conta</button>
-                <p>Já possui conta? Entrar</p>
+                <p className='redirect-login'>Já possui conta? Entrar</p>
             </div>
         </section>
     )
