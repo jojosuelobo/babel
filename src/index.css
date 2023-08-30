@@ -1,3 +1,21 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+a,
+button {
+  text-decoration: none;
+  transition: 0.4s;
+  font-size: 1em;
+  cursor: pointer;
+} 
+
+a:hover,
+nav button:hover {
+  color: #4e4e4e;
+}
