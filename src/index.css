@@ -13,7 +13,7 @@ button {
   transition: 0.4s;
   font-size: 1em;
   cursor: pointer;
-}
+} 
 
 a:hover,
 nav button:hover {
