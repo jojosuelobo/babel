@@ -24,7 +24,7 @@ export default function Login() {
                     <p>Esqueceu sua senha?</p>
                 </form>
                 <button>Criar conta</button>
-                <p className='redirect-login'>Já possui conta? Entrar</p>
+                <p className='redirect-login'>Não tem uma conta ainda? Criar conta</p>
             </div>
         </section>
   )
