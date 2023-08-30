@@ -29,7 +29,7 @@ export default function Register() {
                     />
                 </form>
                 <button>Criar conta</button>
-                <p className={styles.redirect_login}>Já possui conta? Entrar</p>
+                <p className={styles.redirect_login}>Já possui conta? <a></a>Entrar</p>
             </div>
         </section>
     )

@@ -1,3 +1,7 @@
-body{
-    background-color: gray;
+body {
+    background-color: #E6E6E6;
+    display: inline-flex;
+    padding: 112px 401px 160px 401px;
+    justify-content: center;
+    align-items: center;
 }
