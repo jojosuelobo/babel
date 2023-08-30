@@ -1,30 +1,30 @@
 import logo from '../../../public/logoUVV.png'
-import './Login.sass'
+import styles from './Login.module.sass'
 
 export default function Login() {
   return (
-    <section className='main-content'>
-            <div className="login-page">
-                <img className='logo' src={logo} alt="logo" />
-                <div className="login-text">
-                    <h1>Welcome back!</h1>
+    <section className={styles.main_content}> 
+            <div className={styles.login_page}>
+                <img className={styles.logo} src={logo} alt="logo" />
+                <div className={styles.text}>
+                    <h1 className={styles.title}>Welcome back!</h1>
                     <p>Please enter your details</p>
                 </div>
-                <form className="login_form">
+                <form className={styles.login_form}>
                     <p>Usuário ou Email</p>
                     <input
-                        className='login'
+                        className={styles.login}
                         type="text"
                     />
                     <p>Senha</p>
                     <input
-                        className='password'
+                        className={styles.password}
                         type="password"
                     />
                     <p>Esqueceu sua senha?</p>
                 </form>
                 <button>Criar conta</button>
-                <p className='redirect-login'>Não tem uma conta ainda? Criar conta</p>
+                <p className={styles.redirect_login}>Não tem uma conta ainda? Criar conta</p>
             </div>
         </section>
   )
