@@ -6,19 +6,41 @@
     .register_page
         background-color: white
         display: flex
-        padding: 48px 110px
+        padding: 42px 110px
         flex-direction: column
         align-items: center
         border-radius: 15px
-        gap: 36px
+        gap: 28px
         width: 420px
-        height: 660px
+        height: 730px
         .logo
             width: 85px
             height: 85px
+            margin-top: 18px
         .register_text
             text-align: center
-            h1
+            .title
                 margin-bottom: 16px
         .register_form
+            display: flex
+            flex-direction: column
+            width: 25em
             input
+                box-sizing: border-box
+                border: none
+                border-bottom: 1px solid #ccc
+                padding: 0.8em 0em
+                background-color: gray
+                border-radius: 4px
+                background: #D9D9D9
+                width: 100%
+            input:placeholder
+                margin-left: 20px
+            .register
+                margin-bottom: 40px
+        .btn
+            width: 100%
+            height: 200px
+            border-radius: 8px
+            background: #D9D9D9
+            border: none
