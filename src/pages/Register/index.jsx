@@ -39,7 +39,6 @@ export default function Register() {
                         </Link>
                     </p>
                 </form>
-
             </div>
         </section>
     )
