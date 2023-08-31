@@ -28,7 +28,7 @@ export default function Register() {
                         type="password"
                     />
                 </form>
-                <button>Criar conta</button>
+                <button className={styles.btn}>Criar conta</button>
                 <p className={styles.redirect_login}>Já possui conta? Entrar</p>
             </div>
         </section>
