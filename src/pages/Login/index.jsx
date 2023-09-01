@@ -1,5 +1,7 @@
 import logo from '../../../public/logoUVV.png'
 import styles from './Login.module.sass'
+import { Link } from 'react-router-dom';
+
 
 export default function Login() {
   return (
@@ -24,7 +26,7 @@ export default function Login() {
                     <p>Esqueceu sua senha?</p>
                 </form>
                 <button className={styles.btn}>Entrar</button>
-                <p className={styles.redirect_login}>Não tem uma conta ainda? <a>Criar conta</a></p>
+                <p className={styles.redirect_login}>Não tem uma conta ainda? <Link to='/register'><a>Criar conta</a></Link></p>
             </div>
         </section>
   )
