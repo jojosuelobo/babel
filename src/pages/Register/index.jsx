@@ -1,5 +1,6 @@
 import logo from '../../../public/logoUVV.png'
 import styles from './Register.module.sass'
+import { Link } from 'react-router-dom';
 
 export default function Register() {
     return (
@@ -29,7 +30,7 @@ export default function Register() {
                     />
                 </form>
                 <button className={styles.btn}>Criar conta</button>
-                <p className={styles.redirect_login}>Já possui conta? Entrar</p>
+                <p className={styles.redirect_login}>Já possui conta? <Link to='/login'><a>Entrar</a></Link></p>
             </div>
         </section>
     )
