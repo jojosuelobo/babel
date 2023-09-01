@@ -3,7 +3,6 @@
     justify-content: center
     align-items: center
     height: 100vh
-    min-height: calc(100vh - 40px)
     .login_page
         background-color: white
         display: flex
@@ -11,12 +10,13 @@
         flex-direction: column
         align-items: center
         border-radius: 15px
-        gap: 56px
+        gap: 36px
         width: 420px
-        height: 650px
+        height: 730px
         .logo
             width: 85px
             height: 85px
+            margin-top: 48px
         .login_text
             text-align: center
             .title
@@ -37,29 +37,10 @@
             input:placeholder
                 margin-left: 20px
             .login
-                margin-bottom: 10px
+                margin-bottom: 40px
         .btn
             width: 100%
-            height: 40px
+            height: 200px
             border-radius: 8px
             background: #D9D9D9
             border: none
-            margin-top: 30px
-        .password_input
-             position: relative
-        .password_toggle
-             position: absolute
-             top: 50%
-             right: 10px
-             transform: translateY(-50%)
-             cursor: pointer
-             background: #D9D9D9
-        .input_container
-            display: flex
-            flex-direction: column
-            margin-bottom: 15px  
-            input
-                margin-top: 8px
-        .btn:hover
-            color: #bbb
-
