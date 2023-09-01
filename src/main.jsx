@@ -9,7 +9,9 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 
 // Pages
 import Register from './pages/Register'
-import Login from './pages/Login/index.jsx'
+import Login from './pages/Login'
+import Feed from './pages/Feed'
+
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Register />
+        element: <Feed />
       },
       {
         path: "/register",
