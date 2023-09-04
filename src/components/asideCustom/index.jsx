@@ -5,10 +5,13 @@ export default function aside() {
     <aside className={styles.main_content}>
       <ul>
         <li>
-          <h1>teste</h1>
+          <h1>home</h1>
         </li>
         <li>
-          <h1>teste2</h1>
+          <h1>feed</h1>
+        </li>
+        <li>
+          <h1>etc</h1>
         </li>
       </ul>
     </aside>
