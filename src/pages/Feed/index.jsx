@@ -1,14 +1,14 @@
 import Aside from '../../components/asideCustom'
-import Navbar from '../../components/navbarCustom'
+import Header from '../../components/header'
 
 export default function feed() {
   return (
     <>
-    <Navbar />
-    <section>
-        <Aside/>
+      <Header />
+      <section>
+        <Aside />
         feed
-    </section>
+      </section>
     </>
   )
 }
