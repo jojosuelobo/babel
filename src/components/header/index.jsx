@@ -1,5 +1,6 @@
 import './header.sass';
 import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -11,7 +12,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="left-section">
-        <input type="text" placeholder="Pesquisar" className="search-bar" />
+        <div className="search-container">
+            <FaSearch className="search-icon"/>
+            <input type="text" placeholder="Pesquisar" className="search-bar" />
+        </div>
       </div>
       <div className="center-section">
         <img src="../../../public/logo.png" alt="Logo" className="logo" />
