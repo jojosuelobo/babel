@@ -13,8 +13,8 @@ const Header = () => {
     <header className="header">
       <div className="left-section">
         <div className="search-container">
-            <FaSearch className="search-icon"/>
-            <input type="text" placeholder="Pesquisar" className="search-bar" />
+          <FaSearch className="search-icon" />
+          <input type="text" placeholder="Pesquisar" className="search-bar" />
         </div>
       </div>
       <div className="center-section">
@@ -22,7 +22,7 @@ const Header = () => {
       </div>
       <div className="right-section">
         <div className="avatar" onClick={toggleMenu}>
-          <img src="" alt="Avatar" />
+          <img src="../../../public/avatar.jpg" alt="Avatar" />
           {isMenuOpen && (
             <div className="dropdown-menu">
               <ul>
