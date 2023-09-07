@@ -22,7 +22,7 @@ const Header = () => {
       </div>
       <div className="right-section">
         <div className="avatar" onClick={toggleMenu}>
-          <img src="../../../public/avatar.jpg" alt="Avatar" />
+          <img src="" alt="Avatar" />
           {isMenuOpen && (
             <div className="dropdown-menu">
               <ul>
