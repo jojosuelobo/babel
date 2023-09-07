@@ -4,32 +4,65 @@
   align-items: center
   background-color: #333
   color: #fff
-  padding: 35px
-
+  padding: 15px
 
 .left-section 
   flex: 1
   padding-left: 20px
 
-.search-bar
-  width: 80%
-  padding: 15px
-  border: none
-  background-color: #444
-  color: #fff
+  .search-bar
+    width: 325px
+    padding: 10px
+    border: none
+    background-color: #444
+    color: #fff
 
 .center-section
   flex: 1
   text-align: center
 
-.logo
-  max-width: 100px
+  .logo
+    max-width: 100px
 
 .right-section
   flex: 1
-  text-align: right
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  margin-right: 20px
+
+  .avatar
+    width: 55px
+    height: 55px
+    border-radius: 50%
+    overflow: hidden
+    
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      
 
 .menu-icon
   cursor: pointer
   font-size: 24px
 
+
+@media (max-width: 768px)
+  .header
+    padding: 5px
+  
+  .left-section
+    display: none
+
+  .right-section
+    display: none
+
+  .center-section
+    flex: 2
+    text-align: center
+
+    .logo
+      display: block
+      width: 85px
+      margin: 0 auto

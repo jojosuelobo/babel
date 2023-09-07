@@ -1,7 +1,15 @@
 import './header.sass';
-//import React from 'react';
-
+import { useState } from 'react';
+/* import Menu from './menu';
+<Menu isOpen={isMenuOpen} onClose={toggleMenu} />
+*/
 const Header = () => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header">
       <div className="left-section">
@@ -11,9 +19,9 @@ const Header = () => {
         <img src="../../../public/logo.png" alt="Logo" className="logo" />
       </div>
       <div className="right-section">
-           <div className="menu-icon">
-                 ☰
-           </div>
+        <div className="avatar" onClick={toggleMenu}>
+          <img src="../../../public/avatar.jpg" alt="Avatar" />
+        </div>
       </div>
     </header>
   )
