@@ -1,8 +1,6 @@
 import './header.sass';
 import { useState } from 'react';
-/* import Menu from './menu';
-<Menu isOpen={isMenuOpen} onClose={toggleMenu} />
-*/
+
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -21,6 +19,14 @@ const Header = () => {
       <div className="right-section">
         <div className="avatar" onClick={toggleMenu}>
           <img src="../../../public/avatar.jpg" alt="Avatar" />
+          {isMenuOpen && (
+            <div className="dropdown-menu">
+              <ul>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Sair</a></li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </header>
