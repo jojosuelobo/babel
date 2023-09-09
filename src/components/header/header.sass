@@ -1,0 +1,113 @@
+.header 
+  display: flex
+  justify-content: space-between
+  align-items: center
+  background-color: #F4F4F4
+  color: #fff
+  padding: 15px
+
+.left-section 
+  flex: 1
+  padding-left: 20px
+  display: flex
+  align-items: center
+
+  .search-container
+    display: flex
+    //align-items: center
+    position: relative
+    //margin-bottom: 2rem
+    .search-icon
+      position: absolute
+      color: #555 // Cor do ícone
+      padding: 10px
+
+    .search-bar
+      width: 325px
+      padding: 10px
+      padding-left: 50px
+      border: none
+      background-color: #D9D9D9
+      color: #000000
+      font-size: 16px // Tamanho da fonte do input
+      border-radius: 5px // Bordas arredondadas
+      text-overflow: ellipsis
+
+.center-section
+  flex: 1
+  text-align: center
+
+  .logo
+    max-width: 100px
+
+.right-section
+  flex: 1
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  margin-right: 20px
+
+  .avatar
+    width: 55px
+    height: 55px
+    border-radius: 50%
+    overflow: hidden
+    
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      
+.menu-icon
+  cursor: pointer
+  font-size: 24px
+
+.dropdown-menu
+      position: absolute  // Posição absoluta em relação ao avatar
+      right: 0  // Alinhe a direita do menu com a direita do avatar
+      background-color: #D9D9D9
+      border-radius: 10px
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)
+      padding: 10px
+      z-index: 1  // Certifique-se de que o menu esteja acima de outros elementos
+      margin-right: 30px
+      width: 196px
+      height: 69px
+
+      ul
+        list-style: none
+        padding: 0
+
+        li
+          margin: 10px
+
+          a
+            color: #000000
+            font-size: 1rem
+            font-weight: 400
+
+            text-decoration: none
+            &:hover
+              text-decoration: underline
+
+
+@media (max-width: 768px)
+  .header
+    padding: 5px
+  
+  .left-section
+    display: none
+
+  .right-section
+    display: none
+
+  .center-section
+    flex: 2
+    text-align: center
+
+    .logo
+      display: block
+      width: 85px
+      margin: 0 auto
+
+
