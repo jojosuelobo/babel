@@ -1,6 +1,6 @@
 // Estilos
 import styles from './Feed.module.sass'
-import profle from '../../../public/LogoUVV.png' // A fim de testes
+import profle from '../../../public/LogoUVV.png' // Afins de testes
 
 // Componentes 
 import Aside from '../../components/asideCustom'
