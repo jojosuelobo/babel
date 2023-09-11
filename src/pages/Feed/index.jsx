@@ -9,6 +9,7 @@ import Header from '../../components/header'
 // 
 import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Feed() {
   const [posts, setPosts] = useState([])
@@ -54,7 +55,7 @@ export default function Feed() {
                     <img className={styles.profile_pic} src={profle} alt="" />
                     <p className={styles.username}>{post.nome_usuario}</p>
                   </div>
-                  <button className={styles.post_btn}>Abrir</button>
+                  <Link to={`/posts/${post.id}`} className={styles.post_btn}>Abrir</Link>
                 </div>
               </div>
             ))
