@@ -1,0 +1,130 @@
+{
+    "posts": [
+        {
+            "titulo": "Receita de Salada de Frutas",
+            "data_postagem": "2023-09-10",
+            "tags_relacionadas": [
+                "receitas",
+                "culinária",
+                "sobremesas"
+            ],
+            "descricao": "Uma deliciosa receita de salada de frutas",
+            "nome_usuario": "cheffrutas",
+            "itens_lista": [
+                {
+                    "nome_item": "Morangos",
+                    "descricao_item": "1 xícara"
+                },
+                {
+                    "nome_item": "Manga",
+                    "descricao_item": "1 unidade, cortada em cubos"
+                }
+            ]
+        },
+        {
+            "titulo": "Rotina de Estudos",
+            "data_postagem": "2023-09-09",
+            "tags_relacionadas": [
+                "estudos",
+                "aprendizado",
+                "educação"
+            ],
+            "descricao": "Minha rotina diária de estudos para o vestibular",
+            "nome_usuario": "estudante123",
+            "itens_lista": [
+                {
+                    "nome_item": "Matemática",
+                    "descricao_item": "Estudar equações"
+                },
+                {
+                    "nome_item": "História",
+                    "descricao_item": "Ler capítulo 5"
+                }
+            ]
+        },
+        {
+            "titulo": "Dicas de Viagem",
+            "data_postagem": "2023-09-08",
+            "tags_relacionadas": [
+                "viagem",
+                "turismo",
+                "destinos"
+            ],
+            "descricao": "Dicas para planejar uma viagem econômica",
+            "nome_usuario": "viajanteconomica",
+            "itens_lista": [
+                {
+                    "nome_item": "Acomodação",
+                    "descricao_item": "Pesquisar opções de hostels"
+                },
+                {
+                    "nome_item": "Transporte",
+                    "descricao_item": "Comprar bilhetes com antecedência"
+                }
+            ]
+        },
+        {
+            "titulo": "Lista de Tarefas de Casa",
+            "data_postagem": "2023-09-07",
+            "tags_relacionadas": [
+                "tarefas",
+                "casa",
+                "organização"
+            ],
+            "descricao": "Tarefas para manter a casa em ordem",
+            "nome_usuario": "casadonosso",
+            "itens_lista": [
+                {
+                    "nome_item": "Limpar o banheiro",
+                    "descricao_item": "Limpar azulejos e vaso sanitário"
+                },
+                {
+                    "nome_item": "Lavar roupas",
+                    "descricao_item": "Lavar e dobrar roupas sujas"
+                }
+            ]
+        },
+        {
+            "titulo": "Livros Recomendados",
+            "data_postagem": "2023-09-06",
+            "tags_relacionadas": [
+                "livros",
+                "leitura",
+                "literatura"
+            ],
+            "descricao": "Recomendações de livros para amantes da literatura",
+            "nome_usuario": "livroseliteratura",
+            "itens_lista": [
+                {
+                    "nome_item": "Crime e Castigo",
+                    "descricao_item": "Fiódor Dostoiévski"
+                },
+                {
+                    "nome_item": "O Grande Gatsby",
+                    "descricao_item": "F. Scott Fitzgerald"
+                }
+            ]
+        },
+        {
+            "titulo": "Dicas de Economia",
+            "data_postagem": "2023-09-05",
+            "tags_relacionadas": [
+                "economia",
+                "finanças",
+                "investimentos"
+            ],
+            "descricao": "Dicas para economizar dinheiro e investir com sabedoria",
+            "nome_usuario": "economist123",
+            "itens_lista": [
+                {
+                    "nome_item": "Orçamento Mensal",
+                    "descricao_item": "Criar um orçamento pessoal"
+                },
+                {
+                    "nome_item": "Investimentos",
+                    "descricao_item": "Pesquisar opções de investimento"
+                }
+            ]
+        }
+    ]
+}
