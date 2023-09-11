@@ -1,5 +1,6 @@
 // Estilos
 import styles from './Feed.module.sass'
+import profle from '../../../public/LogoUVV.png' // A fim de testes
 
 // Componentes 
 import Aside from '../../components/asideCustom'
@@ -34,28 +35,33 @@ export default function Feed() {
         <Aside />
 
         {/* Conteúdo principal da página */}
-        {posts.length === 0 ? (<p>Carregando...</p>) : (
-          posts.map((post) => (
-            <div className={styles.post} key={post.data_postagem}>
-              <h2 className={styles.title}>{post.titulo}</h2>
-              <p className={styles.date}>{post.data_postagem}</p>
+        <div className={styles.feed}>
+          {posts.length === 0 ? (<p>Carregando...</p>) : (
+            posts.map((post) => (
+              <div className={styles.post} key={post.data_postagem}>
+                <h2 className={styles.title}>{post.titulo}</h2>
+                <p className={styles.date}>{post.data_postagem}</p>
 
-              <div className={styles.tags}>
-                {(post.tags_relacionadas).map((tag) => (
-                  <p className={styles.tag} key={tag}>{tag}</p>
-                ))}
+                <div className={styles.tags}>
+                  {(post.tags_relacionadas).map((tag) => (
+                    <p className={styles.tag} key={tag}>{tag}</p>
+                  ))}
+                </div>
+
+                <p className={styles.desc}>{post.descricao}</p>
+                <div className={styles.post_footer}>
+                  <div className={styles.profile_info}>
+                    <img className={styles.profile_pic} src={profle} alt="" />
+                    <p className={styles.username}>{post.nome_usuario}</p>
+                  </div>
+                  <button className={styles.post_btn}>Abrir</button>
+                </div>
               </div>
+            ))
+          )}
 
-              <p className={styles.desc}>{post.descricao}</p>
-              <div className={styles.post_footer}>
-                <img className={styles.profile_pic} src="" alt="" />
-                <p className={styles.username}>{post.nome_usuario}</p>
-                <button>Abrir</button>
-              </div>
-            </div>
-          ))
-        )}
 
+        </div>
 
       </section>
     </>

@@ -8,7 +8,7 @@
                 "culinária",
                 "sobremesas"
             ],
-            "descricao": "Uma deliciosa receita de salada de frutas",
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
             "nome_usuario": "cheffrutas",
             "itens_lista": [
                 {
@@ -125,6 +125,132 @@
                     "descricao_item": "Pesquisar opções de investimento"
                 }
             ]
-        }
+        },
+        {
+            "titulo": "Dicas de Jardinagem",
+            "data_postagem": "2023-09-04",
+            "tags_relacionadas": [
+                "jardinagem",
+                "plantas",
+                "horta"
+            ],
+            "descricao": "Conselhos para manter um jardim saudável e bonito",
+            "nome_usuario": "jardineiroverde",
+            "itens_lista": [
+                {
+                    "nome_item": "Rega",
+                    "descricao_item": "Regar as plantas diariamente"
+                },
+                {
+                    "nome_item": "Podar",
+                    "descricao_item": "Podar árvores regularmente"
+                }
+            ]
+        },
+        {
+            "titulo": "Dicas de Maquiagem",
+            "data_postagem": "2023-09-03",
+            "tags_relacionadas": [
+                "maquiagem",
+                "beleza",
+                "cosméticos"
+            ],
+            "descricao": "Dicas de maquiagem para um look perfeito",
+            "nome_usuario": "belezanatural",
+            "itens_lista": [
+                {
+                    "nome_item": "Base",
+                    "descricao_item": "Escolher a base adequada para o tom de pele"
+                },
+                {
+                    "nome_item": "Batom",
+                    "descricao_item": "Destacar os lábios com um batom vibrante"
+                }
+            ]
+        },
+        {
+            "titulo": "Dicas de Exercícios",
+            "data_postagem": "2023-09-02",
+            "tags_relacionadas": [
+                "exercícios",
+                "saúde",
+                "fitness"
+            ],
+            "descricao": "Rotina de exercícios para manter-se em forma",
+            "nome_usuario": "fitnessguru",
+            "itens_lista": [
+                {
+                    "nome_item": "Corrida",
+                    "descricao_item": "Correr 30 minutos por dia"
+                },
+                {
+                    "nome_item": "Musculação",
+                    "descricao_item": "Fazer treinamento de resistência"
+                }
+            ]
+        },
+        {
+            "titulo": "Receita de Guacamole",
+            "data_postagem": "2023-09-01",
+            "tags_relacionadas": [
+                "receitas",
+                "culinária",
+                "aperitivos"
+            ],
+            "descricao": "Uma receita fácil de guacamole para petiscos",
+            "nome_usuario": "cheffestivo",
+            "itens_lista": [
+                {
+                    "nome_item": "Abacate",
+                    "descricao_item": "2 abacates maduros"
+                },
+                {
+                    "nome_item": "Tomate",
+                    "descricao_item": "1 tomate picado"
+                }
+            ]
+        },
+        {
+            "titulo": "Dicas de Moda",
+            "data_postagem": "2023-08-31",
+            "tags_relacionadas": [
+                "moda",
+                "estilo",
+                "tendências"
+            ],
+            "descricao": "Tendências de moda para a próxima estação",
+            "nome_usuario": "fashionista",
+            "itens_lista": [
+                {
+                    "nome_item": "Vestidos",
+                    "descricao_item": "Vestidos florais estão na moda"
+                },
+                {
+                    "nome_item": "Acessórios",
+                    "descricao_item": "Maxi brincos são tendência"
+                }
+            ]
+        },
+        {
+            "titulo": "Dicas de Produtividade",
+            "data_postagem": "2023-08-30",
+            "tags_relacionadas": [
+                "produtividade",
+                "trabalho",
+                "organização"
+            ],
+            "descricao": "Estratégias para aumentar a produtividade no trabalho",
+            "nome_usuario": "produtivomaster",
+            "itens_lista": [
+                {
+                    "nome_item": "Planejamento",
+                    "descricao_item": "Fazer uma lista de tarefas diárias"
+                },
+                {
+                    "nome_item": "Pausas",
+                    "descricao_item": "Fazer pausas regulares para descanso"
+                }
+            ]
+        }        
     ]
 }
