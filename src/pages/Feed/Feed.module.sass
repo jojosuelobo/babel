@@ -2,14 +2,19 @@
     background-color: #2A2A2A
     .feed
         display: flex
-        flex-direction: column
-        align-items: center
+        //flex-direction: column
+        //align-items: center
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: space-between
         .post
-            width: 50vh
+            width: calc(30% - 3rem)
+            height: 100%
             background-color: #F4F4F4
             margin: 1.5rem
             padding: 1.5rem
-            border: 1px solid 
+            border: 1px solid
+            cursor: pointer
             .title
                 color: #000
                 font-size: 24px
