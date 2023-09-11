@@ -1,10 +1,10 @@
 // Estilos
 import styles from './Feed.module.sass'
-import profle from '../../../public/LogoUVV.png' // Afins de testes
 
 // Componentes 
 import Aside from '../../components/asideCustom'
 import Header from '../../components/header'
+import PostDetail from '../../components/postDetail'
 
 // 
 import blogFetch from '../../axios/config'
@@ -37,33 +37,14 @@ export default function Feed() {
 
         {/* Conteúdo principal da página */}
         <div className={styles.feed}>
-          {posts.length === 0 ? (<p>Carregando...</p>) : (
-            posts.map((post) => (
-              <div className={styles.post} key={post.data_postagem}>
-                <h2 className={styles.title}>{post.titulo}</h2>
-                <p className={styles.date}>{post.data_postagem}</p>
-
-                <div className={styles.tags}>
-                  {(post.tags_relacionadas).map((tag) => (
-                    <p className={styles.tag} key={tag}>{tag}</p>
-                  ))}
-                </div>
-
-                <p className={styles.desc}>{post.descricao}</p>
-                <div className={styles.post_footer}>
-                  <div className={styles.profile_info}>
-                    <img className={styles.profile_pic} src={profle} alt="" />
-                    <p className={styles.username}>{post.nome_usuario}</p>
-                  </div>
-                  <Link to={`/posts/${post.id}`} className={styles.post_btn}>Abrir</Link>
-                </div>
-              </div>
-            ))
+          {posts.length === 0 ? (
+            <div>
+              
+            </div>
+          ) : (
+            posts.map((post) => <PostDetail key={post.id} post={post} />)
           )}
-
-
         </div>
-
       </section>
     </>
   )
