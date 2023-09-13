@@ -34,33 +34,39 @@ export default function Post() {
         <>
             <Header />
             <div className={styles.section}>
-            <Aside />
-            <div className={styles.post}>
-                <h2 className={styles.title}>{post.titulo}</h2>
-                <p className={styles.date}>{post.data_postagem}</p>
-                
-                <div className={styles.tags}>
-                    {post.tags_relacionadas?.map((tag) => (
-                        <p className={styles.tag} key={tag}>{tag}</p>
-                    ))}
-                </div> 
-                <p className={styles.desc}>{post.descricao}</p>
+                <Aside />
+                <div className={styles.post}>
+                    <h2 className={styles.title}>{post.titulo}</h2>
+                    <p className={styles.date}>{post.data_postagem}</p>
 
-                <div className={styles.list}>
-                    <ul>
-                        {post.itens_lista?.map((item) => (
-                            <li key={item.nome_item}>{item.nome_item}</li>
-                        ))} 
-                    </ul>
-                </div> 
+                    <div className={styles.tags}>
+                        {post.tags_relacionadas?.map((tag) => (
+                            <p className={styles.tag} key={tag}>{tag}</p>
+                        ))}
+                    </div>
+                    <p className={styles.desc}>{post.descricao}</p>
 
-                <div className={styles.post_footer}>
-                    <div className={styles.profile_info}>
-                        <img className={styles.profile_pic} src={profile} alt="" />
-                        <p className={styles.username}>{post.nome_usuario}</p>
+                    <div className={styles.list}>
+                        <ul>
+                            {post.itens_lista?.map((item) => (
+                                <li key={item.nome_item}>
+                                    <h1>{item.nome_item}</h1>
+                                    <p>{item.descricao_item}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className={styles.post_footer}>
+                        <div className={styles.profile_info}>
+                            <img className={styles.profile_pic} src={profile} alt="" />
+                            <p className={styles.username}>{post.nome_usuario}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div className={styles.coment}>
+
+                </div>
             </div>
         </>
     )
