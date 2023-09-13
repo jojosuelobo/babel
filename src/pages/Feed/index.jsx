@@ -39,7 +39,7 @@ export default function Feed() {
         <div className={styles.feed}>
           {posts.length === 0 ? (
             <div>
-              
+              <h1>Não há posts a serem exibidos</h1>
             </div>
           ) : (
             posts.map((post) => <PostDetail key={post.id} post={post} />)
