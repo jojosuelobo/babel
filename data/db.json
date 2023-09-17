@@ -1,0 +1,268 @@
+{
+    "posts": [ 
+        {
+            "id": 1,
+            "titulo": "Receita de Salada de Frutas",
+            "data_postagem": "2023-09-10",
+            "tags_relacionadas": [
+                "receitas",
+                "culinária",
+                "sobremesas"
+            ],
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+            "nome_usuario": "cheffrutas",
+            "itens_lista": [
+                {
+                    "nome_item": "Morangos",
+                    "descricao_item": "1 xícara"
+                },
+                {
+                    "nome_item": "Manga",
+                    "descricao_item": "1 unidade, cortada em cubos"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "titulo": "Rotina de Estudos",
+            "data_postagem": "2023-09-09",
+            "tags_relacionadas": [
+                "estudos",
+                "aprendizado",
+                "educação"
+            ],
+            "descricao": "Minha rotina diária de estudos para o vestibular",
+            "nome_usuario": "estudante123",
+            "itens_lista": [
+                {
+                    "nome_item": "Matemática",
+                    "descricao_item": "Estudar equações"
+                },
+                {
+                    "nome_item": "História",
+                    "descricao_item": "Ler capítulo 5"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "titulo": "Dicas de Viagem",
+            "data_postagem": "2023-09-08",
+            "tags_relacionadas": [
+                "viagem",
+                "turismo",
+                "destinos"
+            ],
+            "descricao": "Dicas para planejar uma viagem econômica",
+            "nome_usuario": "viajanteconomica",
+            "itens_lista": [
+                {
+                    "nome_item": "Acomodação",
+                    "descricao_item": "Pesquisar opções de hostels"
+                },
+                {
+                    "nome_item": "Transporte",
+                    "descricao_item": "Comprar bilhetes com antecedência"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "titulo": "Lista de Tarefas de Casa",
+            "data_postagem": "2023-09-07",
+            "tags_relacionadas": [
+                "tarefas",
+                "casa",
+                "organização"
+            ],
+            "descricao": "Tarefas para manter a casa em ordem",
+            "nome_usuario": "casadonosso",
+            "itens_lista": [
+                {
+                    "nome_item": "Limpar o banheiro",
+                    "descricao_item": "Limpar azulejos e vaso sanitário"
+                },
+                {
+                    "nome_item": "Lavar roupas",
+                    "descricao_item": "Lavar e dobrar roupas sujas"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "titulo": "Livros Recomendados",
+            "data_postagem": "2023-09-06",
+            "tags_relacionadas": [
+                "livros",
+                "leitura",
+                "literatura"
+            ],
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+            "nome_usuario": "livroseliteratura",
+            "itens_lista": [
+                {
+                    "nome_item": "Crime e Castigo",
+                    "descricao_item": "Fiódor Dostoiévski"
+                },
+                {
+                    "nome_item": "O Grande Gatsby",
+                    "descricao_item": "F. Scott Fitzgerald"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "titulo": "Dicas de Economia",
+            "data_postagem": "2023-09-05",
+            "tags_relacionadas": [
+                "economia",
+                "finanças",
+                "investimentos"
+            ],
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+            "nome_usuario": "economist123",
+            "itens_lista": [
+                {
+                    "nome_item": "Orçamento Mensal",
+                    "descricao_item": "Criar um orçamento pessoal"
+                },
+                {
+                    "nome_item": "Investimentos",
+                    "descricao_item": "Pesquisar opções de investimento"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "titulo": "Dicas de Jardinagem",
+            "data_postagem": "2023-09-04",
+            "tags_relacionadas": [
+                "jardinagem",
+                "plantas",
+                "horta"
+            ],
+            "descricao": "Conselhos para manter um jardim saudável e bonito",
+            "nome_usuario": "jardineiroverde",
+            "itens_lista": [
+                {
+                    "nome_item": "Rega",
+                    "descricao_item": "Regar as plantas diariamente"
+                },
+                {
+                    "nome_item": "Podar",
+                    "descricao_item": "Podar árvores regularmente"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "titulo": "Dicas de Maquiagem",
+            "data_postagem": "2023-09-03",
+            "tags_relacionadas": [
+                "maquiagem",
+                "beleza",
+                "cosméticos"
+            ],
+            "descricao": "Dicas de maquiagem para um look perfeito",
+            "nome_usuario": "belezanatural",
+            "itens_lista": [
+                {
+                    "nome_item": "Base",
+                    "descricao_item": "Escolher a base adequada para o tom de pele"
+                },
+                {
+                    "nome_item": "Batom",
+                    "descricao_item": "Destacar os lábios com um batom vibrante"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "titulo": "Dicas de Exercícios",
+            "data_postagem": "2023-09-02",
+            "tags_relacionadas": [
+                "exercícios",
+                "saúde",
+                "fitness"
+            ],
+            "descricao": "Rotina de exercícios para manter-se em forma",
+            "nome_usuario": "fitnessguru",
+            "itens_lista": [
+                {
+                    "nome_item": "Corrida",
+                    "descricao_item": "Correr 30 minutos por dia"
+                },
+                {
+                    "nome_item": "Musculação",
+                    "descricao_item": "Fazer treinamento de resistência"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "titulo": "Receita de Guacamole",
+            "data_postagem": "2023-09-01",
+            "tags_relacionadas": [
+                "receitas",
+                "culinária",
+                "aperitivos"
+            ],
+            "descricao": "Uma receita fácil de guacamole para petiscos",
+            "nome_usuario": "cheffestivo",
+            "itens_lista": [
+                {
+                    "nome_item": "Abacate",
+                    "descricao_item": "2 abacates maduros"
+                },
+                {
+                    "nome_item": "Tomate",
+                    "descricao_item": "1 tomate picado"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "titulo": "Dicas de Moda",
+            "data_postagem": "2023-08-31",
+            "tags_relacionadas": [
+                "moda",
+                "estilo",
+                "tendências"
+            ],
+            "descricao": "Tendências de moda para a próxima estação",
+            "nome_usuario": "fashionista",
+            "itens_lista": [
+                {
+                    "nome_item": "Vestidos",
+                    "descricao_item": "Vestidos florais estão na moda"
+                },
+                {
+                    "nome_item": "Acessórios",
+                    "descricao_item": "Maxi brincos são tendência"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "titulo": "Dicas de Produtividade",
+            "data_postagem": "2023-08-30",
+            "tags_relacionadas": [
+                "produtividade",
+                "trabalho",
+                "organização"
+            ],
+            "descricao": "Estratégias para aumentar a produtividade no trabalho",
+            "nome_usuario": "produtivomaster",
+            "itens_lista": [
+                {
+                    "nome_item": "Planejamento",
+                    "descricao_item": "Fazer uma lista de tarefas diárias"
+                },
+                {
+                    "nome_item": "Pausas",
+                    "descricao_item": "Fazer pausas regulares para descanso"
+                }
+            ]
+        } 
+    ]
+}

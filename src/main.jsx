@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
+import Post from './pages/Post'
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />
+      },
+      {
+        path: "/posts/:id",
+        element: <Post/>
       }
     ]
   }
