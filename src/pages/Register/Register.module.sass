@@ -2,47 +2,66 @@
     display: flex
     justify-content: center
     align-items: center
-    height: 100vh
+    min-height: 100vh
     color: white
-    .register_page
-        background-color: #2A2A2A
+
+.register_page
+    background-color: #2A2A2A
+    display: flex
+    flex-direction: column
+    align-items: center
+    border-radius: 15px
+    gap: 30px
+    max-width: 420px
+    width: 100%
+    padding: 50px
+    box-sizing: border-box
+
+    .logo
+        width: 85px
+        height: 85px
+        margin-top: 24px
+
+    .register_text
+        text-align: center
+
+        h1
+            margin-bottom: 16px
+
+    .register_form
         display: flex
-        padding: 48px 110px
         flex-direction: column
-        align-items: center
-        border-radius: 15px
-        gap: 28px
-        width: 420px
-        height: 800px
-        .logo
-            width: 85px
-            height: 85px
-            margin-top: 48px
-        .register_text
-            text-align: center
-            .title
-                margin-bottom: 16px
-        .register_form
-            display: flex
-            flex-direction: column
-            width: 25em
-            input
-                box-sizing: border-box
-                border: none
-                border-bottom: 1px solid #ccc
-                padding: 0.8em 0em
-                background-color: gray
-                border-radius: 4px
-                background: #404040
-                width: 100%
-                margin-bottom: 40px
-            input:placeholder
-                margin-left: 20px
-            .register
-                margin-bottom: 40px
-        .btn
-            width: 100%
-            height: 50px
-            border-radius: 8px
-            background: #4D3666
+        width: 100%
+
+        input
+            box-sizing: border-box
             border: none
+            border-bottom: 1px solid #ccc
+            padding: 0.8em 0em
+            background-color: gray
+            border-radius: 4px
+            background: #404040
+            width: 100%
+            margin-bottom: 16px
+            color: white
+
+            &::placeholder
+                margin-left: 20px
+
+    .btn
+        width: 100%
+        height: 50px
+        border-radius: 8px
+        background: #4D3666
+        border: none
+
+
+@media (max-width: 680px)
+    .register_page
+        max-width: 100%
+        height: 100vh
+        border-radius: 0
+        padding: 40px
+        
+
+
