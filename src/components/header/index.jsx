@@ -1,6 +1,12 @@
+/* eslint-disable no-unused-vars */
 import './header.sass';
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+
+import { Link } from 'react-router-dom'
+
+import { useAuthentication } from '../../firebase/useAuth';
+import { useAuthValue } from '../../firebase/AuthContext'
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -8,6 +14,9 @@ const Header = () => {
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+
+  const { user } = useAuthValue()
+  const { logout} = useAuthentication()
 
   return (
     <header className="header">
@@ -27,7 +36,7 @@ const Header = () => {
             <div className="dropdown-menu">
               <ul>
                 <li><a href="#">Configurações</a></li>
-                <li><a href="#">Sair</a></li>
+                <li><Link onClick={logout} to={'/login'}>Sair</Link></li>
               </ul>
             </div>
           )}
