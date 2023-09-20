@@ -9,9 +9,11 @@ import PostDetail from '../../components/postDetail'
 // 
 import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Feed() {
+  const navigate = useNavigate()
+  const [query, setQuery] = useState("");
   const [posts, setPosts] = useState([])
 
   const getPosts = async () => {
@@ -24,6 +26,12 @@ export default function Feed() {
     }
   }
 
+  const handleSearch = async () => {
+    if(query.trim() === '')
+      return
+    return navigate(`/search?q=${query.trim()}`)
+  }
+
   useEffect(() => {
     getPosts()
   }, [])
@@ -34,6 +42,15 @@ export default function Feed() {
       <section className={styles.main}>
         {/* Menu a esquerda dá página */}
         <Aside />
+
+        <div className={styles.search_container}>
+          <input
+            type="text"
+            placeholder="Buscar"
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>Pesquisar</button>
+        </div>
 
         {/* Conteúdo principal da página */}
         <div className={styles.feed}>
