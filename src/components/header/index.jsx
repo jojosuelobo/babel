@@ -23,7 +23,7 @@ const Header = () => {
       <div className="left-section">
         <div className="search-container">
           <FaSearch className="search-icon" />
-          <input type="text" placeholder="Pesquisar" className="search-bar" />
+          <input type="text" placeholder="Buscar" className="search-bar" />
         </div>
       </div>
       <div className="center-section">
