@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import profilePic from '../../../public/logoUVV.png'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useAuthentication } from '../../firebase/useAuth';
 import { useAuthValue } from '../../firebase/AuthContext'
@@ -16,15 +16,23 @@ const Header = () => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const navigate = useNavigate()
   const { user } = useAuthValue()
-  const { logout} = useAuthentication()
+  const { logout } = useAuthentication()
+  const [query, setQuery] = useState("");
+
+  const handleSearch = async () => {
+    if (query.trim() === '')
+      return
+    return navigate(`/search?q=${query.trim()}`)
+  }
 
   return (
     <header className="header">
       <div className="left-section">
         <div className="search-container">
-          <FaSearch className="search-icon" />
-          <input type="text" placeholder="Buscar" className="search-bar" />
+          <FaSearch onClick={handleSearch} className="search-icon" />
+          <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Buscar" className="search-bar" />
         </div>
       </div>
       <div className="center-section">

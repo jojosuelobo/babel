@@ -1,5 +1,8 @@
 import styles from './Post.module.sass'
 import profile from '../../../public/logoUVV.png'
+import { IoMdArrowRoundBack } from 'react-icons/io'
+
+import { Link } from 'react-router-dom'
 
 // Hooks
 import { useParams } from 'react-router-dom'
@@ -36,6 +39,7 @@ export default function Post() {
             <div className={styles.section}>
                 <Aside />
                 <div className={styles.post}>
+                    <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
                     <h2 className={styles.title}>{post.titulo}</h2>
                     <p className={styles.date}>{post.data_postagem}</p>
 

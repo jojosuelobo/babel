@@ -24,6 +24,7 @@ export default function Feed() {
     }
   }
 
+
   useEffect(() => {
     getPosts()
   }, [])
@@ -34,7 +35,6 @@ export default function Feed() {
       <section className={styles.main}>
         {/* Menu a esquerda dá página */}
         <Aside />
-
         {/* Conteúdo principal da página */}
         <div className={styles.feed}>
           {posts.length === 0 ? (

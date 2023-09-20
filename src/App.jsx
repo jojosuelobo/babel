@@ -14,6 +14,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import Post from './pages/Post'
+import Search from './pages/Search'
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -29,20 +30,36 @@ function App() {
 
   return (
     <div className='App'>
-      <AuthProvider value={{user}}>
+      <AuthProvider value={{ user }}>
         <BrowserRouter>
           <div className="container">
             <Routes>
-              <Route path='/' element={<Feed />} />
-              <Route path='/login' element={!user ? <Login /> : <Navigate to='/'/>} />
-              <Route path='/register' element={!user ? <Register /> : <Navigate to='/'/>} />
-              <Route path='/posts/:id' element={user ? <Post /> : <Navigate to='/login'/>}/>
+              <Route
+                path='/search'
+                element={<Search />}
+              />
+              <Route
+                path='/'
+                element={user ? <Feed /> : <Login />}
+              />
+              <Route
+                path='/login'
+                element={!user ? <Login /> : <Navigate to='/' />}
+              />
+              <Route
+                path='/register'
+                element={!user ? <Register /> : <Navigate to='/' />}
+              />
+              <Route
+                path='/posts/:id'
+                element={user ? <Post /> : <Navigate to='/login' />}
+              />
             </Routes>
           </div>
         </BrowserRouter>
       </AuthProvider>
     </div>
-    )
+  )
 }
 
 export default App

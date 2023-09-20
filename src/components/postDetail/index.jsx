@@ -1,6 +1,5 @@
 import styles from './postDetail.module.sass'
 import profile from '../../../public/LogoUVV.png' // Afins de testes
-
 import { Link } from 'react-router-dom'
 
 export default function index({ post }) {
