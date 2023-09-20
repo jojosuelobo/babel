@@ -6,14 +6,13 @@ import { Link } from 'react-router-dom'
 
 // Component
 import Header from '../../components/header'
-import Aside from '../../components/asideCustom'
 import PostDetail from '../../components/postDetail'
 
 // Hooks
 import blogFetch from '../../axios/config'
 import { useQuery } from '../../firebase/useQuery'
 
-export default function Seatch() {
+export default function Search() {
     const query = useQuery()
     const search = query.get("q")
 
@@ -21,9 +20,13 @@ export default function Seatch() {
 
     const getPosts = async () => {
         try {
-            const response = await blogFetch.get("/posts")
+            const response = await blogFetch.get(`/posts`)
+            //const response = await blogFetch.get(`/posts?titulo=${search}`)
             const data = response.data
-            setPosts(data)
+            const filteredData = data.filter(post => post.titulo.includes(`${search}`))
+            setPosts(filteredData)
+            //setPosts(data)
+            console.log(filteredData)
         } catch (err) {
             console.log(err)
         }
@@ -32,11 +35,6 @@ export default function Seatch() {
     useEffect(() => {
         getPosts()
     }, [])
-
-    const goBack = async () => {
-
-    }
-
     return (
         <>
             <Header />

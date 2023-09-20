@@ -2,7 +2,7 @@
     "posts": [ 
         {
             "id": 1,
-            "titulo": "Receita de Salada de Frutas",
+            "titulo": "Melhores receitas com morango",
             "data_postagem": "2023-09-10",
             "tags_relacionadas": [
                 "receitas",
@@ -13,40 +13,48 @@
             "nome_usuario": "cheffrutas",
             "itens_lista": [
                 {
-                    "nome_item": "Morangos",
-                    "descricao_item": "1 xícara"
+                    "nome_item": "Morangos puro",
+                    "descricao_item": "Docinho e azedo, do jeito que todos gostam"
                 },
                 {
-                    "nome_item": "Manga",
-                    "descricao_item": "1 unidade, cortada em cubos"
+                    "nome_item": "Bolo",
+                    "descricao_item": "Bolo de morango não tem igual"
+                },
+                {
+                    "nome_item": "Sorvete",
+                    "descricao_item": "O melhor de todos os sabores né gente"
+                },
+                {
+                    "nome_item": "Morango e leite condicionador",
+                    "descricao_item": "Melhor do que isso só com shampoo"
                 }
             ]
         },
         {
             "id": 2,
-            "titulo": "Rotina de Estudos",
+            "titulo": "Melhores professores da UVV!",
             "data_postagem": "2023-09-09",
             "tags_relacionadas": [
                 "estudos",
-                "aprendizado",
+                "UVV",
                 "educação"
             ],
-            "descricao": "Minha rotina diária de estudos para o vestibular",
+            "descricao": "Que a UVV tem bons professores todos sabem, mas quem são os melhores de lá? Minha lista tenta mostrar quem são os melhores indiscutivelmente!",
             "nome_usuario": "estudante123",
             "itens_lista": [
                 {
-                    "nome_item": "Matemática",
-                    "descricao_item": "Estudar equações"
+                    "nome_item": "Cassio",
+                    "descricao_item": "Além de ser o professor mais competente, é de longe o mais legal, divertido, bonito e charmoso professor de toda UVV! Não tem como não gostar dele!"
                 },
                 {
-                    "nome_item": "História",
-                    "descricao_item": "Ler capítulo 5"
+                    "nome_item": "O resto",
+                    "descricao_item": "Os outros professores são bons também"  
                 }
             ]
         },
         {
             "id": 3,
-            "titulo": "Dicas de Viagem",
+            "titulo": "Dicas",
             "data_postagem": "2023-09-08",
             "tags_relacionadas": [
                 "viagem",
