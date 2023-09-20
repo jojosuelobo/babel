@@ -2,6 +2,7 @@
 import './header.sass';
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import profilePic from '../../../public/logoUVV.png'
 
 import { Link } from 'react-router-dom'
 
@@ -31,7 +32,7 @@ const Header = () => {
       </div>
       <div className="right-section">
         <div className="avatar" onClick={toggleMenu}>
-          <img src="" alt="Avatar" />
+          <img src={profilePic} alt="Avatar" />
           {isMenuOpen && (
             <div className="dropdown-menu">
               <ul>

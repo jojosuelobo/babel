@@ -4,25 +4,40 @@
 
     // Deixa o componente a esquerda da pagina
     float: left
-    height: 100vh 
+    height: 100vh
     width: 30vh
     // Distância do ASIDE para o FEED (Checar no WireFrame qual a distância exata)
     margin-right: 1em
-    .btn
-            width: 60%
-            height: 50px
-            background: #404040
-            color: white
-            border: none
-            margin-left: 3.5em
-            margin-top: 1em
+    .list
+        margin-left: 3.5em
+        display: flex
+        flex-direction: column
+        .list_btn
+                display: flex
+                align-items: center
+                font-size: 20px
+                gap: 24px
+                text-align: center
+                .icon
+                        width: 32px
+                        height: 32px
+                        flex-shrink: 0
+                        color: white
+                        margin-top: 20px
 
+    .btn
+        width: 60%
+        height: 50px
+        background: #404040
+        color: white
+        border: none
+        margin-top: 1em
+        text-align: left
     .btn2
-            width: 60%
-            height: 50px
-            border-radius: 100px
-            background: #4D3666
-            color: white
-            border: none
-            margin-left: 3.5em
-            margin-top: 1em
+        width: 80%
+        height: 50px
+        border-radius: 100px
+        background: #4D3666
+        color: white
+        border: none
+        margin-top: 1em

@@ -1,20 +1,26 @@
 import styles from './AsideCustom.module.sass'
+import { BiHome } from 'react-icons/bi'
+import { IoMdNotificationsOutline } from 'react-icons/io'
+import { FaRegUserCircle } from 'react-icons/fa'
 
 export default function aside() {
   return (
     <aside className={styles.main_content}>
-      <ul>
-        <li>
-          <button className={styles.btn}><img src="inicial.png" width="30" height="30" align="left"/><h1>Página Inicial</h1></button>
+      <ul className={styles.list}>
+        <li className={styles.list_btn}>
+          <BiHome className={styles.icon} />
+          <button className={styles.btn}>Página Inicial</button>
         </li>
-        <li>
-          <button className={styles.btn}><img src="notificacao.png" width="30" height="30" align="left" /><h1>Notificações</h1></button>
+        <li className={styles.list_btn}>
+          <IoMdNotificationsOutline className={styles.icon} />
+          <button className={styles.btn}>Notificações</button>
         </li>
-        <li>
-          <button className={styles.btn}><img src="perfil.png" width="30" height="30" align="left" /><h1>Perfil</h1> </button>
+        <li className={styles.list_btn}>
+          <FaRegUserCircle className={styles.icon} />
+          <button className={styles.btn}>Perfil</button>
         </li>
-        <li>
-          <button className={styles.btn2}><h1>Criar Lista</h1></button>
+        <li className={styles.list_btn}>
+          <button className={styles.btn2}>Criar Lista</button>
         </li>
       </ul>
     </aside>
