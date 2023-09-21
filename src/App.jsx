@@ -15,6 +15,7 @@ import Login from './pages/Login'
 import Feed from './pages/Feed'
 import Post from './pages/Post'
 import Search from './pages/Search'
+import NewPost from './pages/NewPost'
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -39,8 +40,12 @@ function App() {
                 element={<Search />}
               />
               <Route
+                path='/newpost'
+                element={user ? <NewPost/> : <Login/>}
+              />
+              <Route
                 path='/'
-                element={user ? <Feed /> : <Login />}
+                element={user ? <Feed /> : <Feed />}
               />
               <Route
                 path='/login'
