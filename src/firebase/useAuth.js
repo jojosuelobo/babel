@@ -44,17 +44,17 @@ export const useAuthentication = () => {
 
       return user;
     } catch (error) {
-      console.log(error.message);
-      console.log(typeof error.message);
 
       let systemErrorMessage;
 
-      if (error.message.includes("Password")) {
-        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
+      if (error.message.includes("weak-password")) {
+        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres";
       } else if (error.message.includes("email-already")) {
-        systemErrorMessage = "E-mail já cadastrado.";
+        systemErrorMessage = "E-mail já cadastrado. Por favor tente outro e-mail";
+      } else if (error.message.includes("invalid-email")) {
+        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido"
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde";
       }
 
       setError(systemErrorMessage);
@@ -78,28 +78,18 @@ export const useAuthentication = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
     } catch (error) {
-      console.log(error.message);
-      console.log(typeof error.message);
-      console.log(error.message.includes("user-not"));
 
       let systemErrorMessage;
 
       if (error.message.includes("invalid-login-credentials")) {
-        systemErrorMessage = "E-mail ou senha incorretos";
-      } else if (error.message.includes("user-not-found")) {
-        systemErrorMessage = "Usuário não encontrado.";
-      } else if (error.message.includes("wrong-password")) {
-        systemErrorMessage = "Senha incorreta.";
+        systemErrorMessage = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente";
+      } else if (error.message.includes("invalid-email")) {
+        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido"
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde";
       }
-
-      console.log(systemErrorMessage);
-
       setError(systemErrorMessage);
     }
-
-    console.log(error);
 
     setLoading(false);
   };

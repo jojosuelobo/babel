@@ -46,7 +46,6 @@ export default function Login() {
           <p>Please enter your details</p>
         </div>
         <form className={styles.login_form}>
-          {error && <p>{error}</p>}
           <p>Email</p>
           <input
             className={styles.login}
@@ -63,7 +62,8 @@ export default function Login() {
           />
           <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
         </form>
-        <button className={styles.btn} onClick={handleSubmit}>Entrar</button>
+        <button className={styles.btn} onClick={handleSubmit} disabled={!email || !password}>Entrar</button>
+        {error && <p className={styles.error}>{error}</p>}
         <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'><a>Criar conta</a></Link></p>
       </div>
     </section>

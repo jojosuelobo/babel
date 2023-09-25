@@ -13,7 +13,7 @@ export default function Register() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
-    const { createUser, error: authError, loading } = useAuthentication();
+    const { createUser, error: authError } = useAuthentication();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,7 +59,6 @@ export default function Register() {
                     <p>Company details here</p>
                 </div>
                 <form className={styles.register_form}>
-                    {error && <p>{error}</p>}
                     <p>Nome</p>
                     <input
                         type="text"
@@ -85,14 +84,12 @@ export default function Register() {
                         value={confirmPassword}
                     />
                 </form>
-                <button className={styles.btn} onClick={handleSubmit}>Criar conta</button>
+                <button className={styles.btn} onClick={handleSubmit}
+                    disabled={!displayName || !email || !password || !confirmPassword || password !== confirmPassword}
+                >Criar conta</button>
 
-                {/* {loading && (
-                    <button className="btn" disabled>
-                        Aguarde...
-                    </button>
-                )} */}
-                {error && <p className="error">{error}</p>}
+                {error && <p className={styles.error}>{error}</p>}
+
                 <p className={styles.redirect_login}>
                     Já possui conta? <Link to='/login'><a>Entrar</a></Link>
                 </p>
