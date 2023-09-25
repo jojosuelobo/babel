@@ -31,9 +31,12 @@ export default function Register() {
             return;
         }
 
-        const res = await createUser(user);
+        try {
+            await createUser(user);
+        } catch (err) {
+            setError(err.message);
+        }
 
-        console.log(res);
         setDisplayName("")
         setEmail("")
         setPassword("")
@@ -56,6 +59,7 @@ export default function Register() {
                     <p>Company details here</p>
                 </div>
                 <form className={styles.register_form}>
+                    {error && <p>{error}</p>}
                     <p>Nome</p>
                     <input
                         type="text"

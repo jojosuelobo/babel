@@ -23,13 +23,15 @@ export default function Login() {
       password,
     };
 
-    const res = await login(user);
+    try {
+      await login(user);
+    } catch (err) {
+      setError(err.message);
+    }
 
-    console.log(res);
   };
 
   useEffect(() => {
-    console.log(authError);
     if (authError) {
       setError(authError);
     }
@@ -44,6 +46,7 @@ export default function Login() {
           <p>Please enter your details</p>
         </div>
         <form className={styles.login_form}>
+          {error && <p>{error}</p>}
           <p>Email</p>
           <input
             className={styles.login}
