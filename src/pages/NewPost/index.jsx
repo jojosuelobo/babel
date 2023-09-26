@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import styles from './NewPost.module.sass'
-//import { useNavigate } from 'react-router-dom'
 
 import { useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
@@ -11,7 +10,6 @@ export default function NewPost() {
     const [descricao, setDescricao] = useState('')
     const url = 'http://localhost:3000/posts'
     const { httpConfig, loading } = useFetch(url);
-    //const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,11 +45,6 @@ export default function NewPost() {
         httpConfig(post, "POST")
 
         // Clear dos campos
-        setTitulo('')
-        //setTag([])
-        setDescricao('')
-
-        //navigate('/')
     }
 
     return (

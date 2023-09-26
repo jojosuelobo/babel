@@ -271,32 +271,6 @@
           "descricao_item": "Fazer pausas regulares para descanso"
         }
       ]
-    },
-    {
-      "id": 429,
-      "titulo": "TESTE",
-      "data_postagem": "2023-09-20",
-      "tags_relacionadas": [
-        "receitas",
-        "culinária",
-        "aperitivos"
-      ],
-      "descricao": "TESTE",
-      "nome_usuario": "JOJOSUELOBO",
-      "itens_lista": [
-        {
-          "nome_item": "One Piece",
-          "descricao_item": "Anime de pirata que estica"
-        },
-        {
-          "nome_item": "Naruto",
-          "descricao_item": "Alguma coisa sobre ninjas"
-        },
-        {
-          "nome_item": "Fluminense",
-          "descricao_item": "Salve o corintianssssss o campeão dos campeoesssssssssss"
-        }
-      ]
     }
   ]
 }
