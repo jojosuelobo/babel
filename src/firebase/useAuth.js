@@ -15,6 +15,7 @@ export const useAuthentication = () => {
 
   const [emailError, setEmailError] = useState(null);
   const [emailPasswordError, setEmailPasswordError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -34,6 +35,8 @@ export const useAuthentication = () => {
     checkIfIsCancelled();
 
     setLoading(true);
+    setEmailError(null);
+    setPasswordError(null);
 
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -48,21 +51,29 @@ export const useAuthentication = () => {
 
       return user;
     } catch (error) {
-
+      console.log(error.message);
+      console.log(typeof error.message);
       let systemErrorMessage;
 
       if (error.message.includes("weak-password")) {
-        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres";
+        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
+        setPasswordError(systemErrorMessage);
+      } else if (error.message.includes("missing-email")) {
+        systemErrorMessage = "O E-mail é obrigatório.";
+        setEmailError(systemErrorMessage);
       } else if (error.message.includes("email-already")) {
-        systemErrorMessage = "E-mail já cadastrado. Por favor tente outro e-mail";
+        systemErrorMessage = "E-mail já cadastrado. Por favor tente outro e-mail.";
+        setEmailError(systemErrorMessage);
       } else if (error.message.includes("invalid-email")) {
-        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido"
+        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido."
+        setEmailError(systemErrorMessage);
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde";
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
+        setError(systemErrorMessage);
       }
-
-      setError(systemErrorMessage);
     }
+
+    console.log(error);
 
     setLoading(false);
   };
@@ -89,16 +100,15 @@ export const useAuthentication = () => {
       let systemErrorMessage;
 
       if (error.message.includes("invalid-login-credentials")) {
-        systemErrorMessage = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente";
+        systemErrorMessage = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente.";
         setEmailPasswordError(systemErrorMessage);
       } else if (error.message.includes("invalid-email")) {
-        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido"
+        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido."
         setEmailError(systemErrorMessage);
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde";
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
         setError(systemErrorMessage)
       }
-
     }
 
     setLoading(false);
@@ -109,13 +119,14 @@ export const useAuthentication = () => {
   }, []);
 
   return {
-    auth,
     createUser,
-    error,
     logout,
     login,
+    auth,
     loading,
+    error,
     emailError,
-    emailPasswordError
+    emailPasswordError,
+    passwordError
   };
 };

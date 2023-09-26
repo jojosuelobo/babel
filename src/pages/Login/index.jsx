@@ -12,12 +12,11 @@ export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [emailPasswordError, setEmailPasswordError] = useState("");
 
-  const { login, emailError: authError, emailPasswordError: testError } = useAuthentication();
+  const { login, emailError: emailErro, emailPasswordError: emailSenhaErro } = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // setError("");
     setEmailError("");
     setEmailPasswordError("");
 
@@ -29,22 +28,18 @@ export default function Login() {
     try {
       await login(user);
     } catch (err) {
-      //setError(err.message);
       setEmailError(err.message);
       setEmailPasswordError(err.message);
     }
-
   };
 
   useEffect(() => {
-    if (authError) {
-      setEmailError(authError);
-    } else if (testError) {
-      setEmailPasswordError(testError);
+    if (emailErro) {
+      setEmailError(emailErro);
+    } else if (emailSenhaErro) {
+      setEmailPasswordError(emailSenhaErro);
     }
-  }, [authError, testError]);
-
-
+  }, [emailErro, emailSenhaErro]);
 
 
   return (
@@ -64,7 +59,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {emailError && <p className={styles.text_error}>{emailError}</p>}
+          {emailError && <p className={styles.email_error}>{emailError}</p>}
 
           <p>Senha</p>
           <input
