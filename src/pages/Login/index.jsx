@@ -29,7 +29,6 @@ export default function Login() {
   };
 
   useEffect(() => {
-    console.log(authError);
     if (authError) {
       setError(authError);
     }
