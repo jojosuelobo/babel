@@ -25,7 +25,7 @@ export default function Login() {
 
     const res = await login(user);
 
-    console.log(res);
+    //console.log(res);
   };
 
   useEffect(() => {

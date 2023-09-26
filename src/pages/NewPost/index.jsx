@@ -1,9 +1,15 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import styles from './NewPost.module.sass'
 
+// lib
 import moment from 'moment/moment'
-import { useState } from 'react'
+
+// hooks
+import { useState, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
+
+// react router dom
 import { Link } from 'react-router-dom'
 
 // Icons
@@ -12,36 +18,50 @@ import { IoMdArrowRoundBack } from 'react-icons/io'
 // Components
 import Header from '../../components/header'
 
+// Firebase
+import { getAuth } from "firebase/auth";
+
 export default function NewPost() {
-    const teste = () => {
-        const tagArray = tagInput.split(",").map((tag) => tag.trim())
-        const filteredTags = tagArray.filter((tag) => tag !== "");
-        setTags(filteredTags);
-    }
 
     const [titulo, setTitulo] = useState('')
     const dataPostagem = moment().format('L')
     const [tagInput, setTagInput] = useState('')
     const [tag, setTags] = useState([])
     const [descricao, setDescricao] = useState('')
+
     const url = 'http://localhost:3000/posts'
     const { httpConfig, loading } = useFetch(url)
 
-    const handleSubmit = async (e) => {
+    // Nome de usuário
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const displayName = user.displayName
+
+
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        const tagArray = tagInput.split(",").map((tag) => tag.trim())
-        const filteredTags = tagArray.filter((tag) => tag !== "");
-        setTags(filteredTags);
+        // LÓGICA DE TAGS 
+        /*
+        setTags(
+            (tagInput.split(",").map((tag) => tag.trim()))
+                .filter((tag) => tag !== "")
+        ) */
+        //const tagArray = tagInput.split(",").map((tag) => tag.trim())
+        //const filteredTags = tagArray.filter((tag) => tag !== "");
+        //setTags(filteredTags);
 
+        // ID
         const idPost = Math.floor(Math.random() * 1000)
+
+
         const post = {
             id: idPost,
             titulo,
             data_postagem: dataPostagem,
             tags_relacionadas: tag,
             descricao,
-            nome_usuario: "JOJOSUELOBO",
+            nome_usuario: displayName,
             itens_lista: [
                 {
                     nome_item: "One Piece",
@@ -59,10 +79,12 @@ export default function NewPost() {
         }
 
         console.log(post)
-        httpConfig(post, "POST")
+        console.log(displayName)
+        //httpConfig(post, "POST")
 
         // Clear dos campos
     }
+
 
     return (
         <>
@@ -83,13 +105,20 @@ export default function NewPost() {
                             Tags
                             <input
                                 type="text"
-                                onChange={(e) => setTagInput(e.target.value)}
+                                // Lógica disto está dentro do handleSubmit
+                                // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
+                                onChange={(e) =>
+                                    setTags(
+                                        ((e.target.value).split(",").map((tag) => tag.trim()))
+                                            .filter((tag) => tag !== "")
+                                    )
+                                }
                             />
                         </label>
 
                         <label className={styles.descricao}>
                             Descrição
-                            <textarea  type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                            <textarea type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
                         </label>
                         {loading ? <p>Aguarde!</p> : <input className={styles.submit} type="submit" value="Criar" />}
                     </form>

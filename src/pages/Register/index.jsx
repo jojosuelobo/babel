@@ -33,7 +33,7 @@ export default function Register() {
 
         const res = await createUser(user);
 
-        console.log(res);
+        //console.log(res);
         setDisplayName("")
         setEmail("")
         setPassword("")
