@@ -4,6 +4,13 @@ import styles from './NewPost.module.sass'
 import moment from 'moment/moment'
 import { useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
+import { Link } from 'react-router-dom'
+
+// Icons
+import { IoMdArrowRoundBack } from 'react-icons/io'
+
+// Components
+import Header from '../../components/header'
 
 export default function NewPost() {
     const teste = () => {
@@ -52,38 +59,42 @@ export default function NewPost() {
         }
 
         console.log(post)
-        //httpConfig(post, "POST")
+        httpConfig(post, "POST")
 
         // Clear dos campos
     }
 
     return (
-        <div>
-            
-        </div>
-        // <div>
-        //     <h1>NewPost</h1>
-        //     <form onSubmit={handleSubmit}>
-        //         <label>
-        //             Título
-        //             <input type="text" onChange={(e) => setTitulo(e.target.value)} />
-        //         </label>
+        <>
+            <Header />
+            <div className={styles.section}>
+                <div className={styles.post}>
+                    <div className={styles.header}>
+                        <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /></Link>
+                        <h1>Nova lista</h1>
+                    </div>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <label className={styles.title}>
+                            Título
+                            <input type="text" onChange={(e) => setTitulo(e.target.value)} />
+                        </label>
 
-        //         <label>
-        //             Tags
-        //             <input
-        //                 type="text"
-        //                 onChange={(e) => setTagInput(e.target.value)}
-        //             />
-        //         </label>
+                        <label className={styles.tags}>
+                            Tags
+                            <input
+                                type="text"
+                                onChange={(e) => setTagInput(e.target.value)}
+                            />
+                        </label>
 
-        //         <label>
-        //             Descrição
-        //             <input type="text" onChange={(e) => setDescricao(e.target.value)} />
-        //         </label>
-        //         {loading ? <p>Aguarde!</p> : <input type="submit" value="Criar" />}
-        //     </form>
-        //     <button onClick={teste}>Console</button>
-        // </div>
+                        <label className={styles.descricao}>
+                            Descrição
+                            <textarea  type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                        </label>
+                        {loading ? <p>Aguarde!</p> : <input className={styles.submit} type="submit" value="Criar" />}
+                    </form>
+                </div>
+            </div>
+        </>
     )
 }

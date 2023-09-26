@@ -271,6 +271,28 @@
           "descricao_item": "Fazer pausas regulares para descanso"
         }
       ]
+    },
+    {
+      "id": 836,
+      "titulo": "",
+      "data_postagem": "09/26/2023",
+      "tags_relacionadas": [],
+      "descricao": "",
+      "nome_usuario": "JOJOSUELOBO",
+      "itens_lista": [
+        {
+          "nome_item": "One Piece",
+          "descricao_item": "Anime de pirata que estica"
+        },
+        {
+          "nome_item": "Naruto",
+          "descricao_item": "Alguma coisa sobre ninjas"
+        },
+        {
+          "nome_item": "Fluminense",
+          "descricao_item": "Salve o corintianssssss o campeão dos campeoesssssssssss"
+        }
+      ]
     }
   ]
 }
