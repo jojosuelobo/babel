@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import logo from '../../../public/logoUVV.png'
 import styles from './Login.module.sass'
 
@@ -9,16 +8,20 @@ import { useAuthentication } from '../../firebase/useAuth';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [emailPasswordError, setEmailPasswordError] = useState("");
+  const [error, setError] = useState("");
 
-  const { login, emailError: emailErro, emailPasswordError: emailSenhaErro } = useAuthentication();
+  const { login, errors } = useAuthentication();
+
+  useEffect(() => {
+    if (error) {
+      setError(error);
+    }
+  }, [error]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setEmailError("");
-    setEmailPasswordError("");
 
     const user = {
       email,
@@ -28,19 +31,9 @@ export default function Login() {
     try {
       await login(user);
     } catch (err) {
-      setEmailError(err.message);
-      setEmailPasswordError(err.message);
+      /* empty */
     }
   };
-
-  useEffect(() => {
-    if (emailErro) {
-      setEmailError(emailErro);
-    } else if (emailSenhaErro) {
-      setEmailPasswordError(emailSenhaErro);
-    }
-  }, [emailErro, emailSenhaErro]);
-
 
   return (
     <section className={styles.main_content}>
@@ -54,22 +47,22 @@ export default function Login() {
 
           <p>Email</p>
           <input
-            className={`${styles.login} ${emailError || emailPasswordError ? styles.input_error : ''}`}
+            className={`${styles.login} ${ (errors.email || errors.global) ? styles.input_error : ''}`}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {emailError && <p className={styles.email_error}>{emailError}</p>}
+          {errors.email && <p className={styles.email_error}>{errors.email}</p>}
 
           <p>Senha</p>
           <input
-            className={`${styles.login} ${emailPasswordError ? styles.input_error : ''}`}
+            className={`${styles.login} ${errors.password || errors.global ? styles.input_error : ''}`}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
-          {emailPasswordError && <p className={styles.password_error}>{emailPasswordError}</p>}
+          {(errors.password || errors.global) && <p className={styles.password_error}>{errors.password || errors.global}</p>}
         </form>
         <button className={styles.btn} onClick={handleSubmit} disabled={!email || !password}>Entrar</button>
         <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'><a>Criar conta</a></Link></p>

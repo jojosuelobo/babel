@@ -13,12 +13,13 @@ import { useState, useEffect } from "react";
 
 export const useAuthentication = () => {
 
-  const [emailError, setEmailError] = useState(null);
-  const [emailPasswordError, setEmailPasswordError] = useState(null);
-  const [passwordError, setPasswordError] = useState(null);
-
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
+
+  const [errors, setErrors] = useState({
+    email: null,
+    password: null,
+    global: null //erro global, não associado a um campo específico
+  });
 
   // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
@@ -35,8 +36,11 @@ export const useAuthentication = () => {
     checkIfIsCancelled();
 
     setLoading(true);
-    setEmailError(null);
-    setPasswordError(null);
+    setErrors({
+      email: null,
+      password: null,
+      global: null
+    });
 
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -53,29 +57,30 @@ export const useAuthentication = () => {
     } catch (error) {
       console.log(error.message);
       console.log(typeof error.message);
-      let systemErrorMessage;
+
+      let systemErrorsMessages = {
+        email: null,
+        password: null,
+        global: null
+      };
+
 
       if (error.message.includes("weak-password")) {
-        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
-        setPasswordError(systemErrorMessage);
+        systemErrorsMessages.password = "A senha precisa conter pelo menos 6 caracteres.";
       } else if (error.message.includes("missing-email")) {
-        systemErrorMessage = "O E-mail é obrigatório.";
-        setEmailError(systemErrorMessage);
+        systemErrorsMessages.email = "O E-mail é obrigatório.";
       } else if (error.message.includes("email-already")) {
-        systemErrorMessage = "E-mail já cadastrado. Por favor tente outro e-mail.";
-        setEmailError(systemErrorMessage);
+        systemErrorsMessages.email = "E-mail já cadastrado. Por favor tente outro e-mail.";
       } else if (error.message.includes("invalid-email")) {
-        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido."
-        setEmailError(systemErrorMessage);
+        systemErrorsMessages.email = "E-mail inválido. Por favor digite um e-mail válido."
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
-        setError(systemErrorMessage);
+        systemErrorsMessages.global = "Ocorreu um erro, por favor tente mais tarde.";
       }
+
+      console.log(error);
+      setErrors(systemErrorsMessages);
+      setLoading(false);
     }
-
-    console.log(error);
-
-    setLoading(false);
   };
 
   const logout = () => {
@@ -88,30 +93,33 @@ export const useAuthentication = () => {
     checkIfIsCancelled();
 
     setLoading(true);
-    setError(false);
-
-    setEmailError(null);
-    setEmailPasswordError(null);
+    setErrors({
+      email: null,
+      password: null,
+      global: null
+    });
 
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
     } catch (error) {
 
-      let systemErrorMessage;
+      let systemErrorsMessages = {
+        email: null,
+        password: null,
+        global: null
+      };
 
       if (error.message.includes("invalid-login-credentials")) {
-        systemErrorMessage = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente.";
-        setEmailPasswordError(systemErrorMessage);
+        systemErrorsMessages.global = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente.";
       } else if (error.message.includes("invalid-email")) {
-        systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido."
-        setEmailError(systemErrorMessage);
+        systemErrorsMessages.email = "E-mail inválido. Por favor digite um e-mail válido."
       } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
-        setError(systemErrorMessage)
+        systemErrorsMessages.global = "Ocorreu um erro, por favor tente mais tarde.";
       }
-    }
 
-    setLoading(false);
+      setErrors(systemErrorsMessages);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -124,9 +132,6 @@ export const useAuthentication = () => {
     login,
     auth,
     loading,
-    error,
-    emailError,
-    emailPasswordError,
-    passwordError
+    errors
   };
 };

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import logo from '../../../public/logoUVV.png'
 import styles from './Register.module.sass'
 
@@ -12,30 +11,17 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
-    const [emailError, setEmailError] = useState("");
 
-    const [passwordError, setPasswordError] = useState("");
-
-    const { createUser, error: authError, emailError: testeEr, passwordError: senhaError } = useAuthentication();
-
+    const { createUser, errors } = useAuthentication();
 
     useEffect(() => {
-        if (authError) {
-            setError(authError);
-        } if (testeEr) {
-            setEmailError(testeEr);
-        } if (senhaError) {
-            setPasswordError(senhaError);
+        if (error) {
+            setError(error);
         }
-    }, [authError, testeEr, senhaError]);
-
+    }, [error]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        setError("");
-        setEmailError("");
-        setPasswordError("");
 
         const user = {
             displayName,
@@ -50,16 +36,13 @@ export default function Register() {
 
         try {
             await createUser(user);
-        } catch (err) {
-            setEmailError(err.message);
-            setError(err.message);
-        }
+            
+        } catch (err) { /* empty */ }
 
         setDisplayName("")
         setEmail("")
         setPassword("")
         setConfirmPassword("")
-
     };
 
     return (
@@ -79,31 +62,31 @@ export default function Register() {
                     />
                     <p>Email</p>
                     <input
-                        className={`${styles.register} ${emailError ? styles.input_error : ''}`}
+                        className={`${styles.register} ${errors.email ? styles.input_error : ''}`}
                         type="text"
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
                     />
-                    {emailError && <p className={styles.text_error}>{emailError}</p>}
+                    {errors.email && <p className={styles.text_error}>{errors.email}</p>}
 
                     <p>Senha</p>
                     <input
-                        className={`${styles.register} ${passwordError || error ? styles.input_error : ''}`}
+                        className={`${styles.register} ${errors.password || error ? styles.input_error : ''}`}
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
                     <p>Confirmar Senha</p>
                     <input
-                        className={`${styles.register} ${passwordError || error ? styles.input_error : ''}`}
+                        className={`${styles.register} ${errors.password || error ? styles.input_error : ''}`}
                         type="password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmPassword}
                     />
-                    {(passwordError || error) && <p className={styles.text_error}>{passwordError || error}</p>}
+                    {(errors.password || error) && <p className={styles.text_error}>{errors.password || error}</p>}
                 </form>
                 <button className={styles.btn} onClick={handleSubmit}
-                    disabled={!displayName || !email || !password || !confirmPassword || password !== confirmPassword}
+                    disabled={!displayName || !email || !password || !confirmPassword}
                 >Criar conta</button>
 
 
