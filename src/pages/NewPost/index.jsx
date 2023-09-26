@@ -59,28 +59,31 @@ export default function NewPost() {
 
     return (
         <div>
-            <h1>NewPost</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Título
-                    <input type="text" onChange={(e) => setTitulo(e.target.value)} />
-                </label>
-
-                <label>
-                    Tags
-                    <input
-                        type="text"
-                        onChange={(e) => setTagInput(e.target.value)}
-                    />
-                </label>
-
-                <label>
-                    Descrição
-                    <input type="text" onChange={(e) => setDescricao(e.target.value)} />
-                </label>
-                {loading ? <p>Aguarde!</p> : <input type="submit" value="Criar" />}
-            </form>
-            <button onClick={teste}>Console</button>
+            
         </div>
+        // <div>
+        //     <h1>NewPost</h1>
+        //     <form onSubmit={handleSubmit}>
+        //         <label>
+        //             Título
+        //             <input type="text" onChange={(e) => setTitulo(e.target.value)} />
+        //         </label>
+
+        //         <label>
+        //             Tags
+        //             <input
+        //                 type="text"
+        //                 onChange={(e) => setTagInput(e.target.value)}
+        //             />
+        //         </label>
+
+        //         <label>
+        //             Descrição
+        //             <input type="text" onChange={(e) => setDescricao(e.target.value)} />
+        //         </label>
+        //         {loading ? <p>Aguarde!</p> : <input type="submit" value="Criar" />}
+        //     </form>
+        //     <button onClick={teste}>Console</button>
+        // </div>
     )
 }

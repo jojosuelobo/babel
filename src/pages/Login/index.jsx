@@ -60,7 +60,7 @@ export default function Login() {
           <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
         </form>
         <button className={styles.btn} onClick={handleSubmit}>Entrar</button>
-        <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'><a>Criar conta</a></Link></p>
+        <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'>Criar conta</Link></p>
       </div>
     </section>
   )

@@ -90,7 +90,7 @@ export default function Register() {
                 )} */}
                 {error && <p className="error">{error}</p>}
                 <p className={styles.redirect_login}>
-                    Já possui conta? <Link to='/login'><a>Entrar</a></Link>
+                    Já possui conta? <Link to='/login'>Entrar</Link>
                 </p>
             </div>
         </section>
