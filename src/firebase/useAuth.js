@@ -12,6 +12,10 @@ import {
 import { useState, useEffect } from "react";
 
 export const useAuthentication = () => {
+
+  const [emailError, setEmailError] = useState(null);
+  const [emailPasswordError, setEmailPasswordError] = useState(null);
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
@@ -75,6 +79,9 @@ export const useAuthentication = () => {
     setLoading(true);
     setError(false);
 
+    setEmailError(null);
+    setEmailPasswordError(null);
+
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
     } catch (error) {
@@ -83,12 +90,15 @@ export const useAuthentication = () => {
 
       if (error.message.includes("invalid-login-credentials")) {
         systemErrorMessage = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente";
+        setEmailPasswordError(systemErrorMessage);
       } else if (error.message.includes("invalid-email")) {
         systemErrorMessage = "E-mail inválido. Por favor digite um e-mail válido"
+        setEmailError(systemErrorMessage);
       } else {
         systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde";
+        setError(systemErrorMessage)
       }
-      setError(systemErrorMessage);
+
     }
 
     setLoading(false);
@@ -105,5 +115,7 @@ export const useAuthentication = () => {
     logout,
     login,
     loading,
+    emailError,
+    emailPasswordError
   };
 };

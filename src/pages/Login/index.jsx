@@ -9,14 +9,17 @@ import { useAuthentication } from '../../firebase/useAuth';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [emailPasswordError, setEmailPasswordError] = useState("");
 
-  const { login, error: authError, loading } = useAuthentication();
+  const { login, emailError: authError, emailPasswordError: testError } = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setError("");
+    // setError("");
+    setEmailError("");
+    setEmailPasswordError("");
 
     const user = {
       email,
@@ -26,16 +29,23 @@ export default function Login() {
     try {
       await login(user);
     } catch (err) {
-      setError(err.message);
+      //setError(err.message);
+      setEmailError(err.message);
+      setEmailPasswordError(err.message);
     }
 
   };
 
   useEffect(() => {
     if (authError) {
-      setError(authError);
+      setEmailError(authError);
+    } else if (testError) {
+      setEmailPasswordError(testError);
     }
-  }, [authError]);
+  }, [authError, testError]);
+
+
+
 
   return (
     <section className={styles.main_content}>
@@ -46,24 +56,27 @@ export default function Login() {
           <p>Please enter your details</p>
         </div>
         <form className={styles.login_form}>
+
           <p>Email</p>
           <input
-            className={styles.login}
+            className={`${styles.login} ${emailError || emailPasswordError ? styles.input_error : ''}`}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {emailError && <p className={styles.text_error}>{emailError}</p>}
+
           <p>Senha</p>
           <input
-            className={styles.password}
+            className={`${styles.login} ${emailPasswordError ? styles.input_error : ''}`}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
+          {emailPasswordError && <p className={styles.password_error}>{emailPasswordError}</p>}
         </form>
         <button className={styles.btn} onClick={handleSubmit} disabled={!email || !password}>Entrar</button>
-        {error && <p className={styles.error}>{error}</p>}
         <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'><a>Criar conta</a></Link></p>
       </div>
     </section>
