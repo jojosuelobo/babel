@@ -9,7 +9,6 @@ import PostDetail from '../../components/postDetail'
 // 
 import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 export default function Feed() {
   const [posts, setPosts] = useState([])
