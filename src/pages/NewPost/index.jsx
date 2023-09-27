@@ -23,6 +23,7 @@ import { getAuth } from "firebase/auth";
 
 export default function NewPost() {
 
+
     const [titulo, setTitulo] = useState('')
     const dataPostagem = moment().format('L')
     const [tagInput, setTagInput] = useState('')
@@ -76,16 +77,6 @@ export default function NewPost() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // LÓGICA DE TAGS 
-        /*
-        setTags(
-            (tagInput.split(",").map((tag) => tag.trim()))
-                .filter((tag) => tag !== "")
-        ) */
-        //const tagArray = tagInput.split(",").map((tag) => tag.trim())
-        //const filteredTags = tagArray.filter((tag) => tag !== "");
-        //setTags(filteredTags);
-
         // ID
         const idPost = Math.floor(Math.random() * 1000)
 
@@ -98,15 +89,36 @@ export default function NewPost() {
             descricao,
             nome_usuario: displayName,
             itens_lista: lista
+            // itens_lista: [
+            //     {
+            //         nome_item: "One Piece",
+            //         descricao_item: "Anime de pirata que estica"
+            //     },
+            //     {
+            //         nome_item: "Naruto",
+            //         descricao_item: "Alguma coisa sobre ninjas"
+            //     },
+            //     {
+            //         nome_item: "Fluminense",
+            //         descricao_item: "Salve o corintianssssss o campeão dos campeoesssssssssss"
+            //     },
+            // ]
         }
 
         console.log(lista)
         console.log(post)
-        //httpConfig(post, "POST")
+        httpConfig(post, "POST")
 
         // Clear dos campos
     }
 
+    
+    const preencher = () => {
+        setQuantidadeDeItensLista(3)
+        setTitulo('Melhores receitas com morango')
+        setTags((('receitas,culinária,sobremesa').split(",").map((tag) => tag.trim())).filter((tag) => tag !== ""))
+        setDescricao('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.')
+    }
 
     return (
         <>
@@ -116,18 +128,19 @@ export default function NewPost() {
                     <div className={styles.header}>
                         <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /></Link>
                         <h1>Nova lista</h1>
+                        <button onClick={preencher}>auto preencher</button>
                     </div>
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <label className={styles.title}>
                             Título
-                            <input type="text" onChange={(e) => setTitulo(e.target.value)} />
+                            <input value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
                         </label>
 
                         <label className={styles.tags}>
                             Tags
                             <input
+                                value={tag}
                                 type="text"
-                                // Lógica disto está dentro do handleSubmit
                                 // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
                                 onChange={(e) =>
                                     setTags(
@@ -140,7 +153,7 @@ export default function NewPost() {
 
                         <label className={styles.descricao}>
                             Descrição
-                            <textarea className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                            <textarea value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
                         </label>
 
                         <div className={styles.itens}>
