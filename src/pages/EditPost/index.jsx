@@ -1,11 +1,12 @@
-import styles from './Post.module.sass'
+/* eslint-disable no-unused-vars */
+import styles from './Edit.module.sass'
+
 import profile from '../../../public/logoUVV.png'
 
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
-import { AiOutlineEdit } from 'react-icons/ai'
-import { TiDelete } from 'react-icons/ti'
 
+// React router dom
 import { Link } from 'react-router-dom'
 
 // Hooks
@@ -17,10 +18,8 @@ import blogFetch from '../../axios/config'
 import Header from '../../components/header'
 import Aside from '../../components/asideCustom'
 
-// Firebase
-import { getAuth } from "firebase/auth";
+export default function Edit() {
 
-export default function Post() {
     const { id } = useParams()
 
     const [post, setPost] = useState([])
@@ -39,11 +38,6 @@ export default function Post() {
         getPosts()
     }, [])
 
-    // Nome de usuário
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const displayName = user.displayName
-
     return (
         <>
             <Header />
@@ -52,13 +46,6 @@ export default function Post() {
                 <div className={styles.post}>
                     <div className={styles.icons}>
                         <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
-
-                        {displayName === post.nome_usuario &&
-                            <div>
-                                <Link to={`/edit/${post.id}`}> <AiOutlineEdit className={styles.icon} /> </Link>
-                                <a><TiDelete className={styles.icon}/></a>
-                            </div>
-                        }
 
                     </div>
                     <h2 className={styles.title}>{post.titulo}</h2>

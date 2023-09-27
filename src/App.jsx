@@ -18,6 +18,7 @@ import Search from './pages/Search'
 import NewPost from './pages/NewPost'
 import Profile from './pages/Profile'
 import Notifications from './pages/Notifications'
+import EditPost from './pages/EditPost'
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -68,6 +69,10 @@ function App() {
               <Route
                 path='/notifications'
                 element={user ? <Notifications /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/edit/:id'
+                element={user ? <EditPost /> : <Navigate to='/login' />}
               />
             </Routes>
           </div>
