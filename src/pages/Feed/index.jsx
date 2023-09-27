@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Estilos
 import styles from './Feed.module.sass'
 

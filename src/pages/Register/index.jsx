@@ -91,7 +91,7 @@ export default function Register() {
 
 
                 <p className={styles.redirect_login}>
-                    Já possui conta? <Link to='/login'><a>Entrar</a></Link>
+                    Já possui conta? <Link to='/login'>Entrar</Link>
                 </p>
             </div>
         </section>

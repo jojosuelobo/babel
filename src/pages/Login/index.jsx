@@ -28,6 +28,15 @@ export default function Login() {
       password,
     };
 
+    const res = await login(user);
+
+    //console.log(res);
+  };
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+
     try {
       await login(user);
     } catch (err) {
@@ -64,8 +73,9 @@ export default function Login() {
           <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
           {(errors.password || errors.global) && <p className={styles.password_error}>{errors.password || errors.global}</p>}
         </form>
-        <button className={styles.btn} onClick={handleSubmit} disabled={!email || !password}>Entrar</button>
-        <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'><a>Criar conta</a></Link></p>
+        <button className={styles.btn} onClick={handleSubmit}>Entrar</button>
+        <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'>Criar conta</Link></p>
+
       </div>
     </section>
   )
