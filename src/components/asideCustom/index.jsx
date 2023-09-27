@@ -8,18 +8,27 @@ export default function aside() {
   return (
     <aside className={styles.main_content}>
       <ul className={styles.list}>
-        <li className={styles.list_btn}>
-          <BiHome className={styles.icon} />
-          <button className={styles.btn}>Página Inicial</button>
-        </li>
-        <li className={styles.list_btn}>
-          <IoMdNotificationsOutline className={styles.icon} />
-          <button className={styles.btn}>Notificações</button>
-        </li>
-        <li className={styles.list_btn}>
-          <FaRegUserCircle className={styles.icon} />
-          <button className={styles.btn}>Perfil</button>
-        </li>
+        <Link to={'/'}>
+          <li className={styles.list_btn}>
+            <BiHome className={styles.icon} />
+            <button className={styles.btn}>Página Inicial</button>
+          </li>
+        </Link>
+
+        <Link to={'/notifications'}>
+          <li className={styles.list_btn}>
+            <IoMdNotificationsOutline className={styles.icon} />
+            <button className={styles.btn}>Notificações</button>
+          </li>
+        </Link>
+
+        <Link to={'/profile'}>
+          <li className={styles.list_btn}>
+            <FaRegUserCircle className={styles.icon} />
+            <button className={styles.btn}>Perfil</button>
+          </li>
+        </Link>
+
         <Link to={'/newpost'} className={styles.list_btn}>
           <button className={styles.btn2}>Criar Lista</button>
         </Link>

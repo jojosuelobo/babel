@@ -1,6 +1,10 @@
 import styles from './Post.module.sass'
 import profile from '../../../public/logoUVV.png'
+
+// Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
+import { AiOutlineEdit } from 'react-icons/ai'
+import { TiDelete } from 'react-icons/ti'
 
 import { Link } from 'react-router-dom'
 
@@ -13,6 +17,8 @@ import blogFetch from '../../axios/config'
 import Header from '../../components/header'
 import Aside from '../../components/asideCustom'
 
+// Firebase
+import { getAuth } from "firebase/auth";
 
 export default function Post() {
     const { id } = useParams()
@@ -33,16 +39,31 @@ export default function Post() {
         getPosts()
     }, [])
 
+    // Nome de usuário
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const displayName = user.displayName
+
+
     return (
         <>
             <Header />
             <div className={styles.section}>
                 <Aside />
                 <div className={styles.post}>
-                    <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
+                    <div className={styles.icons}>
+                        <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
+
+                        {displayName === post.nome_usuario &&
+                            <div>
+                                <Link to={'/edit'}> <AiOutlineEdit className={styles.icon} /> </Link>
+                                <a><TiDelete className={styles.icon}/></a>
+                            </div>
+                        }
+
+                    </div>
                     <h2 className={styles.title}>{post.titulo}</h2>
                     <p className={styles.date}>{post.data_postagem}</p>
-
                     <div className={styles.tags}>
                         {post.tags_relacionadas?.map((tag) => (
                             <p className={styles.tag} key={tag}>{tag}</p>
