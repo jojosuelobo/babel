@@ -120,7 +120,8 @@ export default function NewPost() {
                             Descrição
                             <textarea type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
                         </label>
-                        {loading ? <p>Aguarde!</p> : <input className={styles.submit} type="submit" value="Criar" />}
+                        {loading ? <p>Aguarde!</p>
+                            : <input className={styles.submit} type="submit" value="Criar" />}
                     </form>
                 </div>
             </div>
