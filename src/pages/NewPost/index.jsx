@@ -38,8 +38,39 @@ export default function NewPost() {
     const displayName = user.displayName
 
     // Listagem de fato
-    const [quantidadeDeItensLista, setQuantidadeDeItensLista] = useState(3)
-    const [lista, setLista] = useState([])
+    const [quantidadeDeItensLista, setQuantidadeDeItensLista] = useState(2)
+    const [lista, setLista] = useState([]);
+
+    // Atualiza a lista sempre que quantidadeDeItensLista mudar
+    useEffect(() => {
+        const novaLista = Array.from({ length: quantidadeDeItensLista }, () => ({
+            nome_item: '',
+            descricao_item: ''
+        }));
+        setLista(novaLista);
+    }, [quantidadeDeItensLista]);
+
+    // const [lista, setLista] = useState(
+    //     Array.from({ length: quantidadeDeItensLista }, () => ({
+    //         nome_item: '',
+    //         descricao_item: '',
+    //     }))
+    // );
+
+    // const [lista, setLista] = useState([
+    //     {
+    //         nome_item: '',
+    //         descricao_item: ''
+    //     },
+    //     {
+    //         nome_item: '',
+    //         descricao_item: ''
+    //     },
+    //     {
+    //         nome_item: '',
+    //         descricao_item: ''
+    //     }
+    // ])
 
 
     const handleSubmit = (e) => {
@@ -66,24 +97,11 @@ export default function NewPost() {
             tags_relacionadas: tag,
             descricao,
             nome_usuario: displayName,
-            itens_lista: [
-                {
-                    nome_item: "One Piece",
-                    descricao_item: "Anime de pirata que estica"
-                },
-                {
-                    nome_item: "Naruto",
-                    descricao_item: "Alguma coisa sobre ninjas"
-                },
-                {
-                    nome_item: "Fluminense",
-                    descricao_item: "Salve o corintianssssss o campeão dos campeoesssssssssss"
-                },
-            ]
+            itens_lista: lista
         }
 
+        console.log(lista)
         console.log(post)
-        console.log(displayName)
         //httpConfig(post, "POST")
 
         // Clear dos campos
@@ -126,29 +144,45 @@ export default function NewPost() {
                         </label>
 
                         <div className={styles.itens}>
-                            
+
                             {Array.from({ length: quantidadeDeItensLista }, (_, index) => (
                                 <div className={styles.item_lista} key={index}>
                                     <label className={styles.item_tit}>
-                                        Título {index+1}
-                                        <input type="text" className={styles.item_input} />
+                                        Título {index + 1}
+                                        <input
+                                            type="text"
+                                            className={styles.item_input}
+                                            onChange={(e) => {
+                                                const newList = [...lista];
+                                                newList[index].nome_item = e.target.value;
+                                                setLista(newList);
+                                            }}
+                                        />
                                     </label>
                                     <label className={styles.descricao}>
                                         Descrição
-                                        <textarea type="text" className={styles.item_text}></textarea>
+                                        <textarea
+                                            type="text"
+                                            className={styles.item_text}
+                                            onChange={(e) => {
+                                                const newList = [...lista];
+                                                newList[index].descricao_item = e.target.value;
+                                                setLista(newList);
+                                            }}
+                                        ></textarea>
                                     </label>
                                 </div>
                             ))}
                         </div>
 
                         <div className={styles.botoes}>
-                            <button onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista + 1)} className={styles.submit}>Adicionar item</button>
-                            <button  onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista - 1)} className={styles.submit}>Remover item</button>
+
                             {loading ? <p>Aguarde!</p>
                                 : <input className={styles.submit} type="submit" value="Criar" />}
                         </div>
-
                     </form>
+                    <button onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista + 1)} className={styles.submit}>Adicionar item</button>
+                    <button onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista - 1)} className={styles.submit}>Remover item</button>
                 </div>
 
             </div>
