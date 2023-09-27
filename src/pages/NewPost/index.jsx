@@ -37,6 +37,10 @@ export default function NewPost() {
     const user = auth.currentUser;
     const displayName = user.displayName
 
+    // Listagem de fato
+    const [quantidadeDeItensLista, setQuantidadeDeItensLista] = useState(3)
+    const [lista, setLista] = useState([])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -118,12 +122,35 @@ export default function NewPost() {
 
                         <label className={styles.descricao}>
                             Descrição
-                            <textarea type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                            <textarea className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
                         </label>
-                        {loading ? <p>Aguarde!</p>
-                            : <input className={styles.submit} type="submit" value="Criar" />}
+
+                        <div className={styles.itens}>
+                            
+                            {Array.from({ length: quantidadeDeItensLista }, (_, index) => (
+                                <div className={styles.item_lista} key={index}>
+                                    <label className={styles.item_tit}>
+                                        Título {index+1}
+                                        <input type="text" className={styles.item_input} />
+                                    </label>
+                                    <label className={styles.descricao}>
+                                        Descrição
+                                        <textarea type="text" className={styles.item_text}></textarea>
+                                    </label>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className={styles.botoes}>
+                            <button onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista + 1)} className={styles.submit}>Adicionar item</button>
+                            <button  onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista - 1)} className={styles.submit}>Remover item</button>
+                            {loading ? <p>Aguarde!</p>
+                                : <input className={styles.submit} type="submit" value="Criar" />}
+                        </div>
+
                     </form>
                 </div>
+
             </div>
         </>
     )

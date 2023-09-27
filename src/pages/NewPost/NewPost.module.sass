@@ -17,7 +17,7 @@
         margin-bottom: 32px
         
     .form
-        margin-bottom: 100vh
+        border: none
         label
             margin-bottom: 20px
             display: flex
@@ -46,7 +46,7 @@
                 box-shadow: 0 0.4rem #dfd9d9
         .descricao
             font-size: 18px
-            textarea
+            .text
                 border-radius: 8px
                 height: 50px
                 width: 50vh
@@ -62,61 +62,93 @@
                 width: 50vh
                 border-radius: 1rem
                 box-shadow: 0 0.4rem #dfd9d9
-        .submit
+        .itens
+            font-size: 32px
+            .item_lista
+                margin: 32px
+                .item_tit
+                    font-size: 18px
+                .item_input
+                    //background-color: #eee            
+                    border: none
+                    padding: 0.2rem
+                    font-size: 1rem
+                    width: 50vh
+                    border-radius: 1rem
+                    box-shadow: 0 0.4rem #dfd9d9
+                .item_text
+                    border-radius: 8px
+                    height: 50px
+                    width: 50vh
+                    resize: none
+                    outline: 0
+                    border: 1px solid rgb(219, 213, 213)
+                    font-size: 160px
+                    //background-color: #eee            
+                    border: none
+                    padding: 0.1rem
+                    font-size: 1rem
+                    width: 50vh
+                    border-radius: 1rem
+                    box-shadow: 0 0.4rem #dfd9d9
+                    margin-bottom: 32px
+        
+        .botoes
+            display: flex
+            .submit
+                appearance: button
+                background-color: #4D3666
+                border: solid transparent
+                border-radius: 16px
+                border-width: 0 0 4px
+                box-sizing: border-box
+                color: #FFFFFF
+                cursor: pointer
+                display: inline-block
+                font-size: 15px
+                font-weight: 700
+                letter-spacing: .8px
+                line-height: 20px
+                margin: 30px
+                outline: none
+                overflow: visible
+                padding: 13px 19px
+                text-align: center
+                text-transform: uppercase
+                touch-action: manipulation
+                transform: translateZ(0)
+                transition: filter .2s
+                user-select: none
+                -webkit-user-select: none
+                vertical-align: middle
+                white-space: nowrap
+                
+            .submit:after 
+                background-clip: padding-box
+                background-color: #4D3666
+                border: solid transparent
+                border-radius: 16px
+                border-width: 0 0 4px
+                bottom: -4px
+                content: ""
+                left: 0
+                position: absolute
+                right: 0
+                top: 0
+                z-index: -1
+        
+            .submit:main, .submit:focus 
+                user-select: auto
             
-            appearance: button
-            background-color: #4D3666
-            border: solid transparent
-            border-radius: 16px
-            border-width: 0 0 4px
-            box-sizing: border-box
-            color: #FFFFFF
-            cursor: pointer
-            display: inline-block
-            font-size: 15px
-            font-weight: 700
-            letter-spacing: .8px
-            line-height: 20px
-            margin: 0
-            outline: none
-            overflow: visible
-            padding: 13px 19px
-            text-align: center
-            text-transform: uppercase
-            touch-action: manipulation
-            transform: translateZ(0)
-            transition: filter .2s
-            user-select: none
-            -webkit-user-select: none
-            vertical-align: middle
-            white-space: nowrap
+            .submit:hover:not(:disabled) 
+                filter: brightness(1.1)
             
-        .submit:after 
-            background-clip: padding-box
-            background-color: #4D3666
-            border: solid transparent
-            border-radius: 16px
-            border-width: 0 0 4px
-            bottom: -4px
-            content: ""
-            left: 0
-            position: absolute
-            right: 0
-            top: 0
-            z-index: -1
-    
-        .submit:main, .submit:focus 
-            user-select: auto
-        
-        .submit:hover:not(:disabled) 
-            filter: brightness(1.1)
-        
-        .submit:disabled 
-            cursor: auto
-        
-        .submit:active:after 
-            border-width: 0 0 0px
-        
-        .submit:active 
-            padding-bottom: 10px
-        
+            .submit:disabled 
+                cursor: auto
+            
+            .submit:active:after 
+                border-width: 0 0 0px
+            
+            .submit:active 
+                padding-bottom: 10px
+            
