@@ -24,6 +24,7 @@ const Header = () => {
   const handleSearch = async () => {
     if (query.trim() === '')
       return
+    // http://localhost:3000/posts?tags_relacionadas_contains=receitas
     return navigate(`/search?q=${query.trim()}`)
   }
 
