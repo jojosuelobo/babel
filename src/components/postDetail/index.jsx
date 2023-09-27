@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 
 export default function index({ post }) {
     return (
-        <div className={styles.post} key={post.data_postagem}>
+        <div className={styles.post} key={post.dataCriacao}>
             <h2 className={styles.title}>{post.titulo}</h2>
-            <p className={styles.date}>{post.data_postagem}</p>
+            <p className={styles.date}>{post.dataCriacao}</p>
 
             <div className={styles.tags}>
-                {(post.tags_relacionadas).map((tag) => (
+                {(post.tags).map((tag) => (
                     <p className={styles.tag} key={tag}>{tag}</p>
                 ))}
             </div>
@@ -20,7 +20,7 @@ export default function index({ post }) {
                     <img className={styles.profile_pic} src={profile} alt="" />
                     <p className={styles.username}>{post.nome_usuario}</p>
                 </div>
-                <Link to={`/posts/${post.id}`} className={styles.post_btn}>Abrir</Link>
+                <Link to={`/posts/${post.idLista}`} className={styles.post_btn}>Abrir</Link>
             </div>
         </div>
     )

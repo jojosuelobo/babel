@@ -3,7 +3,8 @@ import styles from './Register.module.sass'
 
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useAuthentication } from '../../firebase/useAuth';
+// import { useAuthentication } from '../../firebase/useAuth';
+import { useAuthentication } from '../../supabase/useAuth';
 
 export default function Register() {
     const [displayName, setDisplayName] = useState("");
@@ -24,7 +25,7 @@ export default function Register() {
         e.preventDefault();
 
         const user = {
-            displayName,
+            //displayName,
             email,
             password,
         };
@@ -54,12 +55,12 @@ export default function Register() {
                     <p>Company details here</p>
                 </div>
                 <form className={styles.register_form}>
-                    <p>Nome</p>
+                    {/* <p>Nome</p>
                     <input
                         type="text"
                         onChange={(e) => setDisplayName(e.target.value.replace(/[^A-Za-z]+/g, ''))}
                         value={displayName}
-                    />
+                    /> */}
                     <p>Email</p>
                     <input
                         className={`${styles.register} ${errors.email ? styles.input_error : ''}`}
@@ -88,7 +89,6 @@ export default function Register() {
                 <button className={styles.btn} onClick={handleSubmit}
                     disabled={!displayName || !email || !password || !confirmPassword}
                 >Criar conta</button>
-
 
                 <p className={styles.redirect_login}>
                     Já possui conta? <Link to='/login'><a>Entrar</a></Link>

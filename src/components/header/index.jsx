@@ -6,7 +6,8 @@ import profilePic from '../../../public/logoUVV.png'
 
 import { Link, useNavigate } from 'react-router-dom'
 
-import { useAuthentication } from '../../firebase/useAuth';
+//import { useAuthentication } from '../../firebase/useAuth';
+import { useAuthentication } from '../../supabase/useAuth';
 import { useAuthValue } from '../../firebase/AuthContext'
 
 const Header = () => {
