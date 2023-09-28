@@ -14,10 +14,10 @@ export default function Login() {
   const { login, error } = useAuthentication();
 
   useEffect(() => {
-    if (errors) {
-      setError(errors);
+    if (error) {
+      setError(error);
     }
-  }, [errors]);
+  }, [error]);
 
 
   const handleSubmit = async (e) => {

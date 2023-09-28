@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 // Hooks
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import blogFetch from '../../axios/config'
+import backend from '../../axios/config'
 
 // Components
 import Header from '../../components/header'
@@ -21,7 +21,7 @@ export default function Post() {
 
     const getPosts = async () => {
         try {
-            const response = await blogFetch.get(`/posts/${id}`)
+            const response = await backend.get(`/posts/id?idLista=${id}`)
             const data = response.data
             setPost(data)
         } catch (err) {
@@ -41,10 +41,10 @@ export default function Post() {
                 <div className={styles.post}>
                     <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
                     <h2 className={styles.title}>{post.titulo}</h2>
-                    <p className={styles.date}>{post.data_postagem}</p>
+                    <p className={styles.date}>{post.dataCriacao}</p>
 
                     <div className={styles.tags}>
-                        {post.tags_relacionadas?.map((tag) => (
+                        {post.tags?.map((tag) => (
                             <p className={styles.tag} key={tag}>{tag}</p>
                         ))}
                     </div>
@@ -52,10 +52,10 @@ export default function Post() {
 
                     <div className={styles.list}>
                         <ul>
-                            {post.itens_lista?.map((item) => (
-                                <li key={item.nome_item}>
-                                    <h1>{item.nome_item}</h1>
-                                    <p>{item.descricao_item}</p>
+                            {post.conteudo?.map((item) => (
+                                <li key={item.nomeItem}>
+                                    <h1>{item.nomeItem}</h1>
+                                    <p>{item.descricaoItem}</p>
                                 </li>
                             ))}
                         </ul>

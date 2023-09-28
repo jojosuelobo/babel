@@ -20,7 +20,7 @@ export default function Search() {
 
     const getPosts = async () => {
         try {
-            const response = await backend.get(`/posts`)
+            const response = await backend.get(`/posts?titulo=${search}`)
             //const response = await blogFetch.get(`/posts?titulo=${search}`)
             const data = response.data
             const filteredData = data.filter(post => post.titulo.includes(`${search}`))

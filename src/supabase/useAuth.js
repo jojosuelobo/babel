@@ -26,7 +26,7 @@ export const useAuthentication = () => {
     setLoading(true);
 
     try {
-      const { user, session, error } = await supabase.auth.signUp({
+      const { user, session, errorSignUp } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
       })
@@ -41,11 +41,11 @@ export const useAuthentication = () => {
       // });
 
       return user;
-    } catch (error) {
+    } catch (erroCatch) {
 
       let systemErrorMessage;
 
-      systemErrorMessage = error.message;
+      systemErrorMessage = erroCatch.message;
 
       // if (error.message.includes("weak-password")) {
       //   systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres";
@@ -82,16 +82,16 @@ export const useAuthentication = () => {
     try {
       //await supabase.auth.signInWithPassword(data.email, data.password);
       //await signInWithEmailAndPassword(auth, data.email, data.password);
-      const{ _, error } = await auth.signInWithPassword({
+      const{ _, errorSignIn } = await auth.signInWithPassword({
         email: loginData.email,
         password: loginData.password,
       })
-    } catch (error) {
+    } catch (erroCatch) {
 
-      console.log(error);
+      console.log(erroCatch);
       let systemErrorMessage;
 
-      systemErrorMessage = error.message;
+      systemErrorMessage = erroCatch.message;
       setError(systemErrorMessage);
       // if (error.message.includes("invalid-login-credentials")) {
       //   systemErrorMessage = "E-mail ou senha incorretos. Confira seus dados e preencha corretamente";
