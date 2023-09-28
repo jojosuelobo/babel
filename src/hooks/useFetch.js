@@ -124,7 +124,6 @@ export const useFetch = (url) => {
     httpRequest();
   }, [config]);
 
-  console.log(config);
 
   return { data, httpConfig, loading, error };
 };

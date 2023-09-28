@@ -45,7 +45,7 @@ const Header = () => {
           {isMenuOpen && (
             <div className="dropdown-menu">
               <ul>
-                <li><a href="#">Configurações</a></li>
+                <li><Link to={'/settings'} >Configurações</Link></li>
                 <li><Link onClick={logout} to={'/login'}>Sair</Link></li>
               </ul>
             </div>

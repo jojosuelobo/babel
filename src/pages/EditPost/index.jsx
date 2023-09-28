@@ -34,12 +34,17 @@ export default function Edit() {
     const { id } = useParams()
 
     const [post, setPost] = useState([])
+    const [tag, setTag] = useState([])
+    const [lista, setLista] = useState([])
+
 
     const getPosts = async () => {
         try {
             const response = await blogFetch.get(`/posts/${id}`)
             const data = response.data
             setPost(data)
+            setTag(data.tags_relacionadas)
+            setLista(data.itens_lista)
         } catch (err) {
             console.log(err)
         }
@@ -59,33 +64,40 @@ export default function Edit() {
 
     const [titulo, setTitulo] = useState('')
     const [descricao, setDescricao] = useState('')
+    // const [tag, setTag] = useState([])
+    // const [lista, setLista] = useState([])
+
+    //setTag(post.tags_relacionadas)
+
 
     const handleSubmit = async () => {
-        console.log(titulo)
-        console.log(descricao)
+
+        const novoId = parseInt(id, 10)
 
         const post = {
-            id: id,
+            id: novoId,
             titulo,
             data_postagem: dataPostagem,
-            //tags_relacionadas: post.tags_relacionadas,
+            tags_relacionadas: tag,
             descricao,
             nome_usuario: displayName,
-            //itens_lista: lista
-            itens_lista: [
-                {
-                    nome_item: "One Piece",
-                    descricao_item: "Anime de pirata que estica"
-                },
-                {
-                    nome_item: "Naruto",
-                    descricao_item: "Alguma coisa sobre ninjas"
-                },
-            ]
+            itens_lista: lista
+            // itens_lista: [
+            //     {
+            //         nome_item: "One Piece",
+            //         descricao_item: "Anime de pirata que estica"
+            //     },
+            //     {
+            //         nome_item: "Naruto",
+            //         descricao_item: "Alguma coisa sobre ninjas"
+            //     },
+            // ]
         }
 
         console.log(post)
-        httpConfig(post, "PUT")
+        await httpConfig(id, "DELETE")
+        await httpConfig(post, "POST")
+        //httpConfig(post, "PUT")
 
     }
 

@@ -7,7 +7,7 @@ import { IoMdArrowRoundBack } from 'react-icons/io'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { TiDelete } from 'react-icons/ti'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Hooks
 import { useParams } from 'react-router-dom'
@@ -24,6 +24,8 @@ import Aside from '../../components/asideCustom'
 import { getAuth } from "firebase/auth";
 
 export default function Post() {
+    const navigate = useNavigate()
+
     const url = 'http://localhost:3000/posts'
     const { httpConfig, loading } = useFetch(url)
     const { id } = useParams()
@@ -51,6 +53,8 @@ export default function Post() {
 
     const handleDelete = () => {
         httpConfig(id, "DELETE")
+        // TODO: NAVIGATION PARA A HOME
+        //return navigate('/')
     }
 
     return (

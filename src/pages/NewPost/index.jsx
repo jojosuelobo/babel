@@ -105,7 +105,6 @@ export default function NewPost() {
             // ]
         }
 
-        console.log(lista)
         console.log(post)
         httpConfig(post, "POST")
 
