@@ -125,10 +125,8 @@ export default function Edit() {
                         <ul>
                             {post.itens_lista?.map((item) => (
                                 <li key={item.nome_item}>
-                                    <p>Título Item</p>
-                                    <input type="text" />
-                                    <p>Descrição Item</p>
-                                    <textarea></textarea>
+                                    <h1>{item.nome_item}</h1>
+                                    <p>{item.descricao_item}</p>
                                 </li>
                             ))}
                         </ul>
