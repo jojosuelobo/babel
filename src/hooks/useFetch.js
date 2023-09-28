@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 
 // 4 - custom hook
@@ -38,6 +39,18 @@ export const useFetch = (url) => {
       });
 
       setMethod("DELETE");
+      setItemId(data);
+    } else if (method === "PUT") {
+      setConfig({
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // was added
+        body: JSON.stringify(data),
+      })
+
+      setMethod("PUT");
       setItemId(data);
     }
   };
@@ -98,12 +111,20 @@ export const useFetch = (url) => {
         const json = await res.json();
 
         setCallFetch(json);
+      } else if(method === "PUT") {
+        const putUrl = `${url}/${itemId}`;
+
+        const res = await fetch(putUrl, config);
+
+        const json = await res.json();
+        setCallFetch(json);
       }
     };
 
     httpRequest();
   }, [config]);
 
+  console.log(config);
 
   return { data, httpConfig, loading, error };
 };

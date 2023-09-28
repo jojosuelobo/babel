@@ -3,6 +3,10 @@ import styles from './Edit.module.sass'
 
 import profile from '../../../public/logoUVV.png'
 
+// lib
+import moment from 'moment/moment'
+
+
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
 
@@ -13,12 +17,19 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import blogFetch from '../../axios/config'
+import { useFetch } from '../../hooks/useFetch'
 
 // Components
 import Header from '../../components/header'
 import Aside from '../../components/asideCustom'
 
+// Firebase
+import { getAuth } from "firebase/auth";
+
+
 export default function Edit() {
+    const url = 'http://localhost:3000/posts'
+    const { httpConfig, loading } = useFetch(url)
 
     const { id } = useParams()
 
@@ -34,9 +45,49 @@ export default function Edit() {
         }
     }
 
+    // Nome de usuário
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const displayName = user.displayName
+
+    // Data e dia
+    const dataPostagem = moment().format('L')
+
     useEffect(() => {
         getPosts()
     }, [])
+
+    const [titulo, setTitulo] = useState('')
+    const [descricao, setDescricao] = useState('')
+
+    const handleSubmit = async () => {
+        console.log(titulo)
+        console.log(descricao)
+
+        const post = {
+            id: id,
+            titulo,
+            data_postagem: dataPostagem,
+            //tags_relacionadas: post.tags_relacionadas,
+            descricao,
+            nome_usuario: displayName,
+            //itens_lista: lista
+            itens_lista: [
+                {
+                    nome_item: "One Piece",
+                    descricao_item: "Anime de pirata que estica"
+                },
+                {
+                    nome_item: "Naruto",
+                    descricao_item: "Alguma coisa sobre ninjas"
+                },
+            ]
+        }
+
+        console.log(post)
+        httpConfig(post, "PUT")
+
+    }
 
     return (
         <>
@@ -46,37 +97,34 @@ export default function Edit() {
                 <div className={styles.post}>
                     <div className={styles.icons}>
                         <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
-
                     </div>
-                    <h2 className={styles.title}>{post.titulo}</h2>
-                    <p className={styles.date}>{post.data_postagem}</p>
+                    <h2>Título</h2>
+                    <input onChange={(e) => setTitulo(e.target.value)} className={styles.title} />
+                    <p className={styles.date}>{dataPostagem}</p>
                     <div className={styles.tags}>
                         {post.tags_relacionadas?.map((tag) => (
                             <p className={styles.tag} key={tag}>{tag}</p>
                         ))}
                     </div>
-                    <p className={styles.desc}>{post.descricao}</p>
+                    <p>Descrição</p>
+                    <textarea onChange={(e) => setDescricao(e.target.value)} className={styles.desc}>{post.descricao}</textarea>
 
                     <div className={styles.list}>
                         <ul>
                             {post.itens_lista?.map((item) => (
                                 <li key={item.nome_item}>
-                                    <h1>{item.nome_item}</h1>
-                                    <p>{item.descricao_item}</p>
+                                    <p>Título Item</p>
+                                    <input type="text" />
+                                    <p>Descrição Item</p>
+                                    <textarea></textarea>
                                 </li>
                             ))}
                         </ul>
                     </div>
-
-                    <div className={styles.post_footer}>
-                        <div className={styles.profile_info}>
-                            <img className={styles.profile_pic} src={profile} alt="" />
-                            <p className={styles.username}>{post.nome_usuario}</p>
-                        </div>
-                    </div>
+                    <button onClick={handleSubmit}>SALVAR</button>
                 </div>
-                <div className={styles.coment}>
 
+                <div className={styles.coment}>
                 </div>
             </div>
         </>

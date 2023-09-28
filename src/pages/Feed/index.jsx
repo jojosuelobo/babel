@@ -24,7 +24,6 @@ export default function Feed() {
     }
   }
 
-
   useEffect(() => {
     getPosts()
   }, [])

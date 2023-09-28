@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styles from './Post.module.sass'
 import profile from '../../../public/logoUVV.png'
 
@@ -12,6 +13,8 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import blogFetch from '../../axios/config'
+import { useFetch } from '../../hooks/useFetch'
+
 
 // Components
 import Header from '../../components/header'
@@ -21,6 +24,8 @@ import Aside from '../../components/asideCustom'
 import { getAuth } from "firebase/auth";
 
 export default function Post() {
+    const url = 'http://localhost:3000/posts'
+    const { httpConfig, loading } = useFetch(url)
     const { id } = useParams()
 
     const [post, setPost] = useState([])
@@ -44,6 +49,10 @@ export default function Post() {
     const user = auth.currentUser;
     const displayName = user.displayName
 
+    const handleDelete = () => {
+        httpConfig(id, "DELETE")
+    }
+
     return (
         <>
             <Header />
@@ -56,7 +65,7 @@ export default function Post() {
                         {displayName === post.nome_usuario &&
                             <div>
                                 <Link to={`/edit/${post.id}`}> <AiOutlineEdit className={styles.icon} /> </Link>
-                                <a><TiDelete className={styles.icon}/></a>
+                                <a onClick={handleDelete}><TiDelete className={styles.icon}/></a>
                             </div>
                         }
 
