@@ -24,6 +24,7 @@ const Header = () => {
   const handleSearch = async () => {
     if (query.trim() === '')
       return
+    // http://localhost:3000/posts?tags_relacionadas_contains=receitas
     return navigate(`/search?q=${query.trim()}`)
   }
 
@@ -44,7 +45,7 @@ const Header = () => {
           {isMenuOpen && (
             <div className="dropdown-menu">
               <ul>
-                <li><a href="#">Configurações</a></li>
+                <li><Link to={'/settings'} >Configurações</Link></li>
                 <li><Link onClick={logout} to={'/login'}>Sair</Link></li>
               </ul>
             </div>

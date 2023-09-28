@@ -105,7 +105,6 @@ export default function NewPost() {
             // ]
         }
 
-        console.log(lista)
         console.log(post)
         httpConfig(post, "POST")
 
@@ -116,7 +115,7 @@ export default function NewPost() {
     const preencher = () => {
         setQuantidadeDeItensLista(3)
         setTitulo('Melhores receitas com morango')
-        setTags((('receitas,culinária,sobremesa').split(",").map((tag) => tag.trim())).filter((tag) => tag !== ""))
+        //setTags((('receitas,culinária,sobremesa').split(",").map((tag) => tag.trim())).filter((tag) => tag !== ""))
         setDescricao('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.')
     }
 
@@ -139,8 +138,6 @@ export default function NewPost() {
                         <label className={styles.tags}>
                             Tags
                             <input
-                                value={tag}
-                                type="text"
                                 // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
                                 onChange={(e) =>
                                     setTags(

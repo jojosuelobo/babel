@@ -16,6 +16,10 @@ import Feed from './pages/Feed'
 import Post from './pages/Post'
 import Search from './pages/Search'
 import NewPost from './pages/NewPost'
+import Profile from './pages/Profile'
+import Notifications from './pages/Notifications'
+import EditPost from './pages/EditPost'
+import Settings from './pages/Settings'
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -41,7 +45,7 @@ function App() {
               />
               <Route
                 path='/newpost'
-                element={user ? <NewPost/> : <Login/>}
+                element={user ? <NewPost /> : <Login />}
               />
               <Route
                 path='/'
@@ -58,6 +62,22 @@ function App() {
               <Route
                 path='/posts/:id'
                 element={user ? <Post /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/profile'
+                element={user ? <Profile /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/notifications'
+                element={user ? <Notifications /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/edit/:id'
+                element={user ? <EditPost /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/settings'
+                element={user ? <Settings /> : <Navigate to='/login' />}
               />
             </Routes>
           </div>
