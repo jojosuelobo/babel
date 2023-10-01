@@ -45,18 +45,11 @@ export default function NewPost() {
     // Atualiza a lista sempre que quantidadeDeItensLista mudar
     useEffect(() => {
         const novaLista = Array.from({ length: quantidadeDeItensLista }, () => ({
-            nome_item: '',
-            descricao_item: ''
+            nome_item: 'p',
+            descricao_item: 'pp'
         }));
         setLista(novaLista);
     }, [quantidadeDeItensLista]);
-
-    // const [lista, setLista] = useState(
-    //     Array.from({ length: quantidadeDeItensLista }, () => ({
-    //         nome_item: '',
-    //         descricao_item: '',
-    //     }))
-    // );
 
     // const [lista, setLista] = useState([
     //     {
@@ -106,7 +99,7 @@ export default function NewPost() {
         }
 
         console.log(post)
-        httpConfig(post, "POST")
+        //httpConfig(post, "POST")
 
         // Clear dos campos
     }
@@ -155,7 +148,36 @@ export default function NewPost() {
 
                         <div className={styles.itens}>
 
-                            {Array.from({ length: quantidadeDeItensLista }, (_, index) => (
+                            {lista.map((item, index) => (
+                                <div className={styles.item_lista} key={index}>
+                                <label className={styles.item_tit}>
+                                    Título {index + 1}
+                                    <input
+                                        type="text"
+                                        className={styles.item_input}
+                                        onChange={(e) => {
+                                            const newList = [...lista];
+                                            newList[index].nome_item = e.target.value;
+                                            setLista(newList);
+                                        }}
+                                    />
+                                </label>
+                                <label className={styles.descricao}>
+                                    Descrição
+                                    <textarea
+                                        type="text"
+                                        className={styles.item_text}
+                                        onChange={(e) => {
+                                            const newList = [...lista];
+                                            newList[index].descricao_item = e.target.value;
+                                            setLista(newList);
+                                        }}
+                                    ></textarea>
+                                </label>
+                            </div>
+                            ))}
+
+                           {/* {Array.from({ length: quantidadeDeItensLista }, (_, index) => (
                                 <div className={styles.item_lista} key={index}>
                                     <label className={styles.item_tit}>
                                         Título {index + 1}
@@ -182,7 +204,7 @@ export default function NewPost() {
                                         ></textarea>
                                     </label>
                                 </div>
-                            ))}
+                                        ))} */}
                         </div>
 
                         <div className={styles.botoes}>
