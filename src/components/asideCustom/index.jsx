@@ -11,7 +11,7 @@ export default function aside() {
         <Link to={'/'}>
           <li className={styles.list_btn}>
             <BiHome className={styles.icon} />
-            <button className={styles.btn}>Página Inicial</button>
+            <button className={styles.btn}>Dashboard</button>
           </li>
         </Link>
 
