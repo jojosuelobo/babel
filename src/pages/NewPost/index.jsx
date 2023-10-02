@@ -45,8 +45,8 @@ export default function NewPost() {
     // Atualiza a lista sempre que quantidadeDeItensLista mudar
     useEffect(() => {
         const novaLista = Array.from({ length: quantidadeDeItensLista }, () => ({
-            nome_item: 'p',
-            descricao_item: 'pp'
+            nome_item: 'teste',
+            descricao_item: 'TESTE'
         }));
         setLista(novaLista);
     }, [quantidadeDeItensLista]);
@@ -99,7 +99,7 @@ export default function NewPost() {
         }
 
         console.log(post)
-        //httpConfig(post, "POST")
+        httpConfig(post, "POST")
 
         // Clear dos campos
     }
