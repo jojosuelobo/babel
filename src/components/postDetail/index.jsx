@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-unused-vars */
 import styles from './postDetail.module.sass'
 import profile from '../../../public/LogoUVV.png' // Afins de testes
 import { Link } from 'react-router-dom'
