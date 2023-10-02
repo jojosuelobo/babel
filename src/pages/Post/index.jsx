@@ -77,16 +77,16 @@ export default function Post() {
                     <h2 className={styles.title}>{post.titulo}</h2>
                     <p className={styles.date}>{post.data_postagem}</p>
                     <div className={styles.tags}>
-                        {post.tags_relacionadas?.map((tag) => (
-                            <p className={styles.tag} key={tag}>{tag}</p>
+                        {post.tags_relacionadas?.map((tag, index) => (
+                            <p className={styles.tag} key={index}>{tag}</p>
                         ))}
                     </div>
                     <p className={styles.desc}>{post.descricao}</p>
 
                     <div className={styles.list}>
                         <ul>
-                            {post.itens_lista?.map((item) => (
-                                <li key={item.nome_item}>
+                            {post.itens_lista?.map((item, index) => (
+                                <li key={index}>
                                     <h1>{item.nome_item}</h1>
                                     <p>{item.descricao_item}</p>
                                 </li>

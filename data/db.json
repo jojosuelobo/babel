@@ -113,6 +113,47 @@
           "descricao_item": "DFGVDFG"
         }
       ]
+    },
+    {
+      "id": 48,
+      "titulo": "TITLE",
+      "data_postagem": "10/01/2023",
+      "tags_relacionadas": [
+        "TAG1",
+        "TAG2"
+      ],
+      "descricao": "LOREM DESCRIPTION",
+      "nome_usuario": "shaolinMatadorDePorco",
+      "itens_lista": [
+        {
+          "nome_item": "A",
+          "descricao_item": "a"
+        },
+        {
+          "nome_item": "B",
+          "descricao_item": "b"
+        },
+        {
+          "nome_item": "C",
+          "descricao_item": "c"
+        },
+        {
+          "nome_item": "D",
+          "descricao_item": "d"
+        },
+        {
+          "nome_item": "E",
+          "descricao_item": "e"
+        },
+        {
+          "nome_item": "F",
+          "descricao_item": "f"
+        },
+        {
+          "nome_item": "G",
+          "descricao_item": "g"
+        }
+      ]
     }
   ]
 }
