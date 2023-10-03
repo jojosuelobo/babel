@@ -46,12 +46,12 @@ export default function NewPost() {
     ]);
 
     const handleSoma = () => {
-        let novoItem = {nome_item: '', descricao_item: 'TESTEadição'}
+        let novoItem = { nome_item: '', descricao_item: 'TESTEadição' }
         setLista([...lista, novoItem])
     }
 
     const handleRemove = () => {
-        if(lista.length > 0) {
+        if (lista.length > 2) {
             let novaLista = lista.slice(0, -1)
             setLista(novaLista)
         }
@@ -88,29 +88,32 @@ export default function NewPost() {
                         <h1>Nova lista</h1>
                     </div>
                     <form className={styles.form} onSubmit={handleSubmit}>
-                        <label className={styles.title}>
-                            Título
-                            <input value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
-                        </label>
+                        <div className={styles.uperForm}>
+                            <label className={styles.title}>
+                                Título da Lista
+                                <input value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
+                            </label>
 
-                        <label className={styles.tags}>
-                            Tags
-                            <input
-                                // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
-                                onChange={(e) =>
-                                    setTags(
-                                        ((e.target.value).split(",").map((tag) => tag.trim()))
-                                            .filter((tag) => tag !== "")
-                                    )
-                                }
-                            />
-                        </label>
+                            <label className={styles.tags}>
+                                Tags
+                                <input
+                                    // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
+                                    onChange={(e) =>
+                                        setTags(
+                                            ((e.target.value).split(",").map((tag) => tag.trim()))
+                                                .filter((tag) => tag !== "")
+                                        )
+                                    }
+                                />
+                            </label>
 
-                        <label className={styles.descricao}>
-                            Descrição
-                            <textarea value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
-                        </label>
-
+                            <label className={styles.descricao}>
+                                Descrição
+                                <textarea value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                            </label>
+                            <a onClick={handleSoma} className={styles.addRem}>Adicionar item</a>
+                            <a onClick={handleRemove} className={styles.addRem}>Remover item</a>
+                        </div>
                         <div className={styles.itens}>
                             {lista.map((item, index) => (
                                 <div className={styles.item_lista} key={index}>
@@ -139,15 +142,18 @@ export default function NewPost() {
                                         ></textarea>
                                     </label>
                                 </div>
-                            ))} 
+                            ))}
                         </div>
-                        <div className={styles.botoes}>
-                            {loading ? <p>Aguarde!</p>
-                                : <input className={styles.submit} type="submit" value="Criar" />}
+                        <div>
+                            <div className={styles.botoes}>
+                                {loading ? <p>Aguarde!</p>
+                                    : <input className={styles.submit} type="submit" value="Criar Lista" />}
+                            </div>
+                            {/* Anexar imagem no futuro... */}
                         </div>
+
                     </form>
-                    <button onClick={handleSoma} className={styles.submit}>Adicionar item</button>
-                    <button onClick={handleRemove} className={styles.submit}>Remover item</button>
+
                 </div>
 
             </div>
