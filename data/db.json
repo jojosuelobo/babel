@@ -94,172 +94,27 @@
       ]
     },
     {
-      "id": 583,
-      "titulo": "sdfsf",
+      "id": 806,
+      "titulo": "Melhores comidas cruas",
       "data_postagem": "10/03/2023",
       "tags_relacionadas": [
-        "sdfss"
+        "comida",
+        "receita"
       ],
-      "descricao": "dsdf",
+      "descricao": "cru eh bom vai",
       "nome_usuario": "jojosuelobo",
       "itens_lista": [
         {
-          "nome_item": "asd",
-          "descricao_item": "sdassd"
+          "nome_item": "tartar",
+          "descricao_item": "comida tipica francesa"
         },
         {
-          "nome_item": "sad",
-          "descricao_item": "sada"
-        }
-      ]
-    },
-    {
-      "id": 716,
-      "titulo": "Melhores receitas com morango",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "tstsd"
-      ],
-      "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis massa sem, fermentum eu egestas in, luctus vitae nibh. Mauris viverra erat velit, nec suscipit nunc finibus consectetur. Nam quis malesuada nisl. Suspendisse at velit id ex semper convallis. Aliquam efficitur leo sit amet gravida dapibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis non feugiat quam. In tincidunt ullamcorper felis, nec elementum nisl ultrices at. Proin auctor sagittis tortor, at elementum ante venenatis id. Nam convallis, enim eu viverra lacinia, enim sapien eleifend purus, sit amet imperdiet orci arcu at enim. Fusce vestibulum tellus sit amet augue ultrices cursus. Donec eget lorem bibendum, cursus urna congue, feugiat neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "ada",
-          "descricao_item": "daa"
+          "nome_item": "abacaxi",
+          "descricao_item": "frutinha hmmm"
         },
         {
-          "nome_item": "adas",
-          "descricao_item": "asda"
-        },
-        {
-          "nome_item": "ada",
-          "descricao_item": "ada"
-        }
-      ]
-    },
-    {
-      "id": 695,
-      "titulo": "sadaas",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "daasda"
-      ],
-      "descricao": "asdasd",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "asdasd",
-          "descricao_item": "adassad"
-        }
-      ]
-    },
-    {
-      "id": 936,
-      "titulo": "qq",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "ww"
-      ],
-      "descricao": "ee",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "c",
-          "descricao_item": "cc"
-        }
-      ]
-    },
-    {
-      "id": 458,
-      "titulo": "teste agora vai",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "agora",
-        "vai"
-      ],
-      "descricao": "desc lorem",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "teste",
-          "descricao_item": "adadas"
-        },
-        {
-          "nome_item": "testeAdição",
-          "descricao_item": "dasd"
-        },
-        {
-          "nome_item": "testeAdição",
-          "descricao_item": "ada"
-        },
-        {
-          "nome_item": "testeAdição",
-          "descricao_item": "adada"
-        },
-        {
-          "nome_item": "testeAdição",
-          "descricao_item": "adasd"
-        },
-        {
-          "nome_item": "testeAdição",
-          "descricao_item": "asda"
-        },
-        {
-          "nome_item": "testeAdição",
-          "descricao_item": "asda"
-        }
-      ]
-    },
-    {
-      "id": 293,
-      "titulo": "sdjfksdjksdjksdf",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "v vbvbnfvn",
-        "ghjgh"
-      ],
-      "descricao": "ghjghjhj",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "hf",
-          "descricao_item": "hfghfg"
-        },
-        {
-          "nome_item": "fhfhf",
-          "descricao_item": "fhfh"
-        },
-        {
-          "nome_item": "fhf",
-          "descricao_item": "ffghf"
-        },
-        {
-          "nome_item": "hfh",
-          "descricao_item": "fghf"
-        },
-        {
-          "nome_item": "fhfh",
-          "descricao_item": "fghf"
-        },
-        {
-          "nome_item": "fhfh",
-          "descricao_item": "hffgh"
+          "nome_item": "moranga",
+          "descricao_item": "tabme fruta"
         }
       ]
     }
