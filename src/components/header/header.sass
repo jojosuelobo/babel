@@ -20,9 +20,13 @@
     //margin-bottom: 2rem
     .search-icon
       position: absolute
-      color: #555 // Cor do ícone
+      color: #fff // Cor do ícone
       padding: 10px
       cursor: pointer
+      opacity: 0.4
+      transition: 0.5s
+    .search-icon:hover
+      opacity: 1
 
     .search-bar
       width: 325px
@@ -30,7 +34,7 @@
       padding-left: 50px
       border: none
       background-color: #404040
-      color: #000000
+      color: #fff
       font-size: 16px // Tamanho da fonte do input
       border-radius: 50px // Bordas arredondadas
       text-overflow: ellipsis
