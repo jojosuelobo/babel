@@ -105,7 +105,7 @@ export default function Edit() {
             <div className={styles.section}>
                 <div className={styles.post}>
                     <div className={styles.icons}>
-                        <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
+                        <Link to={`/posts/${id}`}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
                     </div>
                     <h2>Título</h2>
                     <input onChange={(e) => setTitulo(e.target.value)} className={styles.title} />

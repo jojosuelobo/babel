@@ -40,16 +40,36 @@ export default function NewPost() {
 
     // Listagem de fato
     const [quantidadeDeItensLista, setQuantidadeDeItensLista] = useState(2)
-    const [lista, setLista] = useState([]);
-
-    // Atualiza a lista sempre que quantidadeDeItensLista mudar
-    useEffect(() => {
-        const novaLista = Array.from({ length: quantidadeDeItensLista }, () => ({
+    const [lista, setLista] = useState([
+        {
             nome_item: 'teste',
             descricao_item: 'TESTE'
-        }));
-        setLista(novaLista);
-    }, [quantidadeDeItensLista]);
+        }
+    ]);
+
+    const handleSoma = () => {
+        //setQuantidadeDeItensLista(quantidadeDeItensLista + 1)
+        let novoItem = {nome_item: 'testeAdição', descricao_item: 'TESTEadição'}
+        //let novaLista = {...lista, novoItem}
+        setLista([...lista, novoItem])
+    }
+
+    const handleRemove = () => {
+        if(lista.length > 0) {
+            let novaLista = lista.slice(0, -1)
+            setLista(novaLista)
+        }
+    }
+
+    // Atualiza a lista sempre que quantidadeDeItensLista mudar
+
+    // useEffect(() => {
+    //     const novaLista = Array.from({ length: quantidadeDeItensLista }, () => ({
+    //         nome_item: 'teste',
+    //         descricao_item: 'TESTE'
+    //     }));
+    //     setLista(novaLista);
+    // }, [quantidadeDeItensLista]);
 
     // const [lista, setLista] = useState([
     //     {
@@ -104,7 +124,7 @@ export default function NewPost() {
         // Clear dos campos
     }
 
-    
+
     const preencher = () => {
         setQuantidadeDeItensLista(3)
         setTitulo('Melhores receitas com morango')
@@ -148,36 +168,38 @@ export default function NewPost() {
 
                         <div className={styles.itens}>
 
+                            {/* lista.map((item, index) => (<h1 key={index}>oi</h1>)) */}
+
                             {lista.map((item, index) => (
                                 <div className={styles.item_lista} key={index}>
-                                <label className={styles.item_tit}>
-                                    Título {index + 1}
-                                    <input
-                                        type="text"
-                                        className={styles.item_input}
-                                        onChange={(e) => {
-                                            const newList = [...lista];
-                                            newList[index].nome_item = e.target.value;
-                                            setLista(newList);
-                                        }}
-                                    />
-                                </label>
-                                <label className={styles.descricao}>
-                                    Descrição
-                                    <textarea
-                                        type="text"
-                                        className={styles.item_text}
-                                        onChange={(e) => {
-                                            const newList = [...lista];
-                                            newList[index].descricao_item = e.target.value;
-                                            setLista(newList);
-                                        }}
-                                    ></textarea>
-                                </label>
-                            </div>
-                            ))}
+                                    <label className={styles.item_tit}>
+                                        Título {index + 1}
+                                        <input
+                                            type="text"
+                                            className={styles.item_input}
+                                            onChange={(e) => {
+                                                const newList = [...lista];
+                                                newList[index].nome_item = e.target.value;
+                                                setLista(newList);
+                                            }}
+                                        />
+                                    </label>
+                                    <label className={styles.descricao}>
+                                        Descrição
+                                        <textarea
+                                            type="text"
+                                            className={styles.item_text}
+                                            onChange={(e) => {
+                                                const newList = [...lista];
+                                                newList[index].descricao_item = e.target.value;
+                                                setLista(newList);
+                                            }}
+                                        ></textarea>
+                                    </label>
+                                </div>
+                            ))} 
 
-                           {/* {Array.from({ length: quantidadeDeItensLista }, (_, index) => (
+                            {/* {Array.from({ length: quantidadeDeItensLista }, (_, index) => (
                                 <div className={styles.item_lista} key={index}>
                                     <label className={styles.item_tit}>
                                         Título {index + 1}
@@ -213,8 +235,8 @@ export default function NewPost() {
                                 : <input className={styles.submit} type="submit" value="Criar" />}
                         </div>
                     </form>
-                    <button onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista + 1)} className={styles.submit}>Adicionar item</button>
-                    <button onClick={() => setQuantidadeDeItensLista(quantidadeDeItensLista - 1)} className={styles.submit}>Remover item</button>
+                    <button onClick={() => setQuantidadeDeItensLista(handleSoma)} className={styles.submit}>Adicionar item</button>
+                    <button onClick={() => setQuantidadeDeItensLista(handleRemove)} className={styles.submit}>Remover item</button>
                 </div>
 
             </div>
