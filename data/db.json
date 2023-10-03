@@ -53,68 +53,6 @@
       ]
     },
     {
-      "id": 660,
-      "titulo": "asdasdasd",
-      "data_postagem": "09/27/2023",
-      "tags_relacionadas": [
-        "sadasda",
-        "jksdfjsf"
-      ],
-      "descricao": "sfsffs",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "fsdfdd",
-          "descricao_item": "dfgdfgd"
-        },
-        {
-          "nome_item": "dfgdgd",
-          "descricao_item": "dfgdfgd"
-        }
-      ]
-    },
-    {
-      "id": 430,
-      "titulo": "fsdfsdfsdfds",
-      "data_postagem": "09/27/2023",
-      "tags_relacionadas": [
-        "sdfsdfsfdfds"
-      ],
-      "descricao": "sdfdsfdfgfdb",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "fgbgfnb",
-          "descricao_item": "thtutyu"
-        },
-        {
-          "nome_item": "gjgjgju7",
-          "descricao_item": "tujtutyu"
-        }
-      ]
-    },
-    {
-      "id": 320,
-      "titulo": "QA",
-      "data_postagem": "09/27/2023",
-      "tags_relacionadas": [
-        "QA",
-        "TESTE"
-      ],
-      "descricao": "testado com sucesso",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "ADD",
-          "descricao_item": "DASDADA"
-        },
-        {
-          "nome_item": "FDDFGV",
-          "descricao_item": "DFGVDFG"
-        }
-      ]
-    },
-    {
       "id": 48,
       "titulo": "TITLE",
       "data_postagem": "10/01/2023",
@@ -156,51 +94,22 @@
       ]
     },
     {
-      "id": 246,
-      "titulo": "",
-      "data_postagem": "10/02/2023",
+      "id": 580,
+      "titulo": "vv",
+      "data_postagem": "10/03/2023",
       "tags_relacionadas": [
-        "222"
+        "vv"
       ],
-      "descricao": "",
+      "descricao": "vv",
       "nome_usuario": "jojosuelobo",
       "itens_lista": [
         {
-          "nome_item": "a",
-          "descricao_item": "aa"
+          "nome_item": "asd",
+          "descricao_item": "sdassd"
         },
         {
-          "nome_item": "b",
-          "descricao_item": "bb"
-        }
-      ]
-    },
-    {
-      "id": 447,
-      "titulo": "",
-      "data_postagem": "10/02/2023",
-      "tags_relacionadas": [
-        "KKKK",
-        "HAHAHA"
-      ],
-      "descricao": "",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "teste",
-          "descricao_item": "TESTE"
-        },
-        {
-          "nome_item": "i",
-          "descricao_item": "ii"
+          "nome_item": "sad",
+          "descricao_item": "sada"
         }
       ]
     }

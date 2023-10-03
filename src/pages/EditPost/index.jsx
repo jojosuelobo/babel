@@ -73,7 +73,7 @@ export default function Edit() {
         const novoId = parseInt(id, 10)
 
         const post = {
-            id: novoId,
+            id: novoId+1,
             titulo,
             data_postagem: dataPostagem,
             tags_relacionadas: tag,
