@@ -34,7 +34,7 @@ export default function Edit() {
     const { id } = useParams()
 
     const [post, setPost] = useState([])
-    const [tag, setTag] = useState([])
+    const [tag, setTags] = useState([])
     const [lista, setLista] = useState([])
 
 
@@ -43,7 +43,6 @@ export default function Edit() {
             const response = await blogFetch.get(`/posts/${id}`)
             const data = response.data
             setPost(data)
-            setTag(data.tags_relacionadas)
             setLista(data.itens_lista)
         } catch (err) {
             console.log(err)
@@ -64,7 +63,6 @@ export default function Edit() {
 
     const [titulo, setTitulo] = useState('')
     const [descricao, setDescricao] = useState('')
-    // const [tag, setTag] = useState([])
     // const [lista, setLista] = useState([])
 
     //setTag(post.tags_relacionadas)
@@ -105,7 +103,6 @@ export default function Edit() {
         <>
             <Header />
             <div className={styles.section}>
-                <Aside />
                 <div className={styles.post}>
                     <div className={styles.icons}>
                         <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
@@ -113,11 +110,18 @@ export default function Edit() {
                     <h2>Título</h2>
                     <input onChange={(e) => setTitulo(e.target.value)} className={styles.title} />
                     <p className={styles.date}>{dataPostagem}</p>
-                    <div className={styles.tags}>
-                        {post.tags_relacionadas?.map((tag) => (
-                            <p className={styles.tag} key={tag}>{tag}</p>
-                        ))}
-                    </div>
+                    <label className={styles.tags}>
+                        Tags
+                        <input
+                            // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
+                            onChange={(e) =>
+                                setTags(
+                                    ((e.target.value).split(",").map((tag) => tag.trim()))
+                                        .filter((tag) => tag !== "")
+                                )
+                            }
+                        />
+                    </label>
                     <p>Descrição</p>
                     <textarea onChange={(e) => setDescricao(e.target.value)} className={styles.desc}>{post.descricao}</textarea>
 
