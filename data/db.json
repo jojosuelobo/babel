@@ -53,68 +53,6 @@
       ]
     },
     {
-      "id": 660,
-      "titulo": "asdasdasd",
-      "data_postagem": "09/27/2023",
-      "tags_relacionadas": [
-        "sadasda",
-        "jksdfjsf"
-      ],
-      "descricao": "sfsffs",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "fsdfdd",
-          "descricao_item": "dfgdfgd"
-        },
-        {
-          "nome_item": "dfgdgd",
-          "descricao_item": "dfgdfgd"
-        }
-      ]
-    },
-    {
-      "id": 430,
-      "titulo": "fsdfsdfsdfds",
-      "data_postagem": "09/27/2023",
-      "tags_relacionadas": [
-        "sdfsdfsfdfds"
-      ],
-      "descricao": "sdfdsfdfgfdb",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "fgbgfnb",
-          "descricao_item": "thtutyu"
-        },
-        {
-          "nome_item": "gjgjgju7",
-          "descricao_item": "tujtutyu"
-        }
-      ]
-    },
-    {
-      "id": 320,
-      "titulo": "QA",
-      "data_postagem": "09/27/2023",
-      "tags_relacionadas": [
-        "QA",
-        "TESTE"
-      ],
-      "descricao": "testado com sucesso",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "ADD",
-          "descricao_item": "DASDADA"
-        },
-        {
-          "nome_item": "FDDFGV",
-          "descricao_item": "DFGVDFG"
-        }
-      ]
-    },
-    {
       "id": 48,
       "titulo": "TITLE",
       "data_postagem": "10/01/2023",
@@ -152,6 +90,31 @@
         {
           "nome_item": "G",
           "descricao_item": "g"
+        }
+      ]
+    },
+    {
+      "id": 806,
+      "titulo": "Melhores comidas cruas",
+      "data_postagem": "10/03/2023",
+      "tags_relacionadas": [
+        "comida",
+        "receita"
+      ],
+      "descricao": "cru eh bom vai",
+      "nome_usuario": "jojosuelobo",
+      "itens_lista": [
+        {
+          "nome_item": "tartar",
+          "descricao_item": "comida tipica francesa"
+        },
+        {
+          "nome_item": "abacaxi",
+          "descricao_item": "frutinha hmmm"
+        },
+        {
+          "nome_item": "moranga",
+          "descricao_item": "tabme fruta"
         }
       ]
     }

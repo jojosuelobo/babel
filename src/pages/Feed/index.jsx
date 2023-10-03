@@ -37,7 +37,7 @@ export default function Feed() {
         {/* Conteúdo principal da página */}
         <div className={styles.feed}>
           {posts.length === 0 ? (
-            <div>
+            <div className={styles.error}>
               <h1>Não há posts a serem exibidos</h1>
             </div>
           ) : (

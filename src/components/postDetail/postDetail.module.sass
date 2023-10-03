@@ -1,24 +1,36 @@
 .post
     width: calc(40% - 3rem)
     height: 100%
-    background-color: #F4F4F4
+    background-color: #404040
     margin: 1.5rem
     padding: 1.5rem
-    border: 1px solid
+    border: 1px solid #2A2A2A
     //cursor: pointer
-    .title
-        color: #000
-        font-size: 24px
-        font-style: normal
-        font-weight: 400
-        line-height: normal
-    .date
-        color: #000
-        font-size: 12px
-        font-style: normal
-        font-weight: 400
-        line-height: normal
-        margin-bottom: 17px
+    color: #fff
+    border-radius: 50px
+    .header
+        display: flex
+        justify-content: space-between
+        .header_text
+            .title
+                font-size: 24px
+                font-style: normal
+                font-weight: 400
+                line-height: normal
+            .date
+                font-size: 12px
+                font-style: normal
+                font-weight: 400
+                line-height: normal
+                margin-bottom: 17px
+        .icon
+            font-size: 30px
+            cursor: pointer
+            opacity: 0.4
+            transition: 0.3s
+        .icon:hover 
+            opacity: 1
+
     .tags
         display: flex
         margin-bottom: 17px
@@ -27,7 +39,7 @@
             font-weight: bold
             padding: 8px
             border-radius: 50px
-            background: #D9D9D9
+            background: #2A2A2A
     .desc
         margin-bottom: 32px
 
@@ -44,12 +56,15 @@
                 height: 32px
                 margin-right: 14px
         .post_btn
+            padding: 6px
             text-align: center
             justify-content: center
             display: flex
             align-items: center
             border-radius: 50px
-            background: #D9D9D9
+            background: #4D3666
             width: 53px
             height: 32px
             flex-shrink: 0
+        .post_btn:hover
+            background: #fff
