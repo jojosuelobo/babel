@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import logo from '../../../public/logoUVV.png'
+import logo from '../../../public/logo.png'
 import styles from './Login.module.sass'
 
 import { Link } from 'react-router-dom';
@@ -11,7 +11,13 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { login, error: authError, loading } = useAuthentication();
+  const { login, errors } = useAuthentication();
+
+  useEffect(() => {
+    if (error) {
+      setError(error);
+    }
+  }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,45 +29,49 @@ export default function Login() {
       password,
     };
 
-    const res = await login(user);
-
-    //console.log(res);
+    try {
+      await login(user);
+    } catch (err) {
+      /* empty */
+    }
   };
 
-  useEffect(() => {
-    if (authError) {
-      setError(authError);
-    }
-  }, [authError]);
+
 
   return (
-    <section className={styles.main_content}>
-      <div className={styles.login_page}>
-        <img className={styles.logo} src={logo} alt="logo" />
-        <div className={styles.login_text}>
-          <h1 className={styles.title}>Welcome back!</h1>
-          <p>Please enter your details</p>
+    <div id={styles.login}>
+      <section className={styles.main_content}>
+        <div className={styles.login_page}>
+          <img className={styles.logo} src={logo} alt="logo" />
+          <div className={styles.login_text}>
+            <h1 className={styles.title}>Bem-vinde a Babel!</h1>
+            <p>Por favor digite seus dados</p>
+          </div>
+          <form className={styles.login_form}>
+            <p>Email</p>
+            <input
+              className={`${styles.login} ${(errors.email || errors.global) ? styles.input_error : ''}`}
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && <p className={styles.email_error}>{errors.email}</p>}
+
+            <p>Senha</p>
+            <input
+              className={`${styles.login} ${errors.password || errors.global ? styles.input_error : ''}`}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
+            {(errors.password || errors.global) && <p className={styles.password_error}>{errors.password || errors.global}</p>}
+
+          </form>
+          <button className={styles.btn} onClick={handleSubmit} disabled={!email || !password}>Entrar</button>
+          <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'>Criar conta</Link></p>
         </div>
-        <form className={styles.login_form}>
-          <p>Email</p>
-          <input
-            className={styles.login}
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <p>Senha</p>
-          <input
-            className={styles.password}
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <p style={{ fontSize: '0.775rem', textAlign: 'right', marginTop: '7px', cursor: 'pointer' }}>Esqueceu sua senha?</p>
-        </form>
-        <button className={styles.btn} onClick={handleSubmit}>Entrar</button>
-        <p className={styles.redirect_login} style={{ marginTop: '-15px', fontSize: '0.875rem' }}>Não tem uma conta ainda? <Link to='/register'>Criar conta</Link></p>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }

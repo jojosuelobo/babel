@@ -37,6 +37,12 @@ export default function NewPost() {
     const user = auth.currentUser;
     const displayName = user.displayName
 
+    //Validação 
+    const [erroTitulo, setErroTitulo] = useState('');
+    const [erroTag, setErroTag] = useState('');
+    const [erroDescricao, setErroDescricao] = useState('');
+    const [erroPrimeiroItem, setErroPrimeiroItem] = useState('');
+
     // Listagem de fato
     const [lista, setLista] = useState([
         {
@@ -60,6 +66,31 @@ export default function NewPost() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        //Validações
+        if (!titulo) {
+            setErroTitulo("Insira um título para a lista")
+        } else {
+            setErroTitulo('');
+        }
+
+        if (!tag) {
+            setErroTag("Insira pelo menos uma tag")
+        } else {
+            setErroTag('');
+        }
+
+        if (!descricao) {
+            setErroDescricao("Insira uma descrição")
+        } else {
+            setErroDescricao('');
+        }
+
+        if (!lista[0].nome_item || !lista[0].descricao_item) {
+            setErroPrimeiroItem('Preencha o primeiro item com título e descrição')
+        }
+
+
+
         // ID
         const idPost = Math.floor(Math.random() * 1000)
 
@@ -71,6 +102,10 @@ export default function NewPost() {
             descricao,
             nome_usuario: displayName,
             itens_lista: lista
+        }
+
+        if (erroTitulo || erroTag || erroDescricao || erroPrimeiroItem) {
+            return;
         }
 
         console.log(post)
@@ -91,7 +126,10 @@ export default function NewPost() {
                         <div className={styles.uperForm}>
                             <label className={styles.title}>
                                 Título da Lista
-                                <input value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
+                                <input className={`${styles.title} ${erroTitulo ? styles.input_error : ''}`}
+                                    value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
+                                {erroTitulo && <p className={styles.email_error}>{erroTitulo}</p>}
+
                             </label>
 
                             <label className={styles.tags}>

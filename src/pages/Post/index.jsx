@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styles from './Post.module.sass'
 import profile from '../../../public/logoUVV.png'
-
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { AiOutlineEdit } from 'react-icons/ai'
@@ -69,13 +68,14 @@ export default function Post() {
                         {displayName === post.nome_usuario &&
                             <div>
                                 <Link to={`/edit/${post.id}`}> <AiOutlineEdit className={styles.icon} /> </Link>
-                                <a onClick={handleDelete}><TiDelete className={styles.icon}/></a>
+                                <a onClick={handleDelete}><TiDelete className={styles.icon} /></a>
                             </div>
                         }
 
                     </div>
                     <h2 className={styles.title}>{post.titulo}</h2>
-                    <p className={styles.date}>{post.data_postagem}</p>
+                    <p className={styles.date}> {post.data_postagem}</p>
+
                     <div className={styles.tags}>
                         {post.tags_relacionadas?.map((tag, index) => (
                             <p className={styles.tag} key={index}>{tag}</p>
@@ -108,3 +108,8 @@ export default function Post() {
         </>
     )
 }
+
+
+
+
+
