@@ -37,7 +37,6 @@ export default function Edit() {
     const [tag, setTags] = useState([])
     const [lista, setLista] = useState([])
 
-
     const getPosts = async () => {
         try {
             const response = await blogFetch.get(`/posts/${id}`)
@@ -66,7 +65,6 @@ export default function Edit() {
     // const [lista, setLista] = useState([])
 
     //setTag(post.tags_relacionadas)
-
 
     const handleSubmit = async () => {
 
@@ -104,29 +102,30 @@ export default function Edit() {
             <Header />
             <div className={styles.section}>
                 <div className={styles.post}>
-                    <div styles={styles.postContent}>
+                    <div className={styles.postContent}>
                         <div className={styles.icons}>
                             <Link to={`/posts/${id}`}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
                         </div>
-                        <h2>Título</h2>
-                        <input onChange={(e) => setTitulo(e.target.value)} className={styles.title} />
-                        <p className={styles.date}>{dataPostagem}</p>
-                        <label className={styles.tags}>
-                            Tags
-                            <input
-                                // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
-                                onChange={(e) =>
-                                    setTags(
-                                        ((e.target.value).split(",").map((tag) => tag.trim()))
-                                            .filter((tag) => tag !== "")
-                                    )
-                                }
-                            />
-                        </label>
-                        <p>Descrição</p>
-                        <textarea onChange={(e) => setDescricao(e.target.value)} className={styles.desc}>{post.descricao}</textarea>
+                        <div className={styles.upperForm}>
+                            <h2>Título</h2>
+                            <input onChange={(e) => setTitulo(e.target.value)} className={styles.title} />
+                            <p className={styles.date}>{dataPostagem}</p>
+                            <label className={styles.tags}>
+                                Tags
+                                <input
+                                    // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
+                                    onChange={(e) =>
+                                        setTags(
+                                            ((e.target.value).split(",").map((tag) => tag.trim()))
+                                                .filter((tag) => tag !== "")
+                                        )
+                                    }
+                                />
+                            </label>
+                            <p>Descrição</p>
+                            <textarea onChange={(e) => setDescricao(e.target.value)} className={styles.desc}>{post.descricao}</textarea>
 
-                        <div className={styles.list}>
+                            {/* <div className={styles.list}>
                             <ul>
                                 {post.itens_lista?.map((item) => (
                                     <li key={item.nome_item}>
@@ -135,7 +134,43 @@ export default function Edit() {
                                     </li>
                                 ))}
                             </ul>
+                        </div> */}
                         </div>
+                        <div className={styles.list}>
+                            <ul>
+                                {post.itens_lista?.map((item, index) => (
+                                    <li key={index}>
+                                        <div className={styles.item_lista} >
+                                            <label className={styles.item_tit}>
+                                                Título {index + 1}
+                                                <input
+                                                    type="text"
+                                                    className={styles.item_input}
+                                                    onChange={(e) => {
+                                                        const newList = [...lista];
+                                                        newList[index].nome_item = e.target.value;
+                                                        setLista(newList);
+                                                    }}
+                                                />
+                                            </label>
+                                            <label className={styles.descricao}>
+                                                Descrição
+                                                <textarea
+                                                    type="text"
+                                                    className={styles.item_text}
+                                                    onChange={(e) => {
+                                                        const newList = [...lista];
+                                                        newList[index].descricao_item = e.target.value;
+                                                        setLista(newList);
+                                                    }}
+                                                ></textarea>
+                                            </label>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
                         <button onClick={handleSubmit}>SALVAR</button>
                     </div>
                 </div>

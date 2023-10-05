@@ -59,7 +59,7 @@ export default function Login() {
 
             <p>Senha</p>
             <input
-              className={`${styles.login} ${errors.password || errors.global ? styles.input_error : ''}`}
+              className={`${styles.login} ${(errors.password || errors.global) ? styles.input_error : ''}`}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

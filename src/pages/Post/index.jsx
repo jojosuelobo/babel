@@ -30,6 +30,16 @@ export default function Post() {
     const { id } = useParams()
 
     const [post, setPost] = useState([])
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+    const openConfirmationModal = () => {
+        setShowConfirmationModal(true);
+    };
+
+    const closeConfirmationModal = () => {
+        setShowConfirmationModal(false);
+    };
+
 
     const getPosts = async () => {
         try {
@@ -50,10 +60,15 @@ export default function Post() {
     const user = auth.currentUser;
     const displayName = user.displayName
 
-    const handleDelete = () => {
-        httpConfig(id, "DELETE")
-        // TODO: NAVIGATION PARA A HOME
-        //return navigate('/')
+    const handleDelete = async () => {
+
+        try {
+            await httpConfig(id, "DELETE");
+            navigate('/');
+        } catch (error) {
+            console.log(error)
+        }
+        closeConfirmationModal();
     }
 
     return (
@@ -68,7 +83,9 @@ export default function Post() {
                         {displayName === post.nome_usuario &&
                             <div>
                                 <Link to={`/edit/${post.id}`}> <AiOutlineEdit className={styles.icon} /> </Link>
-                                <a onClick={handleDelete}><TiDelete className={styles.icon} /></a>
+                                <a className={styles.icon} onClick={openConfirmationModal}>
+                                    <TiDelete className={styles.icon} />
+                                </a>
                             </div>
                         }
 
@@ -104,6 +121,18 @@ export default function Post() {
                 <div className={styles.coment}>
 
                 </div>
+
+                {showConfirmationModal && (
+                    <div className={styles.confirmationModal}>
+                        <div className={styles.confirmationBox}>
+                            <p>Deseja realmente excluir esta postagem?</p>
+                            <button onClick={handleDelete}>Sim</button>
+                            <button onClick={closeConfirmationModal}>Cancelar</button>
+                        </div>
+                    </div>
+                )}
+
+
             </div>
         </>
     )

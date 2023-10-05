@@ -126,7 +126,8 @@ export default function NewPost() {
                         <div className={styles.uperForm}>
                             <label className={styles.title}>
                                 Título da Lista
-                                <input className={`${styles.title} ${erroTitulo ? styles.input_error : ''}`}
+                                <input
+                                    required
                                     value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
                                 {erroTitulo && <p className={styles.email_error}>{erroTitulo}</p>}
 
@@ -135,6 +136,7 @@ export default function NewPost() {
                             <label className={styles.tags}>
                                 Tags
                                 <input
+                                    required
                                     // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
                                     onChange={(e) =>
                                         setTags(
@@ -147,7 +149,7 @@ export default function NewPost() {
 
                             <label className={styles.descricao}>
                                 Descrição
-                                <textarea value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                                <textarea required value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
                             </label>
                             <a onClick={handleSoma} className={styles.addRem}>Adicionar item</a>
                             <a onClick={handleRemove} className={styles.addRem}>Remover item</a>
@@ -158,6 +160,7 @@ export default function NewPost() {
                                     <label className={styles.item_tit}>
                                         Título {index + 1}
                                         <input
+                                            required
                                             type="text"
                                             className={styles.item_input}
                                             onChange={(e) => {
@@ -170,6 +173,7 @@ export default function NewPost() {
                                     <label className={styles.descricao}>
                                         Descrição
                                         <textarea
+                                            required
                                             type="text"
                                             className={styles.item_text}
                                             onChange={(e) => {
