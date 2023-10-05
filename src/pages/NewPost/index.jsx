@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 
 // react router dom
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -23,7 +23,7 @@ import { getAuth } from "firebase/auth";
 
 export default function NewPost() {
 
-
+    const navigate = useNavigate()
     const [titulo, setTitulo] = useState('')
     const dataPostagem = moment().format('L')
     const [tag, setTags] = useState([])
@@ -63,7 +63,7 @@ export default function NewPost() {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         //Validações
@@ -90,7 +90,6 @@ export default function NewPost() {
         }
 
 
-
         // ID
         const idPost = Math.floor(Math.random() * 1000)
 
@@ -108,9 +107,12 @@ export default function NewPost() {
             return;
         }
 
-        console.log(post)
-        httpConfig(post, "POST")
-
+        try {
+            await httpConfig(post, "POST")
+            navigate('/');
+        } catch (error) {
+            console.log(error)
+        }
         // Redirecionar
     }
     return (
