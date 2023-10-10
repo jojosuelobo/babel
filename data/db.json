@@ -118,33 +118,6 @@
         }
       ]
     },
-    {
-      "id": 663,
-      "titulo": "MELHORES JOGADORES DE FUTEBOL 2023",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "FUTEBOL",
-        "SOCCER"
-      ],
-      "descricao": "ESSES SÃO OS TOPS DOS TOPS",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "MESSI",
-          "descricao_item": "ARGENTINA"
-        },
-        {
-          "nome_item": "CRISTIANO RONALDO",
-          "descricao_item": "SIIIIIIIIIU"
-        },
-        {
-          "nome_item": "GABIBOL",
-          "descricao_item": "ELE FAZ O MUQ"
-        },
-        {
-          "nome_item": "ADIBALA",
-          "descricao_item": "NÃO SEI NEM QUEM É"
-        }
       ]
     }
   ]

@@ -11,7 +11,7 @@ import moment from 'moment/moment'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 
 // React router dom
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Hooks
 import { useParams } from 'react-router-dom'
@@ -36,6 +36,8 @@ export default function Edit() {
     const [post, setPost] = useState([])
     const [tag, setTags] = useState([])
     const [lista, setLista] = useState([])
+
+    const navigate = useNavigate()
 
     const getPosts = async () => {
         try {
@@ -91,8 +93,15 @@ export default function Edit() {
         }
 
         console.log(post)
-        await httpConfig(id, "DELETE")
-        await httpConfig(post, "POST")
+
+        try {
+            await httpConfig(id, "DELETE");
+            await httpConfig(post, "POST")
+            navigate('/');
+        } catch (error) {
+            console.log(error)
+        }
+
         //httpConfig(post, "PUT")
 
     }

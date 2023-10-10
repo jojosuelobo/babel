@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 
 // react router dom
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -23,7 +23,7 @@ import { getAuth } from "firebase/auth";
 
 export default function NewPost() {
 
-
+    const navigate = useNavigate()
     const [titulo, setTitulo] = useState('')
     const dataPostagem = moment().format('L')
     const [tag, setTags] = useState([])
@@ -36,6 +36,12 @@ export default function NewPost() {
     const auth = getAuth();
     const user = auth.currentUser;
     const displayName = user.displayName
+
+    //Validação 
+    const [erroTitulo, setErroTitulo] = useState('');
+    const [erroTag, setErroTag] = useState('');
+    const [erroDescricao, setErroDescricao] = useState('');
+    const [erroPrimeiroItem, setErroPrimeiroItem] = useState('');
 
     // Listagem de fato
     const [lista, setLista] = useState([
@@ -57,8 +63,32 @@ export default function NewPost() {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        //Validações
+        if (!titulo) {
+            setErroTitulo("Insira um título para a lista")
+        } else {
+            setErroTitulo('');
+        }
+
+        if (!tag) {
+            setErroTag("Insira pelo menos uma tag")
+        } else {
+            setErroTag('');
+        }
+
+        if (!descricao) {
+            setErroDescricao("Insira uma descrição")
+        } else {
+            setErroDescricao('');
+        }
+
+        if (!lista[0].nome_item || !lista[0].descricao_item) {
+            setErroPrimeiroItem('Preencha o primeiro item com título e descrição')
+        }
+
 
         // ID
         const idPost = Math.floor(Math.random() * 1000)
@@ -73,9 +103,16 @@ export default function NewPost() {
             itens_lista: lista
         }
 
-        console.log(post)
-        httpConfig(post, "POST")
+        if (erroTitulo || erroTag || erroDescricao || erroPrimeiroItem) {
+            return;
+        }
 
+        try {
+            await httpConfig(post, "POST")
+            navigate('/');
+        } catch (error) {
+            console.log(error)
+        }
         // Redirecionar
     }
     return (
@@ -91,12 +128,17 @@ export default function NewPost() {
                         <div className={styles.uperForm}>
                             <label className={styles.title}>
                                 Título da Lista
-                                <input value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
+                                <input
+                                    required
+                                    value={titulo} type="text" onChange={(e) => setTitulo(e.target.value)} />
+                                {erroTitulo && <p className={styles.email_error}>{erroTitulo}</p>}
+
                             </label>
 
                             <label className={styles.tags}>
                                 Tags
                                 <input
+                                    required
                                     // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
                                     onChange={(e) =>
                                         setTags(
@@ -109,7 +151,7 @@ export default function NewPost() {
 
                             <label className={styles.descricao}>
                                 Descrição
-                                <textarea value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
+                                <textarea required value={descricao} className={styles.text} type="text" onChange={(e) => setDescricao(e.target.value)} ></textarea>
                             </label>
                             <a onClick={handleSoma} className={styles.addRem}>Adicionar item</a>
                             <a onClick={handleRemove} className={styles.addRem}>Remover item</a>
@@ -120,6 +162,7 @@ export default function NewPost() {
                                     <label className={styles.item_tit}>
                                         Título {index + 1}
                                         <input
+                                            required
                                             type="text"
                                             className={styles.item_input}
                                             onChange={(e) => {
@@ -132,6 +175,7 @@ export default function NewPost() {
                                     <label className={styles.descricao}>
                                         Descrição
                                         <textarea
+                                            required
                                             type="text"
                                             className={styles.item_text}
                                             onChange={(e) => {
