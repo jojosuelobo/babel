@@ -36,6 +36,7 @@ export default function Edit() {
     const [post, setPost] = useState([])
     const [tag, setTags] = useState([])
     const [lista, setLista] = useState([])
+
     const navigate = useNavigate()
 
     const getPosts = async () => {

@@ -118,34 +118,6 @@
         }
       ]
     },
-    {
-      "id": 464,
-      "titulo": "",
-      "data_postagem": "10/04/2023",
-      "tags_relacionadas": [],
-      "descricao": "",
-      "nome_usuario": "Roberta",
-      "itens_lista": [
-        {
-          "nome_item": "gaga",
-          "descricao_item": "gagagag"
-        }
-      ]
-    },
-    {
-      "id": 726,
-      "titulo": "gagagaga",
-      "data_postagem": "10/04/2023",
-      "tags_relacionadas": [
-        "gagaga"
-      ],
-      "descricao": "gagag",
-      "nome_usuario": "Roberta",
-      "itens_lista": [
-        {
-          "nome_item": "gaga",
-          "descricao_item": "gaga"
-        }
       ]
     }
   ]
