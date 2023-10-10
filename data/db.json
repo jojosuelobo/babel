@@ -92,33 +92,6 @@
           "descricao_item": "g"
         }
       ]
-    },
-    {
-      "id": 806,
-      "titulo": "Melhores comidas cruas",
-      "data_postagem": "10/03/2023",
-      "tags_relacionadas": [
-        "comida",
-        "receita"
-      ],
-      "descricao": "cru eh bom vai",
-      "nome_usuario": "jojosuelobo",
-      "itens_lista": [
-        {
-          "nome_item": "tartar",
-          "descricao_item": "comida tipica francesa"
-        },
-        {
-          "nome_item": "abacaxi",
-          "descricao_item": "frutinha hmmm"
-        },
-        {
-          "nome_item": "moranga",
-          "descricao_item": "tabme fruta"
-        }
-      ]
-    },
-      ]
     }
   ]
 }
