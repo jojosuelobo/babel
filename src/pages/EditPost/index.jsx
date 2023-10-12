@@ -6,7 +6,6 @@ import profile from '../../../public/logoUVV.png'
 // lib
 import moment from 'moment/moment'
 
-
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
 

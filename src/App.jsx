@@ -4,6 +4,11 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { onAuthStateChanged } from 'firebase/auth'
 
+// PrimeProvider
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+
+        
 // Hooks
 import { useState, useEffect } from 'react'
 import { useAuthentication } from './firebase/useAuth'
