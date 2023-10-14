@@ -47,6 +47,7 @@ export default function Profile() {
         <div className={styles.perfil}>
           {/* Tenho que consertar o botão <button>Editar Perfil</button> */}
 
+          <button>Editar Perfil</button>
           <div className={styles.container}>
             <div className={styles.avatar}>
               <img src={profilePic} alt="Avatar" />
