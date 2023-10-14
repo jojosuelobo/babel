@@ -13,6 +13,7 @@ import { getAuth } from "firebase/auth";
 // 
 import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
+import profilePic from '../../../public/logoUVV.png'
 
 export default function Profile() {
   const [posts, setPosts] = useState([])
@@ -42,8 +43,22 @@ export default function Profile() {
       {/* Menu a esquerda dá página */}
       <Aside />
       <section className={styles.main}>
-
         {/* Conteúdo principal da página */}
+        <div className={styles.perfil}>
+          {/* Tenho que consertar o botão <button>Editar Perfil</button> */}
+
+          <div className={styles.container}>
+            <div className={styles.avatar}>
+              <img src={profilePic} alt="Avatar" />
+            </div>
+            <h2>Nome do Usuário</h2>
+            <p>Ela/dela</p>
+          </div>
+          <h3>Bio</h3>
+          <input></input>
+        </div>
+
+
         <h2 className={styles.title}>Listas</h2>
         <div className={styles.divider}></div>
         <div className={styles.feed}>
