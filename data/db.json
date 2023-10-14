@@ -92,6 +92,42 @@
           "descricao_item": "g"
         }
       ]
+    },
+    {
+      "id": 131,
+      "titulo": "fafafga",
+      "data_postagem": "10/13/2023",
+      "tags_relacionadas": [
+        "gagag"
+      ],
+      "descricao": "gagaga",
+      "nome_usuario": "Roberta",
+      "itens_lista": [
+        {
+          "nome_item": "gagaga",
+          "descricao_item": "gagagag"
+        },
+        {
+          "nome_item": "gagagag",
+          "descricao_item": "agagag"
+        }
+      ]
+    },
+    {
+      "id": 365,
+      "titulo": "carasss",
+      "data_postagem": "10/13/2023",
+      "tags_relacionadas": [
+        "testando"
+      ],
+      "descricao": "fafafagagacava",
+      "nome_usuario": "Roberta",
+      "itens_lista": [
+        {
+          "nome_item": "lalalallal",
+          "descricao_item": "rerererer"
+        }
+      ]
     }
   ]
 }

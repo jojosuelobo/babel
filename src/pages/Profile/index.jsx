@@ -39,10 +39,13 @@ export default function Profile() {
   return (
     <>
       <Header />
+      {/* Menu a esquerda dá página */}
+      <Aside />
       <section className={styles.main}>
-        {/* Menu a esquerda dá página */}
-        <Aside />
+
         {/* Conteúdo principal da página */}
+        <h2 className={styles.title}>Listas</h2>
+        <div className={styles.divider}></div>
         <div className={styles.feed}>
           {posts.length === 0 ? (
             <div>
