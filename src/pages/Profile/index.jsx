@@ -56,19 +56,19 @@ export default function Profile() {
           </div>
           <h3>Bio</h3>
           <input></input>
-        </div>
 
 
-        <h2 className={styles.title}>Listas</h2>
-        <div className={styles.divider}></div>
-        <div className={styles.feed}>
-          {posts.length === 0 ? (
-            <div>
-              <h1>Não há posts a serem exibidos</h1>
-            </div>
-          ) : (
-            posts.map((post) => <PostDetail key={post.id} post={post} />)
-          )}
+          <h2 className={styles.title}>Listas</h2>
+          <div className={styles.divider}></div>
+          <div className={styles.feed}>
+            {posts.length === 0 ? (
+              <div>
+                <h1>Não há posts a serem exibidos</h1>
+              </div>
+            ) : (
+              posts.map((post) => <PostDetail key={post.id} post={post} />)
+            )}
+          </div>
         </div>
       </section>
     </>

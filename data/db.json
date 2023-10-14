@@ -128,6 +128,22 @@
           "descricao_item": "rerererer"
         }
       ]
+    },
+    {
+      "id": 238,
+      "titulo": "gaga",
+      "data_postagem": "10/14/2023",
+      "tags_relacionadas": [
+        "gagaga"
+      ],
+      "descricao": "gag",
+      "nome_usuario": "Roberta",
+      "itens_lista": [
+        {
+          "nome_item": "gaga",
+          "descricao_item": "gaga"
+        }
+      ]
     }
   ]
 }
