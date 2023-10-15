@@ -21,7 +21,8 @@ export default function Profile() {
   // Nome de usuário
   const auth = getAuth();
   const user = auth.currentUser;
-  const displayName = user.displayName
+  const uid = user.uid;
+  const displayName = user.displayName;
 
   const getPosts = async () => {
     try {
@@ -45,15 +46,6 @@ export default function Profile() {
 
   const openModal = () => {
     setModalOpen(true);
-
-    // Carregar os valores do localStorage ou valores padrão
-    const savedEditedUsername = localStorage.getItem('editedUsername') || displayName;
-    const savedEditedPronoun = localStorage.getItem('editedPronoun') || '';
-    const savedEditedBio = localStorage.getItem('editedBio') || '';
-
-    setEditedUsername(savedEditedUsername);
-    setEditedPronoun(savedEditedPronoun);
-    setEditedBio(savedEditedBio);
   };
 
   const closeModal = () => {
@@ -61,30 +53,23 @@ export default function Profile() {
   }
 
   const saveChanges = () => {
-    localStorage.setItem('editedUsername', editedUsername);
-    localStorage.setItem('editedPronoun', editedPronoun);
-    localStorage.setItem('editedBio', editedBio);
+    localStorage.setItem(`editedUsername_${uid}`, editedUsername);
+    localStorage.setItem(`editedPronoun_${uid}`, editedPronoun);
+    localStorage.setItem(`editedBio_${uid}`, editedBio);
     closeModal();
   }
 
   // Verifique se há valores no localStorage ao carregar a página
   useEffect(() => {
-    const savedEditedUsername = localStorage.getItem('editedUsername');
-    const savedEditedPronoun = localStorage.getItem('editedPronoun');
-    const savedEditedBio = localStorage.getItem('editedBio');
+    const savedEditedUsername = localStorage.getItem(`editedUsername_${uid}`) || displayName;
+    const savedEditedPronoun = localStorage.getItem(`editedPronoun_${uid}`) || '';
+    const savedEditedBio = localStorage.getItem(`editedBio_${uid}`) || '';
+    
+    setEditedUsername(savedEditedUsername);
+    setEditedPronoun(savedEditedPronoun);
+    setEditedBio(savedEditedBio);
 
-    if (savedEditedUsername) {
-      setEditedUsername(savedEditedUsername);
-    }
-
-    if (savedEditedPronoun) {
-      setEditedPronoun(savedEditedPronoun);
-    }
-
-    if (savedEditedBio) {
-      setEditedBio(savedEditedBio);
-    }
-  }, []);
+  }, [uid]);
 
   return (
     <>
@@ -94,7 +79,6 @@ export default function Profile() {
       <section className={styles.main}>
         {/* Conteúdo principal da página */}
         <div className={styles.perfil}>
-          {/* Tenho que consertar o botão <button>Editar Perfil</button> */}
 
           <button onClick={openModal}>Editar Perfil</button>
           <div className={styles.container}>

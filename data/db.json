@@ -144,6 +144,22 @@
           "descricao_item": "gaga"
         }
       ]
+    },
+    {
+      "id": 248,
+      "titulo": "fagaga",
+      "data_postagem": "10/15/2023",
+      "tags_relacionadas": [
+        "gagag"
+      ],
+      "descricao": "gagaga",
+      "nome_usuario": "berta",
+      "itens_lista": [
+        {
+          "nome_item": "agaga",
+          "descricao_item": "gagaga"
+        }
+      ]
     }
   ]
 }
