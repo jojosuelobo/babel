@@ -40,14 +40,15 @@
             color: #fff 
 
         h3
-           margin: 50px 0px 5px 43px
+           margin: 50px 0px 10px 43px
            font-size: 25px
            color: #fff
 
-        input
+        .bio
             box-sizing: border-box
             border: none
-            padding-left: 20px
+            padding: 20px
+            font-size: 20px
             margin-top: 5px
             margin-left: 43px
             margin-bottom: 15px
@@ -78,7 +79,6 @@
                     height: 100%
         
             h2
-                //text-align: center
                 color: #fff
                 margin-left: -290px
 
@@ -92,4 +92,68 @@
                 color: #fff
                 margin-left: -290px
 
+    .modal_overlay 
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: rgba(0, 0, 0, 0.5)
+        display: flex
+        justify-content: center
+        align-items: center
+        z-index: 999 
 
+        h2
+            color: #fff
+            font-size: 30px
+        .modal
+            display: flex
+            flex-direction: column
+            width: 50%
+            //height: 50%
+            background-color: #2A2A2A
+            border-radius: 8px
+            padding: 30px
+            text-align: center
+
+            p 
+                margin: 30px 0px 10px
+                text-align: left
+                font-size: 20px
+                color: #fff
+
+            input 
+                display: block
+                width: 100%
+                padding: 5px
+                box-sizing: border-box
+                border: none
+                padding: 20px
+                font-size: 20px
+                margin: 5px 0px
+                background-color: gray
+                border-radius: 4px
+                background: #404040
+                color: white
+    
+
+            .button_container
+                display: flex
+                justify-content: center
+                margin-top: 30px
+                
+            button
+                font-size: 20px
+                padding: 10px 20px
+                margin: 0 10px
+                width: 170px
+                border-radius: 8px
+                background-color: #4D3666
+                border: none
+                color: #fff
+                margin-top: 30px
+
+
+
+    
