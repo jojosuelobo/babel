@@ -1,6 +1,6 @@
 .main
     display: flex
-    flex-direction: column
+    flex-direction: row
         
     .feed
         display: flex
@@ -8,6 +8,10 @@
         flex-wrap: wrap
         padding-left: 20px
 
+        h1
+            font-size: 25px
+            color: #fff
+            padding-left: 20px
 
     .title
         margin: 30px 0px 5px 43px
@@ -71,7 +75,6 @@
                 height: 180px
                 border-radius: 50%
                 margin: 30px auto
-                margin-left: 570px
                 text-align: center
 
                 img
@@ -80,7 +83,7 @@
         
             h2
                 color: #fff
-                margin-left: -290px
+                //margin-left: -290px
 
 
 
@@ -90,7 +93,7 @@
                 font-style: italic
                 text-decoration-line: underline
                 color: #fff
-                margin-left: -290px
+                //margin-left: -290px
 
     .modal_overlay 
         position: fixed
@@ -143,16 +146,21 @@
                 justify-content: center
                 margin-top: 30px
                 
-            button
-                font-size: 20px
-                padding: 10px 20px
-                margin: 0 10px
-                width: 170px
-                border-radius: 8px
-                background-color: #4D3666
-                border: none
-                color: #fff
-                margin-top: 30px
+                button
+                    font-size: 20px
+                    padding: 10px 20px
+                    margin: 0 10px
+                    width: 170px
+                    border-radius: 8px
+                    background-color: #4D3666
+                    border: none
+                    color: #fff
+                    margin-top: 30px
+
+                button:last-child 
+                    background-color: #333
+                    color: white
+                    border: none
 
 
 

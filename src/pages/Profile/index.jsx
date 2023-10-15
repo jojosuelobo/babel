@@ -9,21 +9,24 @@ import PostDetail from '../../components/postDetail'
 
 // Firebase
 import { getAuth } from "firebase/auth";
-
-// 
 import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
 import profilePic from '../../../public/logoUVV.png'
 
 export default function Profile() {
   const [posts, setPosts] = useState([])
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [editedUsername, setEditedUsername] = useState('');
+  const [editedPronoun, setEditedPronoun] = useState('');
+  const [editedBio, setEditedBio] = useState('');
 
-  // Nome de usuário
+  // Carregando informações do usuário
   const auth = getAuth();
   const user = auth.currentUser;
   const uid = user.uid;
   const displayName = user.displayName;
 
+  // Referente aos Posts
   const getPosts = async () => {
     try {
       const response = await blogFetch.get(`/posts?nome_usuario=${displayName}`)
@@ -38,12 +41,8 @@ export default function Profile() {
     getPosts()
   }, [])
 
-  //tentando implementar o modal
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [editedUsername, setEditedUsername] = useState('');
-  const [editedPronoun, setEditedPronoun] = useState('');
-  const [editedBio, setEditedBio] = useState('');
 
+  // Referentes ao Modal
   const openModal = () => {
     setModalOpen(true);
   };
@@ -59,27 +58,24 @@ export default function Profile() {
     closeModal();
   }
 
-  // Verifique se há valores no localStorage ao carregar a página
+  // Verifica se há valores no localStorage ao carregar a página
   useEffect(() => {
     const savedEditedUsername = localStorage.getItem(`editedUsername_${uid}`) || displayName;
     const savedEditedPronoun = localStorage.getItem(`editedPronoun_${uid}`) || '';
     const savedEditedBio = localStorage.getItem(`editedBio_${uid}`) || '';
-    
+
     setEditedUsername(savedEditedUsername);
     setEditedPronoun(savedEditedPronoun);
     setEditedBio(savedEditedBio);
 
-  }, [uid]);
+  }, [uid, displayName]);
 
   return (
     <>
       <Header />
-      {/* Menu a esquerda dá página */}
-      <Aside />
       <section className={styles.main}>
-        {/* Conteúdo principal da página */}
+        <Aside />
         <div className={styles.perfil}>
-
           <button onClick={openModal}>Editar Perfil</button>
           <div className={styles.container}>
             <div className={styles.avatar}>
@@ -105,6 +101,7 @@ export default function Profile() {
 
         </div>
 
+        {/* Modal */}
         {isModalOpen && (
           <div className={styles.modal_overlay}>
             <div className={styles.modal}>
@@ -134,7 +131,6 @@ export default function Profile() {
             </div>
           </div>
         )}
-
       </section>
     </>
   )
