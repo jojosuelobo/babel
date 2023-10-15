@@ -56,7 +56,7 @@ export default function Profile() {
             <p>Ela/dela</p>
           </div>
           <h3>Bio</h3>
-          <input></input>
+          <input readOnly></input>
 
 
           <h2 className={styles.title}>Listas</h2>
