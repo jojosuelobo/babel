@@ -1,7 +1,12 @@
 /* eslint-disable no-unused-vars */
 import './header.sass';
 import { useState } from 'react';
+
+// Icons
 import { FaSearch } from 'react-icons/fa';
+import { FiSettings, FiLogOut } from 'react-icons/fi'
+import { GrLogout } from 'react-icons/gr'
+
 import profilePic from '../../../public/logoUVV.png'
 
 import { Link, useNavigate } from 'react-router-dom'
@@ -25,6 +30,7 @@ const Header = () => {
   const handleSearch = async () => {
     if (query.trim() === '')
       return
+    // http://localhost:3000/posts?tags_relacionadas_contains=receitas
     return navigate(`/search?q=${query.trim()}`)
   }
 
@@ -37,7 +43,9 @@ const Header = () => {
         </div>
       </div>
       <div className="center-section">
+        <Link to={'/'} >
         <img src="../../../public/logo.png" alt="Logo" className="logo" />
+        </Link>
       </div>
       <div className="right-section">
         <div className="avatar" onClick={toggleMenu}>
@@ -45,8 +53,8 @@ const Header = () => {
           {isMenuOpen && (
             <div className="dropdown-menu">
               <ul>
-                <li><a href="#">Configurações</a></li>
-                <li><Link onClick={logout} to={'/login'}>Sair</Link></li>
+                <li><Link to={'/settings'} > <FiSettings/> Configurações</Link></li>
+                <li><Link onClick={logout} to={'/login'}> <FiLogOut/> Sair</Link></li>
               </ul>
             </div>
           )}

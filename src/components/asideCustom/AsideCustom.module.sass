@@ -1,43 +1,50 @@
 .main_content
     // Background em vermelho apenas para poder visualizar o componente melhor
     background-color: #404040
-
     // Deixa o componente a esquerda da pagina
     float: left
-    height: 100vh
-    width: 30vh
+    height: 20em
+    width: 16em
+    margin-top: 32px
     // Distância do ASIDE para o FEED (Checar no WireFrame qual a distância exata)
     margin-right: 1em
+    border-radius: 0 30px 30px 0
     .list
-        margin-left: 3.5em
+        margin-left: 2em
         display: flex
         flex-direction: column
         .list_btn
-                display: flex
-                align-items: center
-                font-size: 20px
-                gap: 24px
-                text-align: center
-                .icon
-                        width: 32px
-                        height: 32px
-                        flex-shrink: 0
-                        color: white
-                        margin-top: 20px
-
-    .btn
-        width: 60%
-        height: 50px
-        background: #404040
-        color: white
-        border: none
-        margin-top: 1em
-        text-align: left
-    .btn2
-        width: 80%
-        height: 50px
-        border-radius: 100px
-        background: #4D3666
-        color: white
-        border: none
-        margin-top: 1em
+            display: flex
+            align-items: center
+            font-size: 20px
+            gap: 24px
+            text-align: center
+            .icon
+                width: 32px
+                height: 32px
+                flex-shrink: 0
+                color: white
+                margin-top: 20px
+            .btn
+                width: 60%
+                height: 50px
+                background: #404040
+                color: white
+                border: none
+                margin-top: 1em
+                text-align: left
+            .btn:hover
+                background: #4D3666
+                padding: 20px
+                border-radius: 20px
+            .btn2
+                width: 80%
+                height: 50px
+                border-radius: 100px
+                background: #4D3666
+                color: white
+                border: none
+                margin-top: 1em
+            .btn2:hover
+                background: white
+                color: black

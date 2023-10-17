@@ -1,23 +1,46 @@
+/* eslint-disable no-unused-vars */
 import styles from './Post.module.sass'
 import profile from '../../../public/logoUVV.png'
+// Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
+import { AiOutlineEdit } from 'react-icons/ai'
+import { TiDelete } from 'react-icons/ti'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Hooks
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import backend from '../../axios/config'
+import blogFetch from '../../axios/config'
+import { useFetch } from '../../hooks/useFetch'
+
 
 // Components
 import Header from '../../components/header'
 import Aside from '../../components/asideCustom'
 
+// Firebase
+import { getAuth } from "firebase/auth";
 
 export default function Post() {
+    const navigate = useNavigate()
+
+    const url = 'http://localhost:3000/posts'
+    const { httpConfig, loading } = useFetch(url)
     const { id } = useParams()
 
     const [post, setPost] = useState([])
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+    const openConfirmationModal = () => {
+        setShowConfirmationModal(true);
+    };
+
+    const closeConfirmationModal = () => {
+        setShowConfirmationModal(false);
+    };
+
 
     const getPosts = async () => {
         try {
@@ -33,27 +56,55 @@ export default function Post() {
         getPosts()
     }, [])
 
+    // Nome de usuário
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const displayName = user.displayName
+
+    const handleDelete = async () => {
+
+        try {
+            await httpConfig(id, "DELETE");
+            navigate('/');
+        } catch (error) {
+            console.log(error)
+        }
+        closeConfirmationModal();
+    }
+
     return (
         <>
             <Header />
             <div className={styles.section}>
                 <Aside />
                 <div className={styles.post}>
-                    <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
+                    <div className={styles.icons}>
+                        <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
+
+                        {displayName === post.nome_usuario &&
+                            <div>
+                                <Link to={`/edit/${post.id}`}> <AiOutlineEdit className={styles.icon} /> </Link>
+                                <a className={styles.icon} onClick={openConfirmationModal}>
+                                    <TiDelete className={styles.icon} />
+                                </a>
+                            </div>
+                        }
+
+                    </div>
                     <h2 className={styles.title}>{post.titulo}</h2>
                     <p className={styles.date}>{post.dataCriacao}</p>
 
                     <div className={styles.tags}>
-                        {post.tags?.map((tag) => (
-                            <p className={styles.tag} key={tag}>{tag}</p>
+                        {post.tags?.map((tag, index) => (
+                            <p className={styles.tag} key={index}>{tag}</p>
                         ))}
                     </div>
                     <p className={styles.desc}>{post.descricao}</p>
 
                     <div className={styles.list}>
                         <ul>
-                            {post.conteudo?.map((item) => (
-                                <li key={item.nomeItem}>
+                            {post.conteudo?.map((item, index) => (
+                                <li key={index}>
                                     <h1>{item.nomeItem}</h1>
                                     <p>{item.descricaoItem}</p>
                                 </li>
@@ -71,7 +122,24 @@ export default function Post() {
                 <div className={styles.coment}>
 
                 </div>
+
+                {showConfirmationModal && (
+                    <div className={styles.confirmationModal}>
+                        <div className={styles.confirmationBox}>
+                            <p>Deseja realmente excluir esta postagem?</p>
+                            <button onClick={handleDelete}>Sim</button>
+                            <button onClick={closeConfirmationModal}>Cancelar</button>
+                        </div>
+                    </div>
+                )}
+
+
             </div>
         </>
     )
 }
+
+
+
+
+

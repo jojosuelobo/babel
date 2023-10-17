@@ -1,23 +1,27 @@
 .section
     display: flex
+    color: #fff
     .post
-        .icon
-            font-size: 25px
-            margin-bottom: 10px
-        background-color: #F4F4F4
+        margin-top: 32px
+        background: #404040
+        margin-right: 40px
+        border-radius: 6px
+        .icons
+            display: flex
+            justify-content: space-between
+            .icon
+                font-size: 25px
+                margin-bottom: 10px
         margin-left: 24px
         padding: 1.5rem
-        border: 1px solid rgba(0, 0, 0, 0.50)
         width: 80%
         .title
-            color: #000
-            font-size: 24px
+            font-size: 40px
             font-style: normal
             font-weight: 400
             line-height: normal
         .date
-            color: #000
-            font-size: 12px
+            font-size: 20px
             font-style: normal
             font-weight: 400
             line-height: normal
@@ -30,7 +34,8 @@
                 font-weight: bold
                 padding: 8px
                 border-radius: 50px
-                background: #D9D9D9
+                background: #383838
+                padding: 16px
         .desc
             margin-bottom: 32px
         .list
@@ -60,3 +65,51 @@
                 width: 53px
                 height: 32px
                 flex-shrink: 0
+
+.confirmationModal 
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, 0.5)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 999 
+
+.confirmationBox
+  width: 450px
+  height: 100px
+  background-color: #2A2A2A
+  border-radius: 8px
+  padding: 30px
+  text-align: center
+
+.confirmationModal p 
+  font-size: 20px
+  text-align: center
+  margin-bottom: 20px
+
+
+.confirmationModal button 
+    font-size: 16px
+    padding: 10px 20px
+    margin: 0 10px
+    border-radius: 8px
+    background-color: #4D3666
+    border: none
+    margin-top: 15px
+
+
+.confirmationModal button:first-child 
+  background-color: #B00020
+  color: white
+  border: none
+
+
+.confirmationModal button:last-child 
+  background-color: #333
+  color: white
+  border: none
+

@@ -22,8 +22,9 @@ export default function Search() {
         try {
             const response = await backend.get(`/posts?titulo=${search}`)
             //const response = await blogFetch.get(`/posts?titulo=${search}`)
+            // http://localhost:3000/posts?tags_relacionadas_contains=receitas
             const data = response.data
-            const filteredData = data.filter(post => post.titulo.includes(`${search}`))
+            const filteredData = data.filter(post => post.tags_relacionadas.includes(`${search}`))
             setPosts(filteredData)
             //setPosts(data)
             console.log(filteredData)
