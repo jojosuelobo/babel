@@ -92,6 +92,38 @@
           "descricao_item": "g"
         }
       ]
+    },
+    {
+      "id": 248,
+      "titulo": "fagaga",
+      "data_postagem": "10/15/2023",
+      "tags_relacionadas": [
+        "gagag"
+      ],
+      "descricao": "gagaga",
+      "nome_usuario": "berta",
+      "itens_lista": [
+        {
+          "nome_item": "agaga",
+          "descricao_item": "gagaga"
+        }
+      ]
+    },
+    {
+      "id": 321,
+      "titulo": "gagaga",
+      "data_postagem": "10/15/2023",
+      "tags_relacionadas": [
+        "gaga"
+      ],
+      "descricao": "gaga",
+      "nome_usuario": "Roberta",
+      "itens_lista": [
+        {
+          "nome_item": "gagag",
+          "descricao_item": "gaga"
+        }
+      ]
     }
   ]
 }

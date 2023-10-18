@@ -1,8 +1,167 @@
 .main
+    display: flex
+    flex-direction: row
+        
     .feed
         display: flex
-        //flex-direction: column
-        //align-items: center
         flex-direction: row
         flex-wrap: wrap
-        //justify-content: space-between
+        padding-left: 20px
+
+        h1
+            font-size: 25px
+            color: #fff
+            padding-left: 20px
+
+    .title
+        margin: 30px 0px 5px 43px
+        font-size: 30px
+        color: #fff
+        padding-left: px
+
+    .divider
+        border-bottom: 2px solid #404040
+        width: 1350px
+        margin: 18px 43px
+
+    
+    .perfil
+        padding-left: 20px
+            
+        button
+            font-size: 20px
+            border: none
+            margin-top: 30px
+            margin-right: -43px
+            background: #4D3666
+            border-radius: 8px
+            height: 50px
+            width: 250px
+            align-items: center
+            position: absolute
+            right: 250px
+            top: 100px
+            color: #fff 
+
+        h3
+           margin: 50px 0px 10px 43px
+           font-size: 25px
+           color: #fff
+
+        .bio
+            box-sizing: border-box
+            border: none
+            padding: 20px
+            font-size: 20px
+            margin-top: 5px
+            margin-left: 43px
+            margin-bottom: 15px
+            background-color: gray
+            border-radius: 4px
+            background: #404040
+            color: white
+            width: 1350px
+            height: 74px
+
+
+        .container
+            display: flex
+            flex-direction: column
+            align-items: center
+            text-align: center
+
+            .avatar
+                width: 180px
+                height: 180px
+                border-radius: 50%
+                margin: 30px auto
+                text-align: center
+
+                img
+                    width: 100%
+                    height: 100%
+        
+            h2
+                color: #fff
+                //margin-left: -290px
+
+
+
+            p 
+                margin: 5px
+                font-size: 18px
+                font-style: italic
+                text-decoration-line: underline
+                color: #fff
+                //margin-left: -290px
+
+    .modal_overlay 
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: rgba(0, 0, 0, 0.5)
+        display: flex
+        justify-content: center
+        align-items: center
+        z-index: 999 
+
+        h2
+            color: #fff
+            font-size: 30px
+        .modal
+            display: flex
+            flex-direction: column
+            width: 50%
+            //height: 50%
+            background-color: #2A2A2A
+            border-radius: 8px
+            padding: 30px
+            text-align: center
+
+            p 
+                margin: 30px 0px 10px
+                text-align: left
+                font-size: 20px
+                color: #fff
+
+            input 
+                display: block
+                width: 100%
+                padding: 5px
+                box-sizing: border-box
+                border: none
+                padding: 20px
+                font-size: 20px
+                margin: 5px 0px
+                background-color: gray
+                border-radius: 4px
+                background: #404040
+                color: white
+    
+
+            .button_container
+                display: flex
+                justify-content: center
+                margin-top: 30px
+                
+                button
+                    font-size: 20px
+                    padding: 10px 20px
+                    margin: 0 10px
+                    width: 170px
+                    border-radius: 8px
+                    background-color: #4D3666
+                    border: none
+                    color: #fff
+                    margin-top: 30px
+
+                button:last-child 
+                    background-color: #333
+                    color: white
+                    border: none
+
+
+
+    
