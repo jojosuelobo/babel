@@ -15,22 +15,31 @@
                 li
                     //box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25)
                     //padding: 35px
-
                     display: flex
                     justify-content: space-between
-                    margin-bottom: 64px
+                    margin-bottom: 32px
                     .button
                         margin-right: 80px
+                        cursor: pointer
+                        .OnOff
+                            display: flex
+                            gap: 8px
                     .desc
                         h2
                             font-size: 18px
                             margin-bottom: 12px
-                        select
-                            width: 366px
-                            height: 61px
-                            flex-shrink: 0
-                            border-radius: 25px
+                        .dropdown
                             color: #5A5A5F
                             font-family: Poppins
-                            font-size: 18px                
-                            padding: 14px 112px 15px 16px
+                            padding: 1rem
+                    .submit
+                        width: 20%
+                        height: 50px
+                        border-radius: 100px
+                        background: #4D3666
+                        color: white
+                        border: none
+                        margin-top: 1em
+                    .submit:hover
+                        background: white
+                        color: black
