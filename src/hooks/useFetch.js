@@ -75,6 +75,7 @@ export const useFetch = (url) => {
         setError(null);
       } catch (error) {
         console.log(error.message);
+        
 
         setError("Houve um erro ao carregar os dados!");
       }

@@ -22,16 +22,32 @@ import Aside from '../../components/asideCustom'
 
 // Firebase
 import { getAuth } from "firebase/auth";
+import { useAuthentication } from '../../supabase/useAuth';
 
 export default function Post() {
     const navigate = useNavigate()
 
-    const url = 'http://localhost:3000/posts'
-    const { httpConfig, loading } = useFetch(url)
+    
     const { id } = useParams()
+    // const url = 'http://localhost:7154/posts/'
+    // console.log(url)
+    // const { httpConfig, loading } = useFetch(url)
 
     const [post, setPost] = useState([])
+    const [userData, setUserData] = useState([])
+    const [userId, setUserId] = useState()
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [sessionId, setSessionId] = useState()
+
+    const auth = useAuthentication();
+    const user = getUser().then(result => setSessionId(result));
+
+    async function getUser()
+    {
+        const user = await auth.getUserId();
+        
+        return user
+    }
 
     const openConfirmationModal = () => {
         setShowConfirmationModal(true);
@@ -46,6 +62,13 @@ export default function Post() {
         try {
             const response = await backend.get(`/posts/id?idLista=${id}`)
             const data = response.data
+
+            const responseUser = await backend.get(`/usuarios/id?IdUsuario=${data.idUsuario}`)
+            const userData = responseUser.data
+            setUserData(userData)
+
+            setUserId(data.idUsuario)
+
             setPost(data)
         } catch (err) {
             console.log(err)
@@ -53,18 +76,17 @@ export default function Post() {
     }
 
     useEffect(() => {
-        getPosts()
+        async function fetchData(){
+            await getPosts()
+        }
+        fetchData()
     }, [])
-
-    // Nome de usuário
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const displayName = user.displayName
 
     const handleDelete = async () => {
 
         try {
-            await httpConfig(id, "DELETE");
+            await backend.delete(`/delete/id?idLista=${id}`)
+            //await httpConfig(id, "DELETE");
             navigate('/');
         } catch (error) {
             console.log(error)
@@ -81,9 +103,9 @@ export default function Post() {
                     <div className={styles.icons}>
                         <Link to={'/'}> <IoMdArrowRoundBack className={styles.icon} /> </Link>
 
-                        {displayName === post.nome_usuario &&
+                        {sessionId === userId &&
                             <div>
-                                <Link to={`/edit/${post.id}`}> <AiOutlineEdit className={styles.icon} /> </Link>
+                                <Link to={`/edit/${post.idLista}`}> <AiOutlineEdit className={styles.icon} /> </Link>
                                 <a className={styles.icon} onClick={openConfirmationModal}>
                                     <TiDelete className={styles.icon} />
                                 </a>
@@ -115,7 +137,7 @@ export default function Post() {
                     <div className={styles.post_footer}>
                         <div className={styles.profile_info}>
                             <img className={styles.profile_pic} src={profile} alt="" />
-                            <p className={styles.username}>{post.nome_usuario}</p>
+                            <p className={styles.username}>{userData.nome}</p>
                         </div>
                     </div>
                 </div>

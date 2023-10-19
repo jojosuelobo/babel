@@ -21,6 +21,12 @@ import Header from '../../components/header'
 // Firebase
 import { getAuth } from "firebase/auth";
 
+// Supabase
+import { useAuthentication } from '../../supabase/useAuth';
+
+// Backend
+import backend from '../../axios/config'
+
 export default function NewPost() {
 
     const navigate = useNavigate()
@@ -28,14 +34,28 @@ export default function NewPost() {
     const dataPostagem = moment().format('L')
     const [tag, setTags] = useState([])
     const [descricao, setDescricao] = useState('')
+    const [sessionId, setSessionId] = useState()
 
-    const url = 'http://localhost:3000/posts'
+    const url = 'http://localhost:7154/newpost'
     const { httpConfig, loading } = useFetch(url)
 
     // Nome de usuário
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const displayName = user.displayName
+    const auth = useAuthentication();
+    const user = getUser().then(result => setSessionId(result));
+    const displayName = auth.getEmail();
+
+    let actualDisplayName;
+
+    displayName.then(function(result){
+        actualDisplayName = result;
+    })
+
+    async function getUser()
+    {
+        const user = await auth.getUserId();
+        
+        return user
+    }
 
     //Validação 
     const [erroTitulo, setErroTitulo] = useState('');
@@ -91,24 +111,32 @@ export default function NewPost() {
 
 
         // ID
-        const idPost = Math.floor(Math.random() * 1000)
+        //const idPost = Math.floor(Math.random() * 1000)
 
-        const post = {
-            id: idPost,
-            titulo,
-            data_postagem: dataPostagem,
-            tags_relacionadas: tag,
-            descricao,
-            nome_usuario: displayName,
-            itens_lista: lista
-        }
+        // const post = {
+        //     titulo,
+        //     dataCriacao: dataPostagem,
+        //     tags: tag,
+        //     descricao,
+        //     conteudo: lista,
+        //     numLikes: 0,
+        //     idUsuario: actualUser
+        // }
 
         if (erroTitulo || erroTag || erroDescricao || erroPrimeiroItem) {
             return;
         }
 
         try {
-            await httpConfig(post, "POST")
+            await backend.post(`/newpost`,{
+                titulo,
+                conteudo: lista,
+                numLikes: 0,
+                idUsuario: sessionId,
+                tags: tag,
+                descricao
+            });
+            //await httpConfig(post, "POST")
             navigate('/');
         } catch (error) {
             console.log(error)

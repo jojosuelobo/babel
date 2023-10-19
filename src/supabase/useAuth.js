@@ -9,6 +9,10 @@ export const useAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
+  const [userData, setUser] = useState();
+
+  const [email, setEmail] = useState();
+
   // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
 
@@ -18,6 +22,21 @@ export const useAuthentication = () => {
     if (cancelled) {
       return;
     }
+  }
+
+  // Pega o usuario da sessao atual, pode retornar nulo
+  const getUserId = async (uuid) => {
+    const {user} = (await supabase.auth.getUser(uuid)).data
+    //console.log("userId: " + user.id)
+    setUser(user.id)
+    return user.id
+  }
+
+  const getEmail = async (uuid) => {
+    const {user} = (await supabase.auth.getUser(uuid)).data
+    //console.log("email: " + user.email)
+    setEmail(user.email)
+    return user.email
   }
 
   const createUser = async (data) => {
@@ -121,6 +140,10 @@ export const useAuthentication = () => {
     login,
     loading,
     emailError,
-    emailPasswordError
+    emailPasswordError,
+    getUserId,
+    getEmail,
+    userData,
+    email
   };
 };
