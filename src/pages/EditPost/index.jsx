@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styles from './Edit.module.sass'
 
-import profile from '../../../public/logoUVV.png'
-
 // lib
 import moment from 'moment/moment'
 
@@ -20,10 +18,10 @@ import { useFetch } from '../../hooks/useFetch'
 
 // Components
 import Header from '../../components/header'
-import Aside from '../../components/asideCustom'
 
 // Firebase
 import { getAuth } from "firebase/auth";
+import { showSuccessToast, showErrorToast } from '../../components/toast';
 
 
 export default function Edit() {
@@ -97,12 +95,12 @@ export default function Edit() {
             await httpConfig(id, "DELETE");
             await httpConfig(post, "POST")
             navigate('/');
+            showSuccessToast('Lista editada com sucesso!')
         } catch (error) {
             console.log(error)
+            showErrorToast('Falha ao editar a lista. Por favor, tente novamente.')
         }
-
         //httpConfig(post, "PUT")
-
     }
 
     return (

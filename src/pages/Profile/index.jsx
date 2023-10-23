@@ -13,6 +13,9 @@ import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
 import profilePic from '../../../public/logoUVV.png'
 
+
+import { showInfoToast } from '../../components/toast';
+
 export default function Profile() {
   const [posts, setPosts] = useState([])
   const [isModalOpen, setModalOpen] = useState(false);
@@ -56,6 +59,8 @@ export default function Profile() {
     localStorage.setItem(`editedPronoun_${uid}`, editedPronoun);
     localStorage.setItem(`editedBio_${uid}`, editedBio);
     closeModal();
+    showInfoToast('Mudanças no perfil aplicadas.');
+
   }
 
   // Verifica se há valores no localStorage ao carregar a página
