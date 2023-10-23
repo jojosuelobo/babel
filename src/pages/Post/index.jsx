@@ -66,11 +66,11 @@ export default function Post() {
         try {
             await httpConfig(id, "DELETE");
             navigate('/');
-            showSuccessToast('Post deletado com sucesso!');
+            showSuccessToast('Lista deletada com sucesso!');
 
         } catch (error) {
             console.log(error)
-            showErrorToast('Falha ao excluir o post. Por favor, tente novamente.')
+            showErrorToast('Falha ao excluir a lista. Por favor, tente novamente.')
 
         }
         closeConfirmationModal();

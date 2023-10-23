@@ -59,8 +59,7 @@ export default function Profile() {
     localStorage.setItem(`editedPronoun_${uid}`, editedPronoun);
     localStorage.setItem(`editedBio_${uid}`, editedBio);
     closeModal();
-    showInfoToast('Mudanças no perfil aplicadas.');
-
+    showInfoToast('As mudanças no perfil foram aplicadas.');
   }
 
   // Verifica se há valores no localStorage ao carregar a página
