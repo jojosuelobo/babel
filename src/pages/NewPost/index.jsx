@@ -36,9 +36,6 @@ export default function NewPost() {
     const [descricao, setDescricao] = useState('')
     const [sessionId, setSessionId] = useState()
 
-    const url = 'http://localhost:7154/newpost'
-    const { httpConfig, loading } = useFetch(url)
-
     // Nome de usuário
     const auth = useAuthentication();
     const user = getUser().then(result => setSessionId(result));
@@ -66,13 +63,13 @@ export default function NewPost() {
     // Listagem de fato
     const [lista, setLista] = useState([
         {
-            nome_item: '',
-            descricao_item: ''
+            nomeItem: '',
+            descricaoItem: ''
         }
     ]);
 
     const handleSoma = () => {
-        let novoItem = { nome_item: '', descricao_item: 'TESTEadição' }
+        let novoItem = { nomeItem: '', descricaoItem: 'TESTEadição' }
         setLista([...lista, novoItem])
     }
 
@@ -128,6 +125,7 @@ export default function NewPost() {
         }
 
         try {
+
             await backend.post(`/newpost`,{
                 titulo,
                 conteudo: lista,
@@ -136,7 +134,6 @@ export default function NewPost() {
                 tags: tag,
                 descricao
             });
-            //await httpConfig(post, "POST")
             navigate('/');
         } catch (error) {
             console.log(error)
@@ -195,7 +192,7 @@ export default function NewPost() {
                                             className={styles.item_input}
                                             onChange={(e) => {
                                                 const newList = [...lista];
-                                                newList[index].nome_item = e.target.value;
+                                                newList[index].nomeItem = e.target.value;
                                                 setLista(newList);
                                             }}
                                         />
@@ -208,7 +205,7 @@ export default function NewPost() {
                                             className={styles.item_text}
                                             onChange={(e) => {
                                                 const newList = [...lista];
-                                                newList[index].descricao_item = e.target.value;
+                                                newList[index].descricaoItem = e.target.value;
                                                 setLista(newList);
                                             }}
                                         ></textarea>
@@ -218,8 +215,7 @@ export default function NewPost() {
                         </div>
                         <div>
                             <div className={styles.botoes}>
-                                {loading ? <p>Aguarde!</p>
-                                    : <input className={styles.submit} type="submit" value="Criar Lista" />}
+                                <input className={styles.submit} type="submit" value="Criar Lista" />
                             </div>
                             {/* Anexar imagem no futuro... */}
                         </div>
