@@ -99,7 +99,7 @@ export default function Edit() {
     const handleSubmit = async () => {
 
         try {
-            await backend.post(`/edit/id?idLista=${id}`,{
+            await backend.put(`/edit/id?idLista=${id}`,{
                 titulo,
                 conteudo: lista,
                 numLikes: 0,
