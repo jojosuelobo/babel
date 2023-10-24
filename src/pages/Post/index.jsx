@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react'
 import blogFetch from '../../axios/config'
 import { useFetch } from '../../hooks/useFetch'
 
+import { showSuccessToast, showErrorToast } from '../../components/toast';
 
 // Components
 import Header from '../../components/header'
@@ -65,8 +66,12 @@ export default function Post() {
         try {
             await httpConfig(id, "DELETE");
             navigate('/');
+            showSuccessToast('Lista deletada com sucesso!');
+
         } catch (error) {
             console.log(error)
+            showErrorToast('Falha ao excluir a lista. Por favor, tente novamente.')
+
         }
         closeConfirmationModal();
     }

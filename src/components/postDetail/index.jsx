@@ -21,7 +21,7 @@ export default function index({ post }) {
                 <AiOutlineHeart className={styles.icon} />
             </div>
             <div className={styles.tags}>
-                {(post.tags_relacionadas).map((tag) => (
+                {(post.tags_relacionadas)?.map((tag) => (
                     <p className={styles.tag} key={tag}>{tag}</p>
                 ))}
             </div>

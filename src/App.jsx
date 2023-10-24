@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import './App.css'
-
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { onAuthStateChanged } from 'firebase/auth'
 
@@ -8,7 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 
-        
+
 // Hooks
 import { useState, useEffect } from 'react'
 import { useAuthentication } from './firebase/useAuth'
@@ -25,6 +24,10 @@ import Profile from './pages/Profile'
 import Notifications from './pages/Notifications'
 import EditPost from './pages/EditPost'
 import Settings from './pages/Settings'
+
+import { ToastContainer } from 'react-toastify';
+
+
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -87,6 +90,7 @@ function App() {
             </Routes>
           </div>
         </BrowserRouter>
+        <ToastContainer />
       </AuthProvider>
     </div>
   )

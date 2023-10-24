@@ -21,6 +21,8 @@ import Header from '../../components/header'
 // Firebase
 import { getAuth } from "firebase/auth";
 
+import { showSuccessToast, showErrorToast } from '../../components/toast';
+
 export default function NewPost() {
 
     const navigate = useNavigate()
@@ -110,8 +112,11 @@ export default function NewPost() {
         try {
             await httpConfig(post, "POST")
             navigate('/');
+            showSuccessToast('Lista criada com sucesso!');
+
         } catch (error) {
             console.log(error)
+            showErrorToast('Falha ao criar a lista. Por favor, tente novamente.')
         }
         // Redirecionar
     }
