@@ -27,6 +27,7 @@ import Profile from './pages/Profile'
 import Notifications from './pages/Notifications'
 import EditPost from './pages/EditPost'
 import Settings from './pages/Settings'
+import AboutUs from './pages/AboutUs';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -92,6 +93,10 @@ function App() {
               <Route
                 path='/settings'
                 element={user ? <Settings /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/about'
+                element={!user ? <AboutUs /> : <AboutUs />}
               />
             </Routes>
           </div>

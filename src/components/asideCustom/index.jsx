@@ -2,6 +2,7 @@ import styles from './AsideCustom.module.sass'
 import { BiHome } from 'react-icons/bi'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { FaRegUserCircle } from 'react-icons/fa'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
 export default function aside() {
@@ -26,6 +27,13 @@ export default function aside() {
           <li className={styles.list_btn}>
             <FaRegUserCircle className={styles.icon} />
             <button className={styles.btn}>Perfil</button>
+          </li>
+        </Link>
+
+        <Link to={'/about'}>
+          <li className={styles.list_btn}>
+            <AiOutlineInfoCircle className={styles.icon} />
+            <button className={styles.btn}>Informações</button>
           </li>
         </Link>
 
