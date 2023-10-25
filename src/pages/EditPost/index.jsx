@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import styles from './Edit.module.sass'
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import profile from '../../../public/logoUVV.png'
 
 // lib
 import moment from 'moment/moment'
-
 
 // Icons
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -39,8 +41,7 @@ export default function Edit() {
 
     const { id } = useParams()
 
-    const [post, setPost] = useState([])
-    const [tag, setTags] = useState([])
+    const [post, setPost] = useState({})
     const [lista, setLista] = useState([])
     const [sessionId, setSessionId] = useState()
 
@@ -85,13 +86,21 @@ export default function Edit() {
     // Data e dia
     const dataPostagem = moment().format('L')
 
-    useEffect(() => {
-        getPosts()
-    }, [])
+
 
     const [titulo, setTitulo] = useState('')
     const [descricao, setDescricao] = useState('')
-    // const [lista, setLista] = useState([])
+    const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        getPosts()
+    }, []);
+
+    useEffect(() => {
+        setTitulo(post.titulo);
+        setDescricao(post.descricao);
+        setTags(post.tags_relacionadas);
+    }, [post]);
 
     //setTag(post.tags_relacionadas)
     console.log(sessionId)
@@ -113,7 +122,6 @@ export default function Edit() {
         }
 
         //httpConfig(post, "PUT")
-
     }
 
     return (
@@ -127,33 +135,29 @@ export default function Edit() {
                         </div>
                         <div className={styles.upperForm}>
                             <h2>Título</h2>
-                            <input onChange={(e) => setTitulo(e.target.value)} className={styles.title} />
+                            <input onChange={(e) => setTitulo(e.target.value)}
+                                value={titulo}
+                                className={styles.title} />
                             <p className={styles.date}>{dataPostagem}</p>
                             <label className={styles.tags}>
                                 Tags
                                 <input
                                     // PS: Isto está horrivelmente maravilhosamente funcionando, é oque importa!
-                                    onChange={(e) =>
+                                    value={tags}
+                                    onChange={(e) => {
+                                        const tagInput = e.target.value;
                                         setTags(
-                                            ((e.target.value).split(",").map((tag) => tag.trim()))
-                                                .filter((tag) => tag !== "")
-                                        )
+                                            tagInput.split(",").map((tag) => tag.trim()))
+                                            .filter((tag) => tag !== "")
+                                    }
+
                                     }
                                 />
                             </label>
                             <p>Descrição</p>
-                            <textarea onChange={(e) => setDescricao(e.target.value)} className={styles.desc}>{post.descricao}</textarea>
-
-                            {/* <div className={styles.list}>
-                            <ul>
-                                {post.itens_lista?.map((item) => (
-                                    <li key={item.nome_item}>
-                                        <h1>{item.nome_item}</h1>
-                                        <p>{item.descricao_item}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div> */}
+                            <textarea onChange={(e) => setDescricao(e.target.value)}
+                                className={styles.desc} value={descricao}
+                            >{post.descricao}</textarea>
                         </div>
                         <div className={styles.list}>
                             <ul>
@@ -165,6 +169,7 @@ export default function Edit() {
                                                 <input
                                                     type="text"
                                                     className={styles.item_input}
+                                                    value={item.nome_item}
                                                     onChange={(e) => {
                                                         const newList = [...lista];
                                                         newList[index].nome_item = e.target.value;
@@ -177,6 +182,7 @@ export default function Edit() {
                                                 <textarea
                                                     type="text"
                                                     className={styles.item_text}
+                                                    value={item.descricao_item}
                                                     onChange={(e) => {
                                                         const newList = [...lista];
                                                         newList[index].descricao_item = e.target.value;

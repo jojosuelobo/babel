@@ -26,6 +26,7 @@ import { useAuthentication } from '../../supabase/useAuth';
 
 // Backend
 import backend from '../../axios/config'
+import { showSuccessToast, showErrorToast } from '../../components/toast';
 
 export default function NewPost() {
 
@@ -135,8 +136,11 @@ export default function NewPost() {
                 descricao
             });
             navigate('/');
+            showSuccessToast('Lista criada com sucesso!');
+
         } catch (error) {
             console.log(error)
+            showErrorToast('Falha ao criar a lista. Por favor, tente novamente.')
         }
         // Redirecionar
     }
