@@ -21,8 +21,6 @@ import { showSuccessToast, showErrorToast } from '../../components/toast';
 import Header from '../../components/header'
 import Aside from '../../components/asideCustom'
 
-// Firebase
-import { getAuth } from "firebase/auth";
 import { useAuthentication } from '../../supabase/useAuth';
 
 export default function Post() {
@@ -30,10 +28,6 @@ export default function Post() {
 
     
     const { id } = useParams()
-    // const url = 'http://localhost:7154/posts/'
-    // console.log(url)
-    // const { httpConfig, loading } = useFetch(url)
-
     const [post, setPost] = useState([])
     const [userData, setUserData] = useState([])
     const [userId, setUserId] = useState()
@@ -87,7 +81,6 @@ export default function Post() {
 
         try {
             await backend.delete(`/delete/id?idLista=${id}`)
-            //await httpConfig(id, "DELETE");
             navigate('/');
             showSuccessToast('Lista deletada com sucesso!');
 

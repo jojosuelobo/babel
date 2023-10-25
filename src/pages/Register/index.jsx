@@ -3,7 +3,6 @@ import styles from './Register.module.sass'
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import { useAuthentication } from '../../firebase/useAuth';
 import { useAuthentication } from '../../supabase/useAuth';
 
 export default function Register() {
@@ -27,7 +26,6 @@ export default function Register() {
         e.preventDefault();
 
         const user = {
-            //displayName,
             email,
             password,
         };

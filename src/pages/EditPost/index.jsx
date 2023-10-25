@@ -18,15 +18,9 @@ import { Link, useNavigate } from 'react-router-dom'
 // Hooks
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import blogFetch from '../../axios/config'
-import { useFetch } from '../../hooks/useFetch'
 
 // Components
 import Header from '../../components/header'
-import Aside from '../../components/asideCustom'
-
-// Firebase
-import { getAuth } from "firebase/auth";
 
 // Supabase
 import { useAuthentication } from '../../supabase/useAuth';
@@ -36,8 +30,6 @@ import backend from '../../axios/config'
 
 
 export default function Edit() {
-    // const url = 'http://localhost:3000/posts'
-    // const { httpConfig, loading } = useFetch(url)
 
     const { id } = useParams()
 
@@ -48,17 +40,6 @@ export default function Edit() {
     
 
     const navigate = useNavigate()
-
-    // const getPosts = async () => {
-    //     try {
-    //         const response = await backend.get(`/posts/id?idLista=${id}`)
-    //         const data = response.data
-    //         setPost(data)
-    //         setLista(data.itens_lista)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
 
     const getPosts = async () => {
         try {

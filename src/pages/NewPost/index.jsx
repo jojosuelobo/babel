@@ -7,7 +7,6 @@ import moment from 'moment/moment'
 
 // hooks
 import { useState, useEffect } from 'react'
-import { useFetch } from '../../hooks/useFetch'
 
 // react router dom
 import { Link, useNavigate } from 'react-router-dom'
@@ -17,9 +16,6 @@ import { IoMdArrowRoundBack } from 'react-icons/io'
 
 // Components
 import Header from '../../components/header'
-
-// Firebase
-import { getAuth } from "firebase/auth";
 
 // Supabase
 import { useAuthentication } from '../../supabase/useAuth';
@@ -106,20 +102,6 @@ export default function NewPost() {
         if (!lista[0].nome_item || !lista[0].descricao_item) {
             setErroPrimeiroItem('Preencha o primeiro item com título e descrição')
         }
-
-
-        // ID
-        //const idPost = Math.floor(Math.random() * 1000)
-
-        // const post = {
-        //     titulo,
-        //     dataCriacao: dataPostagem,
-        //     tags: tag,
-        //     descricao,
-        //     conteudo: lista,
-        //     numLikes: 0,
-        //     idUsuario: actualUser
-        // }
 
         if (erroTitulo || erroTag || erroDescricao || erroPrimeiroItem) {
             return;
