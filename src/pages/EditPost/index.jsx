@@ -28,34 +28,60 @@ import Aside from '../../components/asideCustom'
 // Firebase
 import { getAuth } from "firebase/auth";
 
+// Supabase
+import { useAuthentication } from '../../supabase/useAuth';
+
+// Backend
+import backend from '../../axios/config'
+
 
 export default function Edit() {
-
-    const url = 'http://localhost:3000/posts'
-    const { httpConfig, loading } = useFetch(url)
+    // const url = 'http://localhost:3000/posts'
+    // const { httpConfig, loading } = useFetch(url)
 
     const { id } = useParams()
 
     const [post, setPost] = useState({})
     const [lista, setLista] = useState([])
+    const [sessionId, setSessionId] = useState()
+
+    
 
     const navigate = useNavigate()
 
+    // const getPosts = async () => {
+    //     try {
+    //         const response = await backend.get(`/posts/id?idLista=${id}`)
+    //         const data = response.data
+    //         setPost(data)
+    //         setLista(data.itens_lista)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
+
     const getPosts = async () => {
         try {
-            const response = await blogFetch.get(`/posts/${id}`)
+            const response = await backend.get(`/posts/id?idLista=${id}`)
             const data = response.data
+
             setPost(data)
-            setLista(data.itens_lista)
         } catch (err) {
             console.log(err)
         }
     }
 
     // Nome de usuário
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const displayName = user.displayName
+    const auth = useAuthentication();
+    const user = getUser().then(result => setSessionId(result));
+
+    async function getUser()
+    {
+        const user = await auth.getUserId();
+        
+        return user
+    }
+
 
     // Data e dia
     const dataPostagem = moment().format('L')
@@ -76,26 +102,20 @@ export default function Edit() {
         setTags(post.tags_relacionadas);
     }, [post]);
 
+    //setTag(post.tags_relacionadas)
+    console.log(sessionId)
 
     const handleSubmit = async () => {
 
-        const novoId = parseInt(id, 10)
-
-        const post = {
-            id: novoId + 1,
-            titulo,
-            data_postagem: dataPostagem,
-            tags_relacionadas: tags,
-            descricao,
-            nome_usuario: displayName,
-            itens_lista: lista
-        }
-
-        console.log(post)
-
         try {
-            await httpConfig(id, "DELETE");
-            await httpConfig(post, "POST")
+            await backend.put(`/edit/id?idLista=${id}`,{
+                titulo,
+                conteudo: lista,
+                numLikes: 0,
+                idUsuario: sessionId,
+                tags: tag,
+                descricao
+            });
             navigate('/');
         } catch (error) {
             console.log(error)

@@ -4,14 +4,15 @@ import styles from './Login.module.sass'
 
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useAuthentication } from '../../firebase/useAuth';
+//import { useAuthentication } from '../../firebase/useAuth';
+import { useAuthentication } from '../../supabase/useAuth';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setError] = useState("");
 
-  const { login, errors } = useAuthentication();
+  const { login, error } = useAuthentication();
 
   useEffect(() => {
     if (error) {

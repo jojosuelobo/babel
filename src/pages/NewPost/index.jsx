@@ -21,6 +21,11 @@ import Header from '../../components/header'
 // Firebase
 import { getAuth } from "firebase/auth";
 
+// Supabase
+import { useAuthentication } from '../../supabase/useAuth';
+
+// Backend
+import backend from '../../axios/config'
 import { showSuccessToast, showErrorToast } from '../../components/toast';
 
 export default function NewPost() {
@@ -30,14 +35,25 @@ export default function NewPost() {
     const dataPostagem = moment().format('L')
     const [tag, setTags] = useState([])
     const [descricao, setDescricao] = useState('')
-
-    const url = 'http://localhost:3000/posts'
-    const { httpConfig, loading } = useFetch(url)
+    const [sessionId, setSessionId] = useState()
 
     // Nome de usuário
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const displayName = user.displayName
+    const auth = useAuthentication();
+    const user = getUser().then(result => setSessionId(result));
+    const displayName = auth.getEmail();
+
+    let actualDisplayName;
+
+    displayName.then(function(result){
+        actualDisplayName = result;
+    })
+
+    async function getUser()
+    {
+        const user = await auth.getUserId();
+        
+        return user
+    }
 
     //Validação 
     const [erroTitulo, setErroTitulo] = useState('');
@@ -48,13 +64,13 @@ export default function NewPost() {
     // Listagem de fato
     const [lista, setLista] = useState([
         {
-            nome_item: '',
-            descricao_item: ''
+            nomeItem: '',
+            descricaoItem: ''
         }
     ]);
 
     const handleSoma = () => {
-        let novoItem = { nome_item: '', descricao_item: 'TESTEadição' }
+        let novoItem = { nomeItem: '', descricaoItem: 'TESTEadição' }
         setLista([...lista, novoItem])
     }
 
@@ -93,24 +109,32 @@ export default function NewPost() {
 
 
         // ID
-        const idPost = Math.floor(Math.random() * 1000)
+        //const idPost = Math.floor(Math.random() * 1000)
 
-        const post = {
-            id: idPost,
-            titulo,
-            data_postagem: dataPostagem,
-            tags_relacionadas: tag,
-            descricao,
-            nome_usuario: displayName,
-            itens_lista: lista
-        }
+        // const post = {
+        //     titulo,
+        //     dataCriacao: dataPostagem,
+        //     tags: tag,
+        //     descricao,
+        //     conteudo: lista,
+        //     numLikes: 0,
+        //     idUsuario: actualUser
+        // }
 
         if (erroTitulo || erroTag || erroDescricao || erroPrimeiroItem) {
             return;
         }
 
         try {
-            await httpConfig(post, "POST")
+
+            await backend.post(`/newpost`,{
+                titulo,
+                conteudo: lista,
+                numLikes: 0,
+                idUsuario: sessionId,
+                tags: tag,
+                descricao
+            });
             navigate('/');
             showSuccessToast('Lista criada com sucesso!');
 
@@ -172,7 +196,7 @@ export default function NewPost() {
                                             className={styles.item_input}
                                             onChange={(e) => {
                                                 const newList = [...lista];
-                                                newList[index].nome_item = e.target.value;
+                                                newList[index].nomeItem = e.target.value;
                                                 setLista(newList);
                                             }}
                                         />
@@ -185,7 +209,7 @@ export default function NewPost() {
                                             className={styles.item_text}
                                             onChange={(e) => {
                                                 const newList = [...lista];
-                                                newList[index].descricao_item = e.target.value;
+                                                newList[index].descricaoItem = e.target.value;
                                                 setLista(newList);
                                             }}
                                         ></textarea>
@@ -195,8 +219,7 @@ export default function NewPost() {
                         </div>
                         <div>
                             <div className={styles.botoes}>
-                                {loading ? <p>Aguarde!</p>
-                                    : <input className={styles.submit} type="submit" value="Criar Lista" />}
+                                <input className={styles.submit} type="submit" value="Criar Lista" />
                             </div>
                             {/* Anexar imagem no futuro... */}
                         </div>

@@ -9,7 +9,7 @@ import Header from '../../components/header'
 import PostDetail from '../../components/postDetail'
 
 // Hooks
-import blogFetch from '../../axios/config'
+import backend from '../../axios/config'
 import { useQuery } from '../../firebase/useQuery'
 
 export default function Search() {
@@ -20,13 +20,12 @@ export default function Search() {
 
     const getPosts = async () => {
         try {
-            const response = await blogFetch.get(`/posts`)
+            const response = await backend.get(`/posts`)
             //const response = await blogFetch.get(`/posts?titulo=${search}`)
             // http://localhost:3000/posts?tags_relacionadas_contains=receitas
             const data = response.data
-            const filteredData = data.filter(post => post.tags_relacionadas.includes(`${search}`))
+            const filteredData = data.filter(post => post.tags.includes(`${search}`))
             setPosts(filteredData)
-            //setPosts(data)
             console.log(filteredData)
         } catch (err) {
             console.log(err)
@@ -49,7 +48,7 @@ export default function Search() {
                         <h1>Não há posts a serem exibidos</h1>
                     </div>
                 ) : (
-                    posts.map((post) => <PostDetail key={post.id} post={post} />)
+                    posts.map((post) => <PostDetail key={post.idLista} post={post} />)
                 )}
             </div>
 

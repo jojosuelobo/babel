@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { onAuthStateChanged } from 'firebase/auth'
+//import { onAuthStateChanged } from 'firebase/auth'
+//import { Subscription } from '@supabase/gotrue-js' //Subscription.onAuthStateChanged
+import { supabase } from './supabase/config'
 
 // PrimeProvider
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
@@ -10,7 +12,8 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 
 // Hooks
 import { useState, useEffect } from 'react'
-import { useAuthentication } from './firebase/useAuth'
+//import { useAuthentication } from './firebase/useAuth'
+import { useAuthentication } from './supabase/useAuth'
 import { AuthProvider } from './firebase/AuthContext'
 
 // Pages
@@ -31,13 +34,16 @@ import { ToastContainer } from 'react-toastify';
 
 
 function App() {
+  
   const [user, setUser] = useState(undefined)
   const { auth } = useAuthentication()
 
   const loadingUser = user === undefined
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    //supabase.auth.onAuthStateChange
+
+    supabase.auth.onAuthStateChange((_,user) => {
       setUser(user)
     })
   }, [auth])
