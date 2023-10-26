@@ -6,21 +6,21 @@ import { useState, useEffect } from 'react';
 import { useAuthentication } from '../../supabase/useAuth';
 
 export default function Register() {
-    const [displayName, setDisplayName] = useState("");
+    //const [displayName, setDisplayName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
+    const [erro, setError] = useState("");
     const [errorDisplayName, setDisplayNameError] = useState("");
-    const { createUser, errors } = useAuthentication();
+    const { createUser, error } = useAuthentication();
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (error) {
-            setError(error);
+        if (erro) {
+            setError(erro);
         }
-    }, [error]);
+    }, [erro]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -70,41 +70,40 @@ export default function Register() {
                         <p>Crie sua conta</p>
                     </div>
                     <form className={styles.register_form}>
-                        <p>Nome</p>
+                        {/* <p>Nome</p>
                         <input
-                            className={`${styles.register} ${errorDisplayName ? styles.input_error : ''}`}
+                            className={`${styles.register}`}
                             type="text"
                             onChange={handleDisplayNameChange}
                             value={displayName}
-                        />
+                        /> */}
                         {errorDisplayName && <p className={styles.text_error}>{errorDisplayName}</p>}
                         <p>Email</p>
                         <input
-                            className={`${styles.register} ${errors.email ? styles.input_error : ''}`}
+                            className={`${styles.register}`}
                             type="text"
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
                         />
-                        {errors.email && <p className={styles.text_error}>{errors.email}</p>}
 
                         <p>Senha</p>
                         <input
-                            className={`${styles.register} ${errors.password || error ? styles.input_error : ''}`}
+                            className={`${styles.register}`}
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
                         />
                         <p>Confirmar Senha</p>
                         <input
-                            className={`${styles.register} ${errors.password || error ? styles.input_error : ''}`}
+                            className={`${styles.register}`}
                             type="password"
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             value={confirmPassword}
                         />
-                        {(errors.password || error) && <p className={styles.text_error}>{errors.password || error}</p>}
+                        {(erro) && <p className={styles.text_error}>{erro}</p>}
                     </form>
                     <button className={styles.btn} onClick={handleSubmit}
-                        disabled={!displayName || !email || !password || !confirmPassword}
+                        disabled={!email || !password || !confirmPassword}
                     >Criar conta</button>
 
 
