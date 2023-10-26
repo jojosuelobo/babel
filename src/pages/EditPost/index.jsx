@@ -47,6 +47,7 @@ export default function Edit() {
             const data = response.data
 
             setPost(data)
+            setLista(data.conteudo)
         } catch (err) {
             console.log(err)
         }
@@ -80,7 +81,7 @@ export default function Edit() {
     useEffect(() => {
         setTitulo(post.titulo);
         setDescricao(post.descricao);
-        setTags(post.tags_relacionadas);
+        setTags(post.tags);
     }, [post]);
 
     //setTag(post.tags_relacionadas)
@@ -94,7 +95,7 @@ export default function Edit() {
                 conteudo: lista,
                 numLikes: 0,
                 idUsuario: sessionId,
-                tags: tag,
+                tags: tags,
                 descricao
             });
             navigate('/');
@@ -129,7 +130,6 @@ export default function Edit() {
                                         const tagInput = e.target.value;
                                         setTags(
                                             tagInput.split(",").map((tag) => tag.trim()))
-                                            .filter((tag) => tag !== "")
                                     }
 
                                     }
@@ -142,7 +142,7 @@ export default function Edit() {
                         </div>
                         <div className={styles.list}>
                             <ul>
-                                {post.itens_lista?.map((item, index) => (
+                                {post.conteudo?.map((item, index) => (
                                     <li key={index}>
                                         <div className={styles.item_lista} >
                                             <label className={styles.item_tit}>
@@ -150,10 +150,10 @@ export default function Edit() {
                                                 <input
                                                     type="text"
                                                     className={styles.item_input}
-                                                    value={item.nome_item}
+                                                    placeholder={item.nomeItem}
                                                     onChange={(e) => {
                                                         const newList = [...lista];
-                                                        newList[index].nome_item = e.target.value;
+                                                        newList[index].nomeItem = e.target.value;
                                                         setLista(newList);
                                                     }}
                                                 />
@@ -163,10 +163,10 @@ export default function Edit() {
                                                 <textarea
                                                     type="text"
                                                     className={styles.item_text}
-                                                    value={item.descricao_item}
+                                                    placeholder={item.descricaoItem}
                                                     onChange={(e) => {
                                                         const newList = [...lista];
-                                                        newList[index].descricao_item = e.target.value;
+                                                        newList[index].descricaoItem = e.target.value;
                                                         setLista(newList);
                                                     }}
                                                 ></textarea>
