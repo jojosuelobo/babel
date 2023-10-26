@@ -7,11 +7,20 @@ import Aside from '../../components/asideCustom'
 import Header from '../../components/header'
 import PostDetail from '../../components/postDetail'
 
+// Hooks
+import { useParams } from 'react-router-dom'
+
 // Firebase
 import { getAuth } from "firebase/auth";
 import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
 import profilePic from '../../../public/logoUVV.png'
+
+// Supabase
+import { useAuthentication } from '../../supabase/useAuth';
+
+// Backend
+import backend from '../../axios/config'
 
 
 import { showInfoToast } from '../../components/toast';
@@ -22,18 +31,38 @@ export default function Profile() {
   const [editedUsername, setEditedUsername] = useState('');
   const [editedPronoun, setEditedPronoun] = useState('');
   const [editedBio, setEditedBio] = useState('');
+  const [sessionId, setSessionId] = useState()
 
   // Carregando informações do usuário
-  const auth = getAuth();
-  const user = auth.currentUser;
-  const uid = user.uid;
-  const displayName = user.displayName;
+  // const auth = getAuth();
+  // const user = auth.currentUser;
+  // const uid = user.uid;
+  // const displayName = user.displayName;
+  const auth = useAuthentication();
+  const user = getUser().then(result => setSessionId(result));
+  const displayName = auth.getEmail();
+
+  let actualDisplayName;
+
+  displayName.then(function(result){
+      actualDisplayName = result;
+  })
+
+  async function getUser()
+  {
+      const user = await auth.getUserId();
+      
+      return user
+  }
 
   // Referente aos Posts
   const getPosts = async () => {
     try {
-      const response = await blogFetch.get(`/posts?nome_usuario=${displayName}`)
+      console.log((await getUser()).slice(0,(await getUser()).length))
+      //const response = await blogFetch.get(`/posts?nome_usuario=${displayName}`)
+      const response = await backend.get(`/posts/usuario?idUsuario=${(await getUser()).slice(0,(await getUser()).length)}`)
       const data = response.data
+      console.log(data)
       setPosts(data)
     } catch (err) {
       console.log(err)
@@ -41,6 +70,7 @@ export default function Profile() {
   }
 
   useEffect(() => {
+    getUser()
     getPosts()
   }, [])
 
@@ -55,24 +85,24 @@ export default function Profile() {
   }
 
   const saveChanges = () => {
-    localStorage.setItem(`editedUsername_${uid}`, editedUsername);
-    localStorage.setItem(`editedPronoun_${uid}`, editedPronoun);
-    localStorage.setItem(`editedBio_${uid}`, editedBio);
+    localStorage.setItem(`editedUsername_${sessionId}`, editedUsername);
+    localStorage.setItem(`editedPronoun_${sessionId}`, editedPronoun);
+    localStorage.setItem(`editedBio_${sessionId}`, editedBio);
     closeModal();
     showInfoToast('As mudanças no perfil foram aplicadas.');
   }
 
   // Verifica se há valores no localStorage ao carregar a página
   useEffect(() => {
-    const savedEditedUsername = localStorage.getItem(`editedUsername_${uid}`) || displayName;
-    const savedEditedPronoun = localStorage.getItem(`editedPronoun_${uid}`) || '';
-    const savedEditedBio = localStorage.getItem(`editedBio_${uid}`) || '';
+    const savedEditedUsername = localStorage.getItem(`editedUsername_${sessionId}`) || actualDisplayName;
+    const savedEditedPronoun = localStorage.getItem(`editedPronoun_${sessionId}`) || '';
+    const savedEditedBio = localStorage.getItem(`editedBio_${sessionId}`) || '';
 
     setEditedUsername(savedEditedUsername);
     setEditedPronoun(savedEditedPronoun);
     setEditedBio(savedEditedBio);
 
-  }, [uid, displayName]);
+  }, [getUser(), actualDisplayName]);
 
   return (
     <>
@@ -94,12 +124,12 @@ export default function Profile() {
           <h2 className={styles.title}>Listas</h2>
           <div className={styles.divider}></div>
           <div className={styles.feed}>
-            {posts.length === 0 ? (
+            {posts == undefined || posts.length === 0 ? (
               <div>
                 <h1>Não há posts a serem exibidos</h1>
               </div>
             ) : (
-              posts.map((post) => <PostDetail key={post.id} post={post} />)
+              posts.map((post) => <PostDetail key={post.idLista} post={post} />)
             )}
           </div>
 
