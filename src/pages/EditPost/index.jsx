@@ -10,7 +10,7 @@ import profile from '../../../public/logoUVV.png'
 import moment from 'moment/moment'
 
 // Icons
-import { IoMdArrowRoundBack } from 'react-icons/io'
+import { IoMdArrowRoundBack, IoIosRemoveCircle } from 'react-icons/io'
 
 // React router dom
 import { Link, useNavigate } from 'react-router-dom'
@@ -37,7 +37,7 @@ export default function Edit() {
     const [lista, setLista] = useState([])
     const [sessionId, setSessionId] = useState()
 
-    
+
 
     const navigate = useNavigate()
 
@@ -57,10 +57,9 @@ export default function Edit() {
     const auth = useAuthentication();
     const user = getUser().then(result => setSessionId(result));
 
-    async function getUser()
-    {
+    async function getUser() {
         const user = await auth.getUserId();
-        
+
         return user
     }
 
@@ -90,7 +89,7 @@ export default function Edit() {
     const handleSubmit = async () => {
 
         try {
-            await backend.put(`/edit/id?idLista=${id}`,{
+            await backend.put(`/edit/id?idLista=${id}`, {
                 titulo,
                 conteudo: lista,
                 numLikes: 0,
@@ -104,6 +103,16 @@ export default function Edit() {
         }
 
         //httpConfig(post, "PUT")
+    }
+
+    const handleDelete = async (i) => {
+        console.log('ANTIGA:')
+        console.log(lista)
+        const novaLista = [...lista];
+        novaLista.splice(i, 1);
+        setLista(novaLista);
+        console.log('NOVA:')
+        console.log(lista)
     }
 
     return (
@@ -144,6 +153,7 @@ export default function Edit() {
                             <ul>
                                 {post.conteudo?.map((item, index) => (
                                     <li key={index}>
+                                        <IoIosRemoveCircle onClick={() => handleDelete(index)} className={styles.icons} />
                                         <div className={styles.item_lista} >
                                             <label className={styles.item_tit}>
                                                 Título {index + 1}
