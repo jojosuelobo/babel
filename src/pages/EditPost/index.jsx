@@ -108,11 +108,21 @@ export default function Edit() {
     const handleDelete = async (i) => {
         console.log('ANTIGA:')
         console.log(lista)
-        const novaLista = [...lista];
-        novaLista.splice(i, 1);
-        setLista(novaLista);
-        console.log('NOVA:')
-        console.log(lista)
+
+        if (lista.length > 2) {
+            const novaLista = [...lista];
+            novaLista.splice(i, 1);
+            setLista(novaLista);
+
+            console.log('NOVA:')
+            console.log(lista)
+        }
+    }
+
+    const handleSoma = () => {
+        let novoItem = { nomeItem: 'ITEM NOVO HEHE', descricaoItem: 'DESC DO ITEM NOVO HAHA' }
+        setLista([...lista, novoItem])
+        console.log('ta indo')
     }
 
     return (
@@ -185,6 +195,7 @@ export default function Edit() {
                                     </li>
                                 ))}
                             </ul>
+                            <button onClick={() => handleSoma()} className={styles.addRem}>Adicionar item</button>
                         </div>
 
                         <button onClick={handleSubmit}>SALVAR</button>
