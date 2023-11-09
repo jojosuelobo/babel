@@ -112,10 +112,12 @@ export default function Edit() {
     const handleDelete = async (i) => {
         if (lista.length > 2) {
             setConditionalIndex(i)
-            
+
             const novaLista = [...lista];
             novaLista.splice(i, 1);
             setLista(novaLista);
+        } else {
+            window.alert('Sua lista não pode ter um valor menor do que 2!')
         }
     }
 
