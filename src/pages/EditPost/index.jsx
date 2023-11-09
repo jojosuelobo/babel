@@ -163,7 +163,7 @@ export default function Edit() {
                         </div>
                         <div className={styles.list}>
                             <ul>
-                                {post.conteudo?.map((item, index) => (
+                                {lista?.map((item, index) => (
                                     <li key={index}>
                                         {/* <div className={conditionalClassName} > */}
                                         <div className={index === conditionalIndex ? styles.itemListaOculta : styles.itemLista}>
