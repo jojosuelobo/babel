@@ -105,17 +105,17 @@ export default function Edit() {
         //httpConfig(post, "PUT")
     }
 
-    const handleDelete = async (i) => {
-        console.log('ANTIGA:')
-        console.log(lista)
+    //const conditionalClassName = true ? styles.itemLista : styles.itemListaOculta;
+    const [conditionalIndex, setConditionalIndex] = useState(null)
+    const [conditionalClassName, setConditionalClassName] = useState([styles.itemLista])
 
+    const handleDelete = async (i) => {
         if (lista.length > 2) {
+            setConditionalIndex(i)
+            
             const novaLista = [...lista];
             novaLista.splice(i, 1);
             setLista(novaLista);
-
-            console.log('NOVA:')
-            console.log(lista)
         }
     }
 
@@ -163,8 +163,9 @@ export default function Edit() {
                             <ul>
                                 {post.conteudo?.map((item, index) => (
                                     <li key={index}>
-                                        <IoIosRemoveCircle onClick={() => handleDelete(index)} className={styles.icons} />
-                                        <div className={styles.item_lista} >
+                                        {/* <div className={conditionalClassName} > */}
+                                        <div className={index === conditionalIndex ? styles.itemListaOculta : styles.itemLista}>
+                                            <IoIosRemoveCircle onClick={() => handleDelete(index)} className={styles.icons} />
                                             <label className={styles.item_tit}>
                                                 Título {index + 1}
                                                 <input
