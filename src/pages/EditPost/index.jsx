@@ -122,7 +122,7 @@ export default function Edit() {
     }
 
     const handleSoma = () => {
-        let novoItem = { nomeItem: 'ITEM NOVO HEHE', descricaoItem: 'DESC DO ITEM NOVO HAHA' }
+        let novoItem = { nomeItem: '', descricaoItem: '' }
         setLista([...lista, novoItem])
         console.log('ta indo')
     }
