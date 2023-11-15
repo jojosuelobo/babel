@@ -10,9 +10,6 @@ import PostDetail from '../../components/postDetail'
 // Hooks
 import { useParams } from 'react-router-dom'
 
-// Firebase
-import { getAuth } from "firebase/auth";
-import blogFetch from '../../axios/config'
 import { useState, useEffect } from 'react'
 import profilePic from '../../../public/logoUVV.png'
 
@@ -28,39 +25,43 @@ import { showInfoToast } from '../../components/toast';
 export default function Profile() {
   const [posts, setPosts] = useState([])
   const [isModalOpen, setModalOpen] = useState(false);
-  const [editedUsername, setEditedUsername] = useState('');
-  const [editedPronoun, setEditedPronoun] = useState('');
-  const [editedBio, setEditedBio] = useState('');
-  const [sessionId, setSessionId] = useState()
+  const [sessionId, setSessionId] = useState();
 
-  // Carregando informações do usuário
-  // const auth = getAuth();
-  // const user = auth.currentUser;
-  // const uid = user.uid;
-  // const displayName = user.displayName;
+  //modificando o perfil
+  const [username, setUsername] = useState('');
+  const [bio, setBio] = useState('');
+  const [pronomes, setPronomes] = useState('');
+  //
   const auth = useAuthentication();
-  const user = getUser().then(result => setSessionId(result));
+  const user = getUser().then(result => {
+    
+    setSessionId(result);
+    setUsername(result.username);
+    setBio(result.bio);
+    setPronomes(result.pronomes);
+  }
+  );
   const displayName = auth.getEmail();
+
 
   let actualDisplayName;
 
-  displayName.then(function(result){
-      actualDisplayName = result;
+  displayName.then(function (result) {
+    actualDisplayName = result;
   })
 
-  async function getUser()
-  {
-      const user = await auth.getUserId();
-      
-      return user
+  async function getUser() {
+    const user = await auth.getUserId();
+
+    return user
   }
 
   // Referente aos Posts
   const getPosts = async () => {
     try {
-      console.log((await getUser()).slice(0,(await getUser()).length))
+      console.log((await getUser()).slice(0, (await getUser()).length))
       //const response = await blogFetch.get(`/posts?nome_usuario=${displayName}`)
-      const response = await backend.get(`/posts/usuario?idUsuario=${(await getUser()).slice(0,(await getUser()).length)}`)
+      const response = await backend.get(`/posts/usuario?idUsuario=${(await getUser()).slice(0, (await getUser()).length)}`)
       const data = response.data
       console.log(data)
       setPosts(data)
@@ -70,9 +71,28 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    getUser()
-    getPosts()
-  }, [])
+    getUser();
+    getPosts();
+  }, [sessionId])
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const updatePerfil = {
+        nome: username,
+        descricao: bio,
+        pronomes
+      };
+
+      await backend.put(`/usuarios/edit?idUsuario=${(await getUser()).slice(0, (await getUser()).length)}`, updatePerfil);
+      closeModal();
+      showInfoToast('As mudanças no perfil foram aplicadas');
+    } catch (error) {
+      console.error('Erro ao atualizar a data', error);
+    }
+  }
 
 
   // Referentes ao Modal
@@ -84,25 +104,6 @@ export default function Profile() {
     setModalOpen(false);
   }
 
-  const saveChanges = () => {
-    localStorage.setItem(`editedUsername_${sessionId}`, editedUsername);
-    localStorage.setItem(`editedPronoun_${sessionId}`, editedPronoun);
-    localStorage.setItem(`editedBio_${sessionId}`, editedBio);
-    closeModal();
-    showInfoToast('As mudanças no perfil foram aplicadas.');
-  }
-
-  // Verifica se há valores no localStorage ao carregar a página
-  useEffect(() => {
-    const savedEditedUsername = localStorage.getItem(`editedUsername_${sessionId}`) || actualDisplayName;
-    const savedEditedPronoun = localStorage.getItem(`editedPronoun_${sessionId}`) || '';
-    const savedEditedBio = localStorage.getItem(`editedBio_${sessionId}`) || '';
-
-    setEditedUsername(savedEditedUsername);
-    setEditedPronoun(savedEditedPronoun);
-    setEditedBio(savedEditedBio);
-
-  }, [getUser(), actualDisplayName]);
 
   return (
     <>
@@ -115,11 +116,11 @@ export default function Profile() {
             <div className={styles.avatar}>
               <img src={profilePic} alt="Avatar" />
             </div>
-            <h2>{editedUsername}</h2>
-            <p>{editedPronoun}</p>
+            <h2>{username}</h2>
+            <p>{pronomes}</p>
           </div>
           <h3>Bio</h3>
-          <p className={styles.bio}>{editedBio}</p>
+          <p className={styles.bio}>{bio}</p>
 
           <h2 className={styles.title}>Listas</h2>
           <div className={styles.divider}></div>
@@ -143,23 +144,23 @@ export default function Profile() {
               <p>Nome do Usuário</p>
               <input
                 type="text"
-                value={editedUsername}
-                onChange={(e) => setEditedUsername(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <p>Pronomes</p>
               <input
                 type="text"
-                value={editedPronoun}
-                onChange={(e) => setEditedPronoun(e.target.value)}
+                value={pronomes}
+                onChange={(e) => setPronomes(e.target.value)}
               />
               <p>Bio</p>
               <input
                 type="text"
-                value={editedBio}
-                onChange={(e) => setEditedBio(e.target.value)}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
               />
               <div className={styles.button_container}>
-                <button onClick={saveChanges}>Salvar</button>
+                <button onClick={handleSubmit}>Salvar</button>
                 <button onClick={closeModal}>Cancelar</button>
               </div>
             </div>
