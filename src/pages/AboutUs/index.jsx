@@ -85,8 +85,8 @@ export default function AboutUs() {
 
               <li>
                 <img className={styles.user} src={Roberta} />
-                <p>Roberta Meirellys</p>
-                <p>Desenvolvedor Front End</p>
+                <p>Roberta Meyrelles</p>
+                <p>Desenvolvedora Front End</p>
               </li>
 
               <li>
