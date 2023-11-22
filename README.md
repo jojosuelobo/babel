@@ -1,6 +1,6 @@
 <h1 align="center">
-  <p align="center">Engenharia de Laboratório de Software</p>
-  <img src="./public/logoUVV.png" alt="logo UVV" width="200">
+  <p align="center">Babel</p>
+  <img src="./public/logo.png" alt="logo UVV" width="200">
 </h1>
 
 Em inspiração com o [listography](https://listography.com), foi pensado num projeto que conectasse a criação de listas e uma rede social. 
