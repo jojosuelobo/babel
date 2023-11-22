@@ -12,9 +12,9 @@ import axios from "axios";
 
 const backend = axios.create({
     baseURL: "https://localhost:7154",
-    // headers: {
-    //     "Content-Type":"application/json"
-    // },
+    headers: {
+        "Content-Type":"application/json"
+    }
 })
 
 export default backend
