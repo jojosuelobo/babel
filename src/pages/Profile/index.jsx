@@ -33,14 +33,6 @@ export default function Profile() {
   const [pronomes, setPronomes] = useState('');
   //
   const auth = useAuthentication();
-  const user = getUser().then(result => {
-    
-    setSessionId(result);
-    setUsername(result.username);
-    setBio(result.bio);
-    setPronomes(result.pronomes);
-  }
-  );
   const displayName = auth.getEmail();
 
 
@@ -59,20 +51,31 @@ export default function Profile() {
   // Referente aos Posts
   const getPosts = async () => {
     try {
-      console.log((await getUser()).slice(0, (await getUser()).length))
-      //const response = await blogFetch.get(`/posts?nome_usuario=${displayName}`)
-      const response = await backend.get(`/posts/usuario?idUsuario=${(await getUser()).slice(0, (await getUser()).length)}`)
+      await getUser().then(result => setSessionId(result))
+      const response = await backend.get(`/posts/usuario?idUsuario=${sessionId}`)
       const data = response.data
-      console.log(data)
       setPosts(data)
     } catch (err) {
       console.log(err)
     }
   }
 
+  const getUserInfo = async () => {
+    try{
+      await getUser().then(result => setSessionId(result))
+      const response = await backend.get(`/usuarios/id?idUsuario=${sessionId}`)
+      const data = response.data
+      setUsername(data.nome)
+      setPronomes(data.pronomes)
+      setBio(data.descricao)
+    } catch(err){
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
-    getUser();
     getPosts();
+    getUserInfo();
   }, [sessionId])
 
 
@@ -83,10 +86,12 @@ export default function Profile() {
       const updatePerfil = {
         nome: username,
         descricao: bio,
-        pronomes
+        pronomes: pronomes
       };
 
-      await backend.put(`/usuarios/edit?idUsuario=${(await getUser()).slice(0, (await getUser()).length)}`, updatePerfil);
+      await getUser().then(result => setSessionId(result))
+
+      await backend.put(`/usuarios/edit?idUsuario=${sessionId}`, updatePerfil);
       closeModal();
       showInfoToast('As mudanças no perfil foram aplicadas');
     } catch (error) {
