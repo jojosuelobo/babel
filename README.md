@@ -83,6 +83,9 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
   <tr>
     <td align="center"><a href="https://github.com/GALI3600"><img src="https://github.com/GALI3600.png" width="100px;" alt="jojosuelobo"/><br /><sub><b>GALI3600</b></sub></a><br /><a href="https://github.com/codesandbox/codesandbox-client/commits?author=donavon" title="Code"></a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/dalcim"><img src="https://github.com/dalcim.png" width="100px;" alt="jojosuelobo"/><br /><sub><b>dalcim</b></sub></a><br /><a href="https://github.com/codesandbox/codesandbox-client/commits?author=donavon" title="Code"></a></td>
+  </tr>
 </table>
 
 ## 📜 License
