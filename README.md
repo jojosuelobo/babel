@@ -27,7 +27,7 @@ Para o funcionamento da aplicação, é necessário a executação tanto do clie
 
 ## Development setup
 
-### Server
+### [Server](https://github.com/jojosuelobo/eng-lab-soft-back)
 ```sh
 git clone https://github.com/jojosuelobo/eng-lab-soft-back.git
 ```
