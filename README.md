@@ -8,7 +8,6 @@
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/jojosuelobo/eng-lab-soft)
 ![GitHub forks](https://img.shields.io/github/forks/jojosuelobo/eng-lab-soft)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](https://github.com/nhn/tui.editor/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-[![license](https://img.shields.io/github/license/nhn/tui.editor.svg)](https://github.com/nhn/tui.editor/blob/master/LICENSE) 
 
 Projeto inspirado no Listography, projetado para integrar a criação de listas com uma rede social.
 
