@@ -82,4 +82,4 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 
 ## 📜 License
 
-This software is licensed under the [MIT]('./LICENSE') © 
+This software is licensed under the [MIT](./LICENSE) © 
